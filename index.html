@@ -17,9 +17,57 @@
 <html class="theme-next gemini use-motion" lang="zh-CN">
 <head><meta name="generator" content="Hexo 3.8.0">
   <meta charset="UTF-8">
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
+
 <meta name="theme-color" content="#222">
+
+<script>
+    (function(){
+        if(''){
+            if (prompt('请输入文章密码') !== ''){
+                alert('密码错误！');
+                history.back();
+            }
+        }
+    })();
+</script>
+
 
 
 
@@ -432,7 +480,7 @@
                 
               
 
-              <time title="创建时间：2019-01-11 20:23:47 / 修改时间：21:19:41" itemprop="dateCreated datePublished" datetime="2019-01-11T20:23:47+08:00">2019-01-11</time>
+              <time title="创建时间：2019-01-11 20:23:47 / 修改时间：21:31:00" itemprop="dateCreated datePublished" datetime="2019-01-11T20:23:47+08:00">2019-01-11</time>
             
 
             
@@ -489,35 +537,16 @@
 
       
         
+          文章访问密码：password
+          <!--noindex-->
           
-            <h1 id="ECNU-Online-Judge-搭建"><a href="#ECNU-Online-Judge-搭建" class="headerlink" title="ECNU Online Judge 搭建"></a>ECNU Online Judge 搭建</h1><h2 id="一、系统介绍"><a href="#一、系统介绍" class="headerlink" title="一、系统介绍"></a>一、系统介绍</h2><pre><code>eoj是基于python框架Django开发的一款在线程序评测系统。
-</code></pre><h2 id="二、EOJ环境配置"><a href="#二、EOJ环境配置" class="headerlink" title="二、EOJ环境配置"></a>二、EOJ环境配置</h2><h3 id="1、-安装Django"><a href="#1、-安装Django" class="headerlink" title="1、 安装Django:"></a>1、 安装Django:</h3><p>默认情况下，Ubuntu 18.04附带Python 3.6。 您可以通过键入以下内容来验证系统上是否安装了Python 3：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -V</span><br></pre></td></tr></table></figure></p>
-<p>安装Django：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install django</span><br></pre></td></tr></table></figure></p>
-<h3 id="2、eoj前端配置"><a href="#2、eoj前端配置" class="headerlink" title="2、eoj前端配置"></a>2、eoj前端配置</h3><p>克隆eoj:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:<span class="comment">//github.com/ultmaster/eoj3.git</span></span><br></pre></td></tr></table></figure></p>
-<p>进入eoj3目录安装依赖:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install -r <span class="string">"requirements.txt"</span></span><br></pre></td></tr></table></figure></p>
-<p>如果中途出错，执行:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libmysqld-dev</span><br></pre></td></tr></table></figure></p>
-<p>执行完之后再重新获取依赖即可<br>接下来我们需要配置一下JS环境<br>进入static文件夹:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd static</span><br></pre></td></tr></table></figure></p>
-<p>安装npm和js:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt install npm</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure></p>
-<p>此时前端还差一个css文件，我们从ECNUOJ官网就可以获取到。<br>把这个名为app.min.css的文件保存到eoj3/static/css下<br>这样我们的前端就算是搭建完毕了。</p>
-<h3 id="3、Django配置"><a href="#3、Django配置" class="headerlink" title="3、Django配置"></a>3、Django配置</h3><p>我们需要导入数据库,执行<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure></p>
-<p>创建超级管理员：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py createsuperuser</span><br></pre></td></tr></table></figure></p>
-<p>安装redis-server:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt-get install redis-server</span><br></pre></td></tr></table></figure></p>
-<p>这样我们运行80端口：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 manage.py runserver 0.0.0.0:80</span><br></pre></td></tr></table></figure></p>
-<p>输入服务器ip即可访问.但是现在还是无法判题,因为我们没有安装ejudge,<br>ejudge可以看作是一台server,用来进行判题.</p>
-<h3 id="4、ejudge配置"><a href="#4、ejudge配置" class="headerlink" title="4、ejudge配置"></a>4、ejudge配置</h3><p>从github上把ejudge克隆下来<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:<span class="comment">//github.com/ultmaster/ejudge.git</span></span><br></pre></td></tr></table></figure></p>
-<p>安装docker:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install docker.io</span><br></pre></td></tr></table></figure></p>
-<p>执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">systemctl start docker</span><br><span class="line">systemctl enable docker</span><br></pre></td></tr></table></figure></p>
-<p>查看是否成功：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker -v</span><br></pre></td></tr></table></figure></p>
-<p>进入ejudge执行：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh init.sh</span><br></pre></td></tr></table></figure></p>
-<p>在ejudge下执行：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build .</span><br></pre></td></tr></table></figure></p>
-<p>等待…等待…(如果失败了多试几次)<br>检查镜像是否创建成功:<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure></p>
-<p>运行容器：<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -d -p 5000:5000 -v /path/to/your/run/:/ejudge/run &lt;imageName&gt;</span><br></pre></td></tr></table></figure></p>
-<h3 id="5、后台配置："><a href="#5、后台配置：" class="headerlink" title="5、后台配置："></a>5、后台配置：</h3><p>用超级管理员登陆账户，进入后台，点击server<br>将server命名为ejudge<br>ip设置为:127.0.0.1<br>enable server.<br>最后回到eoj3目录下执行：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 manage.py runserver <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">80</span> &amp; python3 manage.py qcluster</span><br></pre></td></tr></table></figure></p>
-<p>这样EOJ就搭建完成了。<br>如果普通用户显示eoj is closed,进入util目录，将site_settings.py的<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def force_closed():</span><br><span class="line">    return &#123;&quot;force_closed&quot;: True&#125;</span><br></pre></td></tr></table></figure></p>
-<p>改为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def force_closed():</span><br><span class="line">    return &#123;&quot;force_closed&quot;: False&#125;</span><br></pre></td></tr></table></figure></p>
-<p>大功告成！！</p>
-
+            <div class="post-button text-center">
+              <a class="btn" href="/2019/01/11/blog18/">
+                阅读全文 &raquo;
+              </a>
+            </div>
           
+          <!--/noindex-->
         
       
     </div>
