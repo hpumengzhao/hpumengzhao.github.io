@@ -95,25 +95,25 @@
 
 
 
-  <meta name="description" content="XXOR（位运算+贪心）">
+  <meta name="description" content="Different Integers（树状数组+离线处理）">
 <meta name="keywords" content="contest,位运算,贪心">
 <meta property="og:type" content="article">
-<meta property="og:title" content="AtCoder Beginner Contest 117 D.">
-<meta property="og:url" content="https://hpumengzhao.github.io/2019/02/04/blog23/index.html">
+<meta property="og:title" content="Different Integers（树状数组+离线处理）">
+<meta property="og:url" content="https://hpumengzhao.github.io/2019/02/08/blog24/index.html">
 <meta property="og:site_name" content="Codancer&#39;s Blog">
-<meta property="og:description" content="XXOR（位运算+贪心）">
+<meta property="og:description" content="Different Integers（树状数组+离线处理）">
 <meta property="og:locale" content="zh-CN">
-<meta property="og:updated_time" content="2019-02-04T04:48:18.562Z">
+<meta property="og:updated_time" content="2019-02-08T07:25:18.267Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="AtCoder Beginner Contest 117 D.">
-<meta name="twitter:description" content="XXOR（位运算+贪心）">
+<meta name="twitter:title" content="Different Integers（树状数组+离线处理）">
+<meta name="twitter:description" content="Different Integers（树状数组+离线处理）">
 
 
 
 
 
 
-  <link rel="canonical" href="https://hpumengzhao.github.io/2019/02/04/blog23/">
+  <link rel="canonical" href="https://hpumengzhao.github.io/2019/02/08/blog24/">
 
 
 
@@ -123,7 +123,7 @@
   };
 </script>
 
-  <title>AtCoder Beginner Contest 117 D. | Codancer's Blog</title>
+  <title>Different Integers（树状数组+离线处理） | Codancer's Blog</title>
   
 
 
@@ -389,7 +389,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://hpumengzhao.github.io/2019/02/04/blog23/">
+    <link itemprop="mainEntityOfPage" href="https://hpumengzhao.github.io/2019/02/08/blog24/">
 
     <span hidden itemprop="author" itemscope="" itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Codancer">
@@ -406,7 +406,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">AtCoder Beginner Contest 117 D.
+          <h1 class="post-title" itemprop="name headline">Different Integers（树状数组+离线处理）
 
               
             
@@ -432,7 +432,7 @@
                 
               
 
-              <time title="创建时间：2019-02-04 12:31:45 / 修改时间：12:48:18" itemprop="dateCreated datePublished" datetime="2019-02-04T12:31:45+08:00">2019-02-04</time>
+              <time title="创建时间：2019-02-08 15:12:28 / 修改时间：15:25:18" itemprop="dateCreated datePublished" datetime="2019-02-08T15:12:28+08:00">2019-02-08</time>
             
 
             
@@ -488,10 +488,12 @@
       
 
       
-        <p>XXOR（位运算+贪心）<br><a id="more"></a></p>
-<h1 id="XXOR（位运算-贪心）"><a href="#XXOR（位运算-贪心）" class="headerlink" title="XXOR（位运算+贪心）"></a>XXOR（位运算+贪心）</h1><h2 id="题意："><a href="#题意：" class="headerlink" title="题意："></a>题意：</h2><p>对于一个有$n$个元素的数组$a$。有$f(x)$=$\sum_{i=1}^n{x xor a[i]}$。在$[0,k]$中找到一个$x$使得$f(x)$最大。输出最大值。</p>
-<h2 id="solve"><a href="#solve" class="headerlink" title="solve:"></a>solve:</h2><p>我们把数组的每个数看作二进制。统计第$i$位的0和1的数量，从最高位开始枚举。在满足$x\leq k$的情况下。如果该位0的数量大于1的数量，那么$x$的这一位就是1，否则就是0。计算出$x$后计算答案即可。</p>
-<h2 id="code"><a href="#code" class="headerlink" title="code:"></a>code:</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> MAXN = <span class="number">1000050</span>;</span><br><span class="line">ll a[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	ll n,k;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n&gt;&gt;k;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">cin</span>&gt;&gt;a[i];</span><br><span class="line">	ll x=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">60</span>;i&gt;=<span class="number">0</span>;i--)&#123;</span><br><span class="line">		<span class="keyword">if</span>(x+(<span class="number">1L</span>L&lt;&lt;i)&gt;k) <span class="keyword">continue</span>;</span><br><span class="line">		<span class="keyword">int</span> n1=<span class="number">0</span>;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">			n1+=(a[j]&gt;&gt;i)&amp;<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">if</span>(n1&lt;n-n1) x+=(<span class="number">1L</span>L&lt;&lt;i);</span><br><span class="line">	&#125;</span><br><span class="line">	ll ans=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		ans+=(x^a[i]);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        <p>Different Integers（树状数组+离线处理）<br><a id="more"></a></p>
+<h1 id="题意："><a href="#题意：" class="headerlink" title="题意："></a>题意：</h1><p>给定一个数组$a$,接下来有$q$次询问，每次询问输出<br>$[1,l]$和$[r,n]$之间的数的种类。</p>
+<h1 id="IDEA"><a href="#IDEA" class="headerlink" title="IDEA:"></a>IDEA:</h1><h2 id="p1"><a href="#p1" class="headerlink" title="p1"></a>p1</h2><p>对于这个题我们的第一个问题是如处理这两个不连续区间。<br>我们只需要把这个数组扩大两倍，那么原来长度为$n$的数组变成$2n$，那么我们就可以把问题简化为求新数组中$[r,l+n]$内的树的种类数。</p>
+<h2 id="p2"><a href="#p2" class="headerlink" title="p2"></a>p2</h2><p>接下来我们要做的就是先把区间进行离线处理。按照右端点的大小来排序。接下来直接从1到$n$遍历每一个位置，我们需要一个$last$数组来保存和当前位置颜色一样的上一个位置（去重）。我们对于每个点，让这个位置变成1，如果$last[a[i]]$存在的话,就让$last[a[i]]$变成0，直接求区间和即可。上述方式可以直接用树状数组进行实现。</p>
+<h1 id="code"><a href="#code" class="headerlink" title="code"></a>code</h1><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll maxn = <span class="number">1e6</span>+<span class="number">100</span>;</span><br><span class="line">ll n,q;</span><br><span class="line">ll C[maxn],a[maxn],last[maxn];</span><br><span class="line"><span class="function">ll <span class="title">lowbit</span><span class="params">(ll x)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> x&amp;(-x);</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">add</span><span class="params">(ll x,ll p)</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(x&lt;=n)&#123;</span><br><span class="line">		C[x]+=p;</span><br><span class="line">		x+=lowbit(x);</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function">ll <span class="title">getsum</span><span class="params">(ll x)</span></span>&#123;</span><br><span class="line">	ll res=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">while</span>(x)&#123;</span><br><span class="line">		res+=C[x];</span><br><span class="line">		x-=lowbit(x);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">node</span>&#123;</span></span><br><span class="line">	ll l,r,id,ans;</span><br><span class="line">&#125;ask[maxn];</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp1</span><span class="params">(node a,node b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.r&lt;b.r;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">cmp2</span><span class="params">(node a,node b)</span></span>&#123;</span><br><span class="line">	<span class="keyword">return</span> a.id&lt;b.id;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">while</span>(~<span class="built_in">scanf</span>(<span class="string">"%lld %lld"</span>,&amp;n,&amp;q))&#123;</span><br><span class="line">		<span class="built_in">memset</span>(last,<span class="number">0</span>,<span class="keyword">sizeof</span>(last));</span><br><span class="line">		<span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">			 <span class="built_in">scanf</span>(<span class="string">"%lld"</span>,&amp;a[i]);</span><br><span class="line">			 a[i+n]=a[i];</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=q;i++)&#123;</span><br><span class="line">			<span class="built_in">scanf</span>(<span class="string">"%lld %lld"</span>,&amp;ask[i].l,&amp;ask[i].r);</span><br><span class="line">			ask[i].l+=n;swap(ask[i].l,ask[i].r);</span><br><span class="line">			ask[i].id=i;</span><br><span class="line">		&#125; </span><br><span class="line">		<span class="built_in">memset</span>(C,<span class="number">0</span>,<span class="keyword">sizeof</span>(C)); n*=<span class="number">2</span>;</span><br><span class="line">		sort(ask+<span class="number">1</span>,ask+q+<span class="number">1</span>,cmp1);</span><br><span class="line">		ll now=<span class="number">1</span>;</span><br><span class="line">		<span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">			add(i,<span class="number">1</span>);</span><br><span class="line">			<span class="keyword">if</span>(last[a[i]]) add(last[a[i]],<span class="number">-1</span>);</span><br><span class="line">			last[a[i]]=i;</span><br><span class="line">			<span class="keyword">while</span>(ask[now].r==i)&#123;</span><br><span class="line">				ask[now].ans=(getsum(i)-getsum(ask[now].l<span class="number">-1</span>));</span><br><span class="line">				now++;</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">		sort(ask+<span class="number">1</span>,ask+q+<span class="number">1</span>,cmp2);<span class="keyword">for</span>(ll i=<span class="number">1</span>;i&lt;=q;i++) <span class="built_in">printf</span>(<span class="string">"%lld\n"</span>,ask[i].ans);</span><br><span class="line">	&#125; </span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -531,8 +533,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2019/01/24/blog22/" rel="next" title="CCPC-Wannafly Winter Camp Day4 (Div2, online mirror) A">
-                <i class="fa fa-chevron-left"></i> CCPC-Wannafly Winter Camp Day4 (Div2, online mirror) A
+              <a href="/2019/02/04/blog23/" rel="next" title="AtCoder Beginner Contest 117 D.">
+                <i class="fa fa-chevron-left"></i> AtCoder Beginner Contest 117 D.
               </a>
             
           </div>
@@ -540,10 +542,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2019/02/08/blog24/" rel="prev" title="Different Integers（树状数组+离线处理）">
-                Different Integers（树状数组+离线处理） <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -761,7 +759,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#XXOR（位运算-贪心）"><span class="nav-number">1.</span> <span class="nav-text">XXOR（位运算+贪心）</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意："><span class="nav-number">1.1.</span> <span class="nav-text">题意：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#solve"><span class="nav-number">1.2.</span> <span class="nav-text">solve:</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#code"><span class="nav-number">1.3.</span> <span class="nav-text">code:</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#题意："><span class="nav-number">1.</span> <span class="nav-text">题意：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IDEA"><span class="nav-number">2.</span> <span class="nav-text">IDEA:</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#p1"><span class="nav-number">2.1.</span> <span class="nav-text">p1</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#p2"><span class="nav-number">2.2.</span> <span class="nav-text">p2</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#code"><span class="nav-number">3.</span> <span class="nav-text">code</span></a></li></ol></div>
             
 
           </div>
