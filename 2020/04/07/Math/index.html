@@ -1,0 +1,869 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="数论," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="数论知识点总结">
+<meta property="og:type" content="article">
+<meta property="og:title" content="数论知识点总结">
+<meta property="og:url" content="http://yoursite.com/2020/04/07/Math/index.html">
+<meta property="og:site_name" content="Meng Space">
+<meta property="og:description" content="数论知识点总结">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-04-07T14:14:14.912Z">
+<meta property="article:modified_time" content="2019-05-02T03:55:34.616Z">
+<meta property="article:author" content="Codancer">
+<meta property="article:tag" content="数论">
+<meta name="twitter:card" content="summary">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2020/04/07/Math/"/>
+
+
+
+
+
+  <title>数论知识点总结 | Meng Space</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Meng Space</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/%20" rel="section">
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/%20" rel="section">
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/07/Math/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Codancer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Meng Space">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">数论知识点总结</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-07T22:14:14+08:00">
+                2020-04-07
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-05-02T11:55:34+08:00">
+                2019-05-02
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                <span class="post-meta-divider">|</span>
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-comment-o"></i>
+                </span>
+                <a href="/2020/04/07/Math/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/07/Math/" itemprop="commentCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="数论知识点总结">数论知识点总结</h1>
+<a id="more"></a>
+<h2 id="gcd最大公约数"><span class="math inline">\(1.gcd\)</span>（最大公约数）</h2>
+<p>对于给出的两个数<span class="math inline">\(a,b\)</span>，我们可以用欧几里得算法来计算最大公约数。欧几里得算法的精髓就在于下面这个公式： <span class="math inline">\(gcd(a,b)=gcd(b,a\)</span>%<span class="math inline">\(b)\)</span></p>
+<p>证明： 已知：<span class="math inline">\(gcd(a,b)|a\)</span>并且<span class="math inline">\(gcd(a,b)|b\)</span>,设<span class="math inline">\(a\)</span>%<span class="math inline">\(b=r\)</span>,则<span class="math inline">\(a=r+kb\)</span>,故<span class="math inline">\(r=a-kb\)</span>,根据同余关系可得：<span class="math inline">\(r\)</span>%<span class="math inline">\(gcd(a,b)=0\)</span>,因此<span class="math inline">\(gcd(a,b)=gcd(b,a\)</span>%<span class="math inline">\(b)\)</span></p>
+<p>code： <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b?gcd(b,a%b):a</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> ## <span class="math inline">\(2.exgcd\)</span>（扩展欧几里得算法） 扩展欧几里得算法是用于求解<span class="math inline">\(ax+by=gcd(a,b)\)</span>的一组解的算法。 根据欧几里得算法我们可知：<span class="math inline">\(gcd(a,b)=gcd(b,a\)</span>%<span class="math inline">\(b)\)</span> 我们假设<span class="math inline">\(x1,y1\)</span>是满足条件的一组解</p>
+<p>那么<span class="math inline">\(ax1+by1=gcd(a,b)\)</span></p>
+<p>而<span class="math inline">\(gcd(a,b)=gcd(b,a\)</span>%<span class="math inline">\(b)\)</span></p>
+<p>故<span class="math inline">\(ax1+by1=bx2+a\)</span>%<span class="math inline">\(by2\)</span></p>
+<p>而<span class="math inline">\(a\)</span>%<span class="math inline">\(b=a-a/b\ast b\)</span></p>
+<p>因而<span class="math inline">\(ax1+by1=bx2+ay2-a/b\ast by2=ay2+b*(x2- a/b\ast y2)\)</span></p>
+<p>那么我们就得到了一组合法的<span class="math inline">\(x1,y1\)</span>的解：</p>
+<p><span class="math inline">\(x1=y2,y1=x2-a/b\ast y2\)</span></p>
+<p>也就是我们递归下去即可。当<span class="math inline">\(b=0\)</span>的时候我们就可以发现<span class="math inline">\(x=1,y=0\)</span>是合法的</p>
+<p>这是我们再返回<span class="math inline">\(x=1,y=0\)</span>。最后就一直会回溯下去，得到我们的<span class="math inline">\(x1,y1\)</span> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!b)&#123;</span><br><span class="line">        x=<span class="number">1</span>,y=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    exgcd(b,a%b)</span><br><span class="line">    <span class="keyword">int</span> temp=x;</span><br><span class="line">    x=y;y=temp-a/b*x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 但是如果要求<span class="math inline">\(ax+by=gcd(a,b)\)</span>的最小整数解的时候，我们就要对<span class="math inline">\(x\)</span>批量的加上<span class="math inline">\(b\)</span>的倍数，但是这不会影响最终的结果。</p>
+<p>因为<span class="math inline">\(ax+by+kab-kab=a(x+kb)+b*(y-ka)\)</span>，这样依旧是合法的。</p>
+<p>因此我们直接让<span class="math inline">\(x=(x\)</span>%<span class="math inline">\(b+b)\)</span>%<span class="math inline">\(b\)</span>即为最终的答案。</p>
+<h2 id="逆元"><span class="math inline">\(3.\)</span>逆元</h2>
+<p>对于<span class="math inline">\(a\)</span>和<span class="math inline">\(m\)</span>，如果<span class="math inline">\(ax\equiv1(modm)\)</span>,那么称<span class="math inline">\(x\)</span>是<span class="math inline">\(a\)</span>在<span class="math inline">\(m\)</span>下的逆元。</p>
+<p>那么我们该怎么求解逆元呢？我们将逆元的等式转化一下: <span class="math inline">\(ax+my=1\)</span></p>
+<p>由于<span class="math inline">\(ax+my=k\)</span>有解当且仅当<span class="math inline">\(k\)</span>%<span class="math inline">\(gcd(a,m)=0\)</span>的时候有解，说明<span class="math inline">\(gcd(a,m)=1\)</span></p>
+<p>那么我们直接用扩展欧几里得求解即可。 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x,y;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!b)&#123;</span><br><span class="line">        x=<span class="number">1</span>,y=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    exgcd(b,a%b)</span><br><span class="line">    <span class="keyword">int</span> temp=x;</span><br><span class="line">    x=y;y=temp-a/b*x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">inv</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> m)</span></span>&#123;<span class="comment">//a在m下的逆元</span></span><br><span class="line">    exgcd(a,m);</span><br><span class="line">    <span class="keyword">return</span> (x%m+m)%m;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 逆元一般是用在除法取模上面，如<span class="math inline">\((a/b)\)</span>%<span class="math inline">\(m\)</span>即为<span class="math inline">\(a\)</span>%<span class="math inline">\(m\ast inv(b,m)\)</span></p>
+<h2 id="埃拉托斯特尼筛法"><span class="math inline">\(4.\)</span>埃拉托斯特尼筛法</h2>
+<p>埃拉托斯特尼筛法是一个复杂度为<span class="math inline">\(nlnnlnn\)</span>的筛法。 当选中一个数为素数的时候，就把以这个数为因子的数全部筛掉即可。 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e6</span>+<span class="number">100</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; pr;</span><br><span class="line"><span class="keyword">bool</span> vis[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">seive</span><span class="params">()</span></span>&#123;</span><br><span class="line">	vis[<span class="number">0</span>]=vis[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=N<span class="number">-10</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!vis[i])&#123;</span><br><span class="line">			pr.push_back(i);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>*i;j&lt;=N<span class="number">-10</span>;j+=i) vis[j]=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> ## <span class="math inline">\(5.\)</span>费马小定理 假设<span class="math inline">\(a\)</span>是一个整数，<span class="math inline">\(p\)</span>是一个质数，那么<span class="math inline">\(a^p-a\)</span>是<span class="math inline">\(p\)</span>的倍数</p>
+<p>即<span class="math inline">\(a^p\equiv a(modp)\)</span>,如果<span class="math inline">\(a\)</span>不是<span class="math inline">\(p\)</span>的倍数，这个定理也可以写成:</p>
+<p><span class="math inline">\(a^{p-1}\equiv1(modp)\)</span></p>
+<h2 id="线性同余方程求解"><span class="math inline">\(6.\)</span>线性同余方程求解</h2>
+<p>形如<span class="math inline">\(ax\equiv b(modm)\)</span>即为线性同余方程。 将线性同余方程变形后即可得到：</p>
+<p><span class="math inline">\(ax+my=b\)</span> 只有当<span class="math inline">\(b\)</span>%<span class="math inline">\(gcd(a,m)=0\)</span>时该方程才有解。 我们先利用扩展欧几里得算法求出</p>
+<p><span class="math inline">\(ax+my=gcd(a,m)\)</span>的一组解<span class="math inline">\((x0,y0)\)</span>,那么<span class="math inline">\(x=x0*(b/gcd(a,m))\)</span>%<span class="math inline">\(m\)</span> 即为原方程的一组解。 ## <span class="math inline">\(7.\)</span>欧拉函数 欧拉函数即为小于<span class="math inline">\(n\)</span>的数中与<span class="math inline">\(n\)</span>互质的数的个数 比如<span class="math inline">\(\varphi(8)=4\)</span> 欧拉函数的通式为:</p>
+<p><span class="math inline">\(\varphi(x)=x(1-\frac{1}{p1})(1-\frac{1}{p2})...(1-\frac{1}{pn})\)</span></p>
+<p>其中<span class="math inline">\(p1,p2,...pn\)</span>为<span class="math inline">\(x\)</span>的质因数。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E6%95%B0%E8%AE%BA/" rel="tag"># 数论</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2020/04/07/lagrange/" rel="next" title="拉格朗日插值的应用">
+                <i class="fa fa-chevron-left"></i> 拉格朗日插值的应用
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2020/04/07/Maxflow/" rel="prev" title="网络流24题">
+                网络流24题 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Codancer</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">34</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">20</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hpumengzhao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="2312018660@qq.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.todest.cn/" title="老郭" target="_blank">老郭</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://47.101.66.37" title="Dicer" target="_blank">Dicer</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://boctorio.github.io/" title="老毕" target="_blank">老毕</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.wzy1999.wang/" title="煜神" target="_blank">煜神</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数论知识点总结"><span class="nav-number">1.</span> <span class="nav-text">数论知识点总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gcd最大公约数"><span class="nav-number">1.1.</span> <span class="nav-text">\(1.gcd\)（最大公约数）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逆元"><span class="nav-number">1.2.</span> <span class="nav-text">\(3.\)逆元</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#埃拉托斯特尼筛法"><span class="nav-number">1.3.</span> <span class="nav-text">\(4.\)埃拉托斯特尼筛法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性同余方程求解"><span class="nav-number">1.4.</span> <span class="nav-text">\(6.\)线性同余方程求解</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-[object Object]"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Codancer</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+  <script src="//unpkg.com/valine/dist/Valine.min.js"></script>
+  
+  <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+    var guest = 'nick,mail,link';
+    guest = guest.split(',').filter(item=>{
+      return GUEST.indexOf(item)>-1;
+    });
+    new Valine({
+        el: '#comments' ,
+        verify: false,
+        notify: false,
+        appId: 'fUL3MOuiaNzqlcnWhtRthdku-gzGzoHsz',
+        appKey: 'rljFr7B3jvtULeaxJtrdtftp',
+        placeholder: 'Just go go',
+        avatar:'mm',
+        guest_info:guest,
+        pageSize:'10' || 10,
+    });
+  </script>
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v="></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v="></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+  
+
+</body>
+</html>
