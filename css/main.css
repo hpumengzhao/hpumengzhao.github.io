@@ -1826,7 +1826,7 @@ pre .javascript .function {
   width: 4px;
   height: 4px;
   border-radius: 50%;
-  background: #e338ff;
+  background: #7e21ff;
 }
 .links-of-blogroll {
   font-size: 13px;
@@ -3116,4 +3116,17 @@ pre .javascript .function {
   .pagination {
     margin: 8px 0 0;
   }
+}
+body {
+  background: url("https://img2020.cnblogs.com/blog/1923913/202004/1923913-20200408120647304-502028664.png");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 50% 50%;
+}
+.main-inner {
+  background: #fff;
+  opacity: 0.8;
+}
+.header-inner {
+  opacity: 0.8;
 }
