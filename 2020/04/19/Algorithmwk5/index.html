@@ -64,7 +64,7 @@
 
 
 
-  <meta name="keywords" content="结论," />
+  <meta name="keywords" content="Problems," />
 
 
 
@@ -77,18 +77,22 @@
 
 
 
-<meta name="description" content="HDU 6635 Nonsense Time">
+<meta name="description" content="A Easy problems week">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Nonsense Time">
-<meta property="og:url" content="http://yoursite.com/2020/04/07/HDU6635/index.html">
+<meta property="og:title" content="Algorithms Weekly 5">
+<meta property="og:url" content="http://yoursite.com/2020/04/19/Algorithmwk5/index.html">
 <meta property="og:site_name" content="Meng Space">
-<meta property="og:description" content="HDU 6635 Nonsense Time">
+<meta property="og:description" content="A Easy problems week">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-07T14:14:14.890Z">
-<meta property="article:modified_time" content="2019-08-11T09:58:50.250Z">
+<meta property="og:image" content="https://i.loli.net/2020/04/19/Nm2AryxLXzUkOEQ.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/19/fUcpo3qZr9ykxOC.png">
+<meta property="og:image" content="https://i.loli.net/2020/04/19/5yoSx81GeU6q2fT.png">
+<meta property="article:published_time" content="2020-04-19T11:56:54.026Z">
+<meta property="article:modified_time" content="2020-04-19T12:25:22.691Z">
 <meta property="article:author" content="Codancer">
-<meta property="article:tag" content="结论">
+<meta property="article:tag" content="Problems">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2020/04/19/Nm2AryxLXzUkOEQ.png">
 
 
 
@@ -118,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/07/HDU6635/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/04/19/Algorithmwk5/"/>
 
 
 
 
 
-  <title>Nonsense Time | Meng Space</title>
+  <title>Algorithms Weekly 5 | Meng Space</title>
   
 
 
@@ -227,7 +231,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/07/HDU6635/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/19/Algorithmwk5/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Codancer">
@@ -244,7 +248,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Nonsense Time</h1>
+          <h1 class="post-title" itemprop="name headline">Algorithms Weekly 5</h1>
         
 
         <div class="post-meta">
@@ -256,8 +260,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-07T22:14:14+08:00">
-                2020-04-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-19T19:56:54+08:00">
+                2020-04-19
               </time>
             
 
@@ -272,8 +276,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-08-11T17:58:50+08:00">
-                2019-08-11
+              <time title="Post modified" itemprop="dateModified" datetime="2020-04-19T20:25:22+08:00">
+                2020-04-19
               </time>
             
           </span>
@@ -287,8 +291,8 @@
                 <span class="post-meta-item-icon">
                   <i class="fa fa-comment-o"></i>
                 </span>
-                <a href="/2020/04/07/HDU6635/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/07/HDU6635/" itemprop="commentCount"></span>
+                <a href="/2020/04/19/Algorithmwk5/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count valine-comment-count" data-xid="/2020/04/19/Algorithmwk5/" itemprop="commentCount"></span>
                 </a>
               </span>
             
@@ -316,15 +320,43 @@
       
 
       
-        <h1 id="hdu-6635-nonsense-time">HDU 6635 Nonsense Time</h1>
+        <h2 id="a-easy-problems-week">A Easy problems week</h2>
 <a id="more"></a>
-<h2 id="题面"><a href="http://acm.hdu.edu.cn/showproblem.php?pid=6635" target="_blank" rel="noopener">题面</a></h2>
-<h2 id="题意">题意</h2>
-<p>一个随机生成的长度为<span class="math inline">\(n\)</span>的排列，刚开始这些数字全都被封印，接下来<span class="math inline">\(n\)</span>次操作，每次把一个数解封，对于每次操作，查询当前数组<span class="math inline">\(LIS\)</span>的长度。</p>
-<h2 id="思路">思路</h2>
-<p>我们逆向思考，对于给定的数组每次删去一个数，相邻两次操作的答案不会超过<span class="math inline">\(1\)</span>，对于第<span class="math inline">\(i\)</span>次操作我们随便求一个<span class="math inline">\(LIS\)</span>,如果第<span class="math inline">\(i+1\)</span>次操作删除的数字在这个<span class="math inline">\(LIS\)</span>内，我们就要重新求<span class="math inline">\(LIS\)</span>,否则答案保持不变，由于随机生成的全排列<span class="math inline">\(LIS\)</span>长度的期望为<span class="math inline">\(\sqrt n\)</span>，因此最多计算<span class="math inline">\(\sqrt n\)</span>次<span class="math inline">\(LIS\)</span>,复杂度<span class="math inline">\(O(n \cdot \sqrt n \cdot log(n) )\)</span>。</p>
-<h2 id="代码">代码</h2>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">60000</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">0X3f3f3f3f</span>;</span><br><span class="line"><span class="keyword">int</span> dp[N],fa[N],a[N],ans[N],b[N],order[N],n,pos[N];</span><br><span class="line"><span class="keyword">bool</span> vis[N],ok[N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">solve</span><span class="params">()</span></span>&#123;<span class="comment">//求LIS</span></span><br><span class="line">	<span class="keyword">int</span> cnt=<span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!vis[i]) b[cnt++]=a[i];<span class="comment">//剩下的数</span></span><br><span class="line">	&#125;</span><br><span class="line">	<span class="built_in">memset</span>(dp,INF,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">	<span class="built_in">memset</span>(ok,<span class="number">0</span>,<span class="keyword">sizeof</span>(ok));</span><br><span class="line">	<span class="keyword">int</span> lpos;</span><br><span class="line">	pos[<span class="number">0</span>]=<span class="number">-1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;cnt;i++)&#123;</span><br><span class="line">		dp[lpos=(lower_bound(dp,dp+cnt,b[i])-dp)]=b[i];</span><br><span class="line">		pos[lpos]=i;</span><br><span class="line">		fa[i]=(lpos?pos[lpos<span class="number">-1</span>]:<span class="number">-1</span>);</span><br><span class="line">	&#125;</span><br><span class="line">	cnt=lower_bound(dp,dp+cnt,INF)-dp;</span><br><span class="line">	<span class="keyword">int</span> i;</span><br><span class="line">	<span class="keyword">for</span>(i=pos[cnt<span class="number">-1</span>];~fa[i];i=fa[i])&#123;</span><br><span class="line">		 ok[b[i]]=<span class="number">1</span>;</span><br><span class="line">	&#125;</span><br><span class="line">	ok[b[i]]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">return</span> cnt;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">jud</span><span class="params">(<span class="keyword">int</span> id)</span></span>&#123;</span><br><span class="line">	vis[id]=<span class="number">1</span>;<span class="comment">//删除这个数</span></span><br><span class="line">	<span class="keyword">if</span>(ok[a[id]]==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">1</span>;<span class="comment">//这个数不在LIS里面则说明LIS长度不变</span></span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> T;<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;T);</span><br><span class="line">	<span class="keyword">while</span>(T--)&#123;</span><br><span class="line">		<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n);</span><br><span class="line">		<span class="built_in">memset</span>(vis,<span class="number">0</span>,<span class="keyword">sizeof</span>(vis));</span><br><span class="line">		<span class="built_in">memset</span>(ok,<span class="number">0</span>,<span class="keyword">sizeof</span>(ok));</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;a[i]);</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;order[i]);</span><br><span class="line">		ans[n]=solve();</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=n;i&gt;=<span class="number">2</span>;i--)&#123;<span class="comment">//倒序</span></span><br><span class="line">			<span class="keyword">if</span>(jud(order[i])) ans[i<span class="number">-1</span>]=ans[i];</span><br><span class="line">			<span class="keyword">else</span> ans[i<span class="number">-1</span>]=solve();</span><br><span class="line">		&#125;</span><br><span class="line">		<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++) <span class="built_in">printf</span>(<span class="string">"%d%c"</span>, ans[i],(i==n?<span class="string">'\n'</span>:<span class="string">' '</span>));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>本周参加了三场比赛，Codeforces Round #634 (Div. 3)，牛客小白月赛，和本周的力扣周赛。</p>
+<ul>
+<li><p><strong>Codeforces Round #634 (Div. 3)</strong></p>
+<p>standing:</p>
+<figure>
+<img src="https://i.loli.net/2020/04/19/Nm2AryxLXzUkOEQ.png" alt="image-20200419200205067.png" /><figcaption>image-20200419200205067.png</figcaption>
+</figure></li>
+</ul>
+<p>div3场还是稍微简单一些，但是中间被D卡了，然后先跑去写了E1&amp;E2，不过cf的机子是真的快，我E2代码的复杂度大概是<span class="math inline">\(2e9\)</span>，但是<span class="math inline">\(1.4s\)</span>就跑完了。回头看过D突然发现这是个简单题，题目大意就是一个<span class="math inline">\(9*9\)</span>的数独，每个位置的数字都在<span class="math inline">\([1,9]\)</span>之内，你最多可以改变<span class="math inline">\(9\)</span>个位置的数字，即变成另一个<span class="math inline">\([1,9]\)</span>内的数字，**使得每行，每列，每个3*3的子数独都存在相同元素**，给出一种改变方法。</p>
+<p>思路就是改变<span class="math inline">\((0,0),(1,3),(2,6),(3,1),(4,4),(5,7),(6,2),(7,5),(8,8)\)</span>这九个位置即可。</p>
+<ul>
+<li><p><strong>牛客小白月赛24</strong></p>
+<p>standing:</p>
+<figure>
+<img src="https://i.loli.net/2020/04/19/fUcpo3qZr9ykxOC.png" alt="image-20200419201023216.png" /><figcaption>image-20200419201023216.png</figcaption>
+</figure></li>
+</ul>
+<p>貌似并没有很精妙的题目，都是板子&amp;套路题。</p>
+<ul>
+<li><p>Leetcode Weekly 185</p>
+<p>standing（貌似前200有字节内推机会，对于考研狗毫无意义）</p>
+<figure>
+<img src="https://i.loli.net/2020/04/19/5yoSx81GeU6q2fT.png" alt="image-20200419201320512.png" /><figcaption>image-20200419201320512.png</figcaption>
+</figure></li>
+</ul>
+<p>这次的T3还是很有意思的。</p>
+<p><strong>T3题面</strong>：</p>
+<p>给你一个字符串 <code>croakOfFrogs</code>，它表示不同青蛙发出的蛙鸣声（字符串 &quot;croak&quot; ）的组合。由于同一时间可以有多只青蛙呱呱作响，所以 <code>croakOfFrogs</code> 中会混合多个 “croak” <em>。</em>请你返回模拟字符串中所有蛙鸣所需不同青蛙的最少数目。</p>
+<p><strong>注意：</strong>要想发出蛙鸣 &quot;croak&quot;，青蛙必须 <strong>依序</strong> 输出 <code>‘c’, ’r’, ’o’, ’a’, ’k’</code> 这 5 个字母。如果没有输出全部五个字母，那么它就不会发出声音。</p>
+<p>如果字符串 <code>croakOfFrogs</code> 不是由若干有效的 &quot;croak&quot; 字符混合而成，请返回 <code>-1</code> 。</p>
+<p>我的解法是类似于括号匹配的方式，设置四个变量代表当前<span class="math inline">\(c,r,o,a\)</span>的数目，假设当前字母是<span class="math inline">\(r\)</span>，那么<span class="math inline">\(c\)</span>的个数就要减去<span class="math inline">\(1\)</span>，当遇到<span class="math inline">\(k\)</span>的时候就算是匹配完了一只青蛙了，此时更新最大值，最大值为<span class="math inline">\(max(ans,nc+nr+no+na+1)\)</span></p>
+<p>实际就是每次更新还未匹配完的线程数（可能这样容易理解点）。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minNumberOfFrogs</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> bc=<span class="number">0</span>,br=<span class="number">0</span>,bo=<span class="number">0</span>,ba=<span class="number">0</span>,bk=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> maxx=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c:s)&#123;</span><br><span class="line">            <span class="keyword">if</span>(c==<span class="string">'c'</span>) ++bc;</span><br><span class="line">            <span class="keyword">if</span>(c==<span class="string">'r'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(bc==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">                --bc;</span><br><span class="line">                ++br;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(c==<span class="string">'o'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(br==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">                --br;</span><br><span class="line">                ++bo;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(c==<span class="string">'a'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(bo==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">                --bo;</span><br><span class="line">                ++ba;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(c==<span class="string">'k'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(ba==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">                --ba;</span><br><span class="line">                maxx=max(maxx,ba+bo+br+bc+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(bc||br||bo||ba) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">return</span> maxx;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<p>T4是一个很简单的dp，此处不再赘述，贴个代码。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line">    <span class="keyword">long</span> <span class="keyword">long</span> dp[<span class="number">60</span>][<span class="number">101</span>][<span class="number">60</span>];<span class="comment">//截止到a[i] 最大值为j cost为k的方案数</span></span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">numOfArrays</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> m, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) dp[<span class="number">1</span>][i][<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="keyword">int</span> now=<span class="number">1</span>;now&lt;=m;now++)&#123;</span><br><span class="line">                <span class="keyword">for</span>(<span class="keyword">int</span> last=<span class="number">1</span>;last&lt;=m;last++)&#123;</span><br><span class="line">                    <span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=n;k++)&#123;</span><br><span class="line">                        <span class="keyword">if</span>(now&gt;last)&#123;</span><br><span class="line">                            dp[i][now][k+<span class="number">1</span>]+=dp[i<span class="number">-1</span>][last][k];</span><br><span class="line">                            dp[i][now][k+<span class="number">1</span>]%=mod;</span><br><span class="line">                        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                            dp[i][last][k]+=dp[i<span class="number">-1</span>][last][k];</span><br><span class="line">                            dp[i][last][k]%=mod;</span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++)&#123;</span><br><span class="line">            ans+=dp[n][i][k];</span><br><span class="line">            ans%=mod;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -342,7 +374,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/%E7%BB%93%E8%AE%BA/" rel="tag"># 结论</a>
+            <a href="/tags/Problems/" rel="tag"># Problems</a>
           
         </div>
       
@@ -355,8 +387,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/07/HDU51004/" rel="next" title="HDU6627 equation(分段函数求值)">
-                <i class="fa fa-chevron-left"></i> HDU6627 equation(分段函数求值)
+              <a href="/2020/04/11/AlgorithmWK4/" rel="next" title="Algorithms Weekly 4">
+                <i class="fa fa-chevron-left"></i> Algorithms Weekly 4
               </a>
             
           </div>
@@ -364,10 +396,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/07/HDU6638/" rel="prev" title="HDU 6638 Snowy Smile(线段树)">
-                HDU 6638 Snowy Smile(线段树) <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -567,7 +595,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu-6635-nonsense-time"><span class="nav-number">1.</span> <span class="nav-text">HDU 6635 Nonsense Time</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题面"><span class="nav-number">1.1.</span> <span class="nav-text">题面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">1.2.</span> <span class="nav-text">题意</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#思路"><span class="nav-number">1.3.</span> <span class="nav-text">思路</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">1.4.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#a-easy-problems-week"><span class="nav-number">1.</span> <span class="nav-text">A Easy problems week</span></a></li></ol></div>
             
 
           </div>
