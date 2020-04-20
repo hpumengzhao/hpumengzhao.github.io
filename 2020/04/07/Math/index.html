@@ -7,7 +7,7 @@
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -134,7 +134,7 @@
 
 
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -143,7 +143,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,6 +249,7 @@
 
         <div class="post-meta">
           <span class="post-time">
+		     
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -316,36 +317,38 @@
       
 
       
-        <h1 id="数论知识点总结"><a href="#数论知识点总结" class="headerlink" title="数论知识点总结"></a>数论知识点总结</h1><a id="more"></a>
-<h2 id="1-gcd-（最大公约数）"><a href="#1-gcd-（最大公约数）" class="headerlink" title="$1.gcd$（最大公约数）"></a>$1.gcd$（最大公约数）</h2><p>对于给出的两个数$a,b$，我们可以用欧几里得算法来计算最大公约数。欧几里得算法的精髓就在于下面这个公式：<br>$gcd(a,b)=gcd(b,a$%$b)$</p>
-<p>证明：<br>已知：$gcd(a,b)|a$并且$gcd(a,b)|b$,设$a$%$b=r$,则$a=r+kb$,故$r=a-kb$,根据同余关系可得：$r$%$gcd(a,b)=0$,因此$gcd(a,b)=gcd(b,a$%$b)$</p>
-<p>code：<br><figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b?gcd(b,a%b):a</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="2-exgcd-（扩展欧几里得算法）"><a href="#2-exgcd-（扩展欧几里得算法）" class="headerlink" title="$2.exgcd$（扩展欧几里得算法）"></a>$2.exgcd$（扩展欧几里得算法）</h2><p>扩展欧几里得算法是用于求解$ax+by=gcd(a,b)$的一组解的算法。<br>根据欧几里得算法我们可知：$gcd(a,b)=gcd(b,a$%$b)$<br>我们假设$x1,y1$是满足条件的一组解</p>
-<p>那么$ax1+by1=gcd(a,b)$</p>
-<p>而$gcd(a,b)=gcd(b,a$%$b)$</p>
-<p>故$ax1+by1=bx2+a$%$by2$</p>
-<p>而$a$%$b=a-a/b\ast b$</p>
-<p>因而$ax1+by1=bx2+ay2-a/b\ast by2=ay2+b*(x2-<br>a/b\ast y2)$</p>
-<p>那么我们就得到了一组合法的$x1,y1$的解：</p>
-<p>$x1=y2,y1=x2-a/b\ast y2$</p>
-<p>也就是我们递归下去即可。当$b=0$的时候我们就可以发现$x=1,y=0$是合法的</p>
-<p>这是我们再返回$x=1,y=0$。最后就一直会回溯下去，得到我们的$x1,y1$<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!b)&#123;</span><br><span class="line">        x=<span class="number">1</span>,y=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    exgcd(b,a%b)</span><br><span class="line">    <span class="keyword">int</span> temp=x;</span><br><span class="line">    x=y;y=temp-a/b*x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>但是如果要求$ax+by=gcd(a,b)$的最小整数解的时候，我们就要对$x$批量的加上$b$的倍数，但是这不会影响最终的结果。</p>
-<p>因为$ax+by+kab-kab=a(x+kb)+b*(y-ka)$，这样依旧是合法的。</p>
-<p>因此我们直接让$x=(x$%$b+b)$%$b$即为最终的答案。</p>
-<h2 id="3-逆元"><a href="#3-逆元" class="headerlink" title="$3.$逆元"></a>$3.$逆元</h2><p>对于$a$和$m$，如果$ax\equiv1(modm)$,那么称$x$是$a$在$m$下的逆元。</p>
-<p>那么我们该怎么求解逆元呢？我们将逆元的等式转化一下:<br>$ax+my=1$</p>
-<p>由于$ax+my=k$有解当且仅当$k$%$gcd(a,m)=0$的时候有解，说明$gcd(a,m)=1$</p>
-<p>那么我们直接用扩展欧几里得求解即可。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x,y;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!b)&#123;</span><br><span class="line">        x=<span class="number">1</span>,y=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    exgcd(b,a%b)</span><br><span class="line">    <span class="keyword">int</span> temp=x;</span><br><span class="line">    x=y;y=temp-a/b*x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">inv</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> m)</span></span>&#123;<span class="comment">//a在m下的逆元</span></span><br><span class="line">    exgcd(a,m);</span><br><span class="line">    <span class="keyword">return</span> (x%m+m)%m;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><br>逆元一般是用在除法取模上面，如$(a/b)$%$m$即为$a$%$m\ast inv(b,m)$</p>
-<h2 id="4-埃拉托斯特尼筛法"><a href="#4-埃拉托斯特尼筛法" class="headerlink" title="$4.$埃拉托斯特尼筛法"></a>$4.$埃拉托斯特尼筛法</h2><p>埃拉托斯特尼筛法是一个复杂度为$nlnnlnn$的筛法。<br>当选中一个数为素数的时候，就把以这个数为因子的数全部筛掉即可。<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e6</span>+<span class="number">100</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; pr;</span><br><span class="line"><span class="keyword">bool</span> vis[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">seive</span><span class="params">()</span></span>&#123;</span><br><span class="line">	vis[<span class="number">0</span>]=vis[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=N<span class="number">-10</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!vis[i])&#123;</span><br><span class="line">			pr.push_back(i);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>*i;j&lt;=N<span class="number">-10</span>;j+=i) vis[j]=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<h2 id="5-费马小定理"><a href="#5-费马小定理" class="headerlink" title="$5.$费马小定理"></a>$5.$费马小定理</h2><p>假设$a$是一个整数，$p$是一个质数，那么$a^p-a$是$p$的倍数</p>
-<p>即$a^p\equiv a(modp)$,如果$a$不是$p$的倍数，这个定理也可以写成:</p>
-<p>$a^{p-1}\equiv1(modp)$</p>
-<h2 id="6-线性同余方程求解"><a href="#6-线性同余方程求解" class="headerlink" title="$6.$线性同余方程求解"></a>$6.$线性同余方程求解</h2><p>形如$ax\equiv b(modm)$即为线性同余方程。<br>将线性同余方程变形后即可得到：</p>
-<p>$ax+my=b$<br>只有当$b$%$gcd(a,m)=0$时该方程才有解。<br>我们先利用扩展欧几里得算法求出</p>
-<p>$ax+my=gcd(a,m)$的一组解$(x0,y0)$,那么$x=x0*(b/gcd(a,m))$%$m$<br>即为原方程的一组解。</p>
-<h2 id="7-欧拉函数"><a href="#7-欧拉函数" class="headerlink" title="$7.$欧拉函数"></a>$7.$欧拉函数</h2><p>欧拉函数即为小于$n$的数中与$n$互质的数的个数<br>比如$\varphi(8)=4$<br>欧拉函数的通式为:</p>
-<p>$\varphi(x)=x(1-\frac{1}{p1})(1-\frac{1}{p2})…(1-\frac{1}{pn})$</p>
-<p>其中$p1,p2,…pn$为$x$的质因数。</p>
+        <h1 id="数论知识点总结">数论知识点总结</h1>
+<a id="more"></a>
+<h2 id="gcd最大公约数"><span class="math inline">\(1.gcd\)</span>（最大公约数）</h2>
+<p>对于给出的两个数<span class="math inline">\(a,b\)</span>，我们可以用欧几里得算法来计算最大公约数。欧几里得算法的精髓就在于下面这个公式： <span class="math inline">\(gcd(a,b)=gcd(b,a\)</span>%<span class="math inline">\(b)\)</span></p>
+<p>证明： 已知：<span class="math inline">\(gcd(a,b)|a\)</span>并且<span class="math inline">\(gcd(a,b)|b\)</span>,设<span class="math inline">\(a\)</span>%<span class="math inline">\(b=r\)</span>,则<span class="math inline">\(a=r+kb\)</span>,故<span class="math inline">\(r=a-kb\)</span>,根据同余关系可得：<span class="math inline">\(r\)</span>%<span class="math inline">\(gcd(a,b)=0\)</span>,因此<span class="math inline">\(gcd(a,b)=gcd(b,a\)</span>%<span class="math inline">\(b)\)</span></p>
+<p>code： <figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">gcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> b?gcd(b,a%b):a</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> ## <span class="math inline">\(2.exgcd\)</span>（扩展欧几里得算法） 扩展欧几里得算法是用于求解<span class="math inline">\(ax+by=gcd(a,b)\)</span>的一组解的算法。 根据欧几里得算法我们可知：<span class="math inline">\(gcd(a,b)=gcd(b,a\)</span>%<span class="math inline">\(b)\)</span> 我们假设<span class="math inline">\(x1,y1\)</span>是满足条件的一组解</p>
+<p>那么<span class="math inline">\(ax1+by1=gcd(a,b)\)</span></p>
+<p>而<span class="math inline">\(gcd(a,b)=gcd(b,a\)</span>%<span class="math inline">\(b)\)</span></p>
+<p>故<span class="math inline">\(ax1+by1=bx2+a\)</span>%<span class="math inline">\(by2\)</span></p>
+<p>而<span class="math inline">\(a\)</span>%<span class="math inline">\(b=a-a/b\ast b\)</span></p>
+<p>因而<span class="math inline">\(ax1+by1=bx2+ay2-a/b\ast by2=ay2+b*(x2- a/b\ast y2)\)</span></p>
+<p>那么我们就得到了一组合法的<span class="math inline">\(x1,y1\)</span>的解：</p>
+<p><span class="math inline">\(x1=y2,y1=x2-a/b\ast y2\)</span></p>
+<p>也就是我们递归下去即可。当<span class="math inline">\(b=0\)</span>的时候我们就可以发现<span class="math inline">\(x=1,y=0\)</span>是合法的</p>
+<p>这是我们再返回<span class="math inline">\(x=1,y=0\)</span>。最后就一直会回溯下去，得到我们的<span class="math inline">\(x1,y1\)</span> <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!b)&#123;</span><br><span class="line">        x=<span class="number">1</span>,y=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    exgcd(b,a%b)</span><br><span class="line">    <span class="keyword">int</span> temp=x;</span><br><span class="line">    x=y;y=temp-a/b*x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 但是如果要求<span class="math inline">\(ax+by=gcd(a,b)\)</span>的最小整数解的时候，我们就要对<span class="math inline">\(x\)</span>批量的加上<span class="math inline">\(b\)</span>的倍数，但是这不会影响最终的结果。</p>
+<p>因为<span class="math inline">\(ax+by+kab-kab=a(x+kb)+b*(y-ka)\)</span>，这样依旧是合法的。</p>
+<p>因此我们直接让<span class="math inline">\(x=(x\)</span>%<span class="math inline">\(b+b)\)</span>%<span class="math inline">\(b\)</span>即为最终的答案。</p>
+<h2 id="逆元"><span class="math inline">\(3.\)</span>逆元</h2>
+<p>对于<span class="math inline">\(a\)</span>和<span class="math inline">\(m\)</span>，如果<span class="math inline">\(ax\equiv1(modm)\)</span>,那么称<span class="math inline">\(x\)</span>是<span class="math inline">\(a\)</span>在<span class="math inline">\(m\)</span>下的逆元。</p>
+<p>那么我们该怎么求解逆元呢？我们将逆元的等式转化一下: <span class="math inline">\(ax+my=1\)</span></p>
+<p>由于<span class="math inline">\(ax+my=k\)</span>有解当且仅当<span class="math inline">\(k\)</span>%<span class="math inline">\(gcd(a,m)=0\)</span>的时候有解，说明<span class="math inline">\(gcd(a,m)=1\)</span></p>
+<p>那么我们直接用扩展欧几里得求解即可。 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> x,y;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">exgcd</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(!b)&#123;</span><br><span class="line">        x=<span class="number">1</span>,y=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">return</span> ;</span><br><span class="line">    &#125;</span><br><span class="line">    exgcd(b,a%b)</span><br><span class="line">    <span class="keyword">int</span> temp=x;</span><br><span class="line">    x=y;y=temp-a/b*x;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">inv</span><span class="params">(<span class="keyword">int</span> a,<span class="keyword">int</span> m)</span></span>&#123;<span class="comment">//a在m下的逆元</span></span><br><span class="line">    exgcd(a,m);</span><br><span class="line">    <span class="keyword">return</span> (x%m+m)%m;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> 逆元一般是用在除法取模上面，如<span class="math inline">\((a/b)\)</span>%<span class="math inline">\(m\)</span>即为<span class="math inline">\(a\)</span>%<span class="math inline">\(m\ast inv(b,m)\)</span></p>
+<h2 id="埃拉托斯特尼筛法"><span class="math inline">\(4.\)</span>埃拉托斯特尼筛法</h2>
+<p>埃拉托斯特尼筛法是一个复杂度为<span class="math inline">\(nlnnlnn\)</span>的筛法。 当选中一个数为素数的时候，就把以这个数为因子的数全部筛掉即可。 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N=<span class="number">1e6</span>+<span class="number">100</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; pr;</span><br><span class="line"><span class="keyword">bool</span> vis[N];</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">seive</span><span class="params">()</span></span>&#123;</span><br><span class="line">	vis[<span class="number">0</span>]=vis[<span class="number">1</span>]=<span class="number">1</span>;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=N<span class="number">-10</span>;i++)&#123;</span><br><span class="line">		<span class="keyword">if</span>(!vis[i])&#123;</span><br><span class="line">			pr.push_back(i);</span><br><span class="line">			<span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">2</span>*i;j&lt;=N<span class="number">-10</span>;j+=i) vis[j]=<span class="number">1</span>;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure> ## <span class="math inline">\(5.\)</span>费马小定理 假设<span class="math inline">\(a\)</span>是一个整数，<span class="math inline">\(p\)</span>是一个质数，那么<span class="math inline">\(a^p-a\)</span>是<span class="math inline">\(p\)</span>的倍数</p>
+<p>即<span class="math inline">\(a^p\equiv a(modp)\)</span>,如果<span class="math inline">\(a\)</span>不是<span class="math inline">\(p\)</span>的倍数，这个定理也可以写成:</p>
+<p><span class="math inline">\(a^{p-1}\equiv1(modp)\)</span></p>
+<h2 id="线性同余方程求解"><span class="math inline">\(6.\)</span>线性同余方程求解</h2>
+<p>形如<span class="math inline">\(ax\equiv b(modm)\)</span>即为线性同余方程。 将线性同余方程变形后即可得到：</p>
+<p><span class="math inline">\(ax+my=b\)</span> 只有当<span class="math inline">\(b\)</span>%<span class="math inline">\(gcd(a,m)=0\)</span>时该方程才有解。 我们先利用扩展欧几里得算法求出</p>
+<p><span class="math inline">\(ax+my=gcd(a,m)\)</span>的一组解<span class="math inline">\((x0,y0)\)</span>,那么<span class="math inline">\(x=x0*(b/gcd(a,m))\)</span>%<span class="math inline">\(m\)</span> 即为原方程的一组解。 ## <span class="math inline">\(7.\)</span>欧拉函数 欧拉函数即为小于<span class="math inline">\(n\)</span>的数中与<span class="math inline">\(n\)</span>互质的数的个数 比如<span class="math inline">\(\varphi(8)=4\)</span> 欧拉函数的通式为:</p>
+<p><span class="math inline">\(\varphi(x)=x(1-\frac{1}{p1})(1-\frac{1}{p2})...(1-\frac{1}{pn})\)</span></p>
+<p>其中<span class="math inline">\(p1,p2,...pn\)</span>为<span class="math inline">\(x\)</span>的质因数。</p>
 
       
     </div>
@@ -588,7 +591,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数论知识点总结"><span class="nav-number">1.</span> <span class="nav-text">数论知识点总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-gcd-（最大公约数）"><span class="nav-number">1.1.</span> <span class="nav-text">$1.gcd$（最大公约数）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-exgcd-（扩展欧几里得算法）"><span class="nav-number">1.2.</span> <span class="nav-text">$2.exgcd$（扩展欧几里得算法）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-逆元"><span class="nav-number">1.3.</span> <span class="nav-text">$3.$逆元</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-埃拉托斯特尼筛法"><span class="nav-number">1.4.</span> <span class="nav-text">$4.$埃拉托斯特尼筛法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-费马小定理"><span class="nav-number">1.5.</span> <span class="nav-text">$5.$费马小定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-线性同余方程求解"><span class="nav-number">1.6.</span> <span class="nav-text">$6.$线性同余方程求解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-欧拉函数"><span class="nav-number">1.7.</span> <span class="nav-text">$7.$欧拉函数</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#数论知识点总结"><span class="nav-number">1.</span> <span class="nav-text">数论知识点总结</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#gcd最大公约数"><span class="nav-number">1.1.</span> <span class="nav-text">\(1.gcd\)（最大公约数）</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#逆元"><span class="nav-number">1.2.</span> <span class="nav-text">\(3.\)逆元</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#埃拉托斯特尼筛法"><span class="nav-number">1.3.</span> <span class="nav-text">\(4.\)埃拉托斯特尼筛法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#线性同余方程求解"><span class="nav-number">1.4.</span> <span class="nav-text">\(6.\)线性同余方程求解</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -842,7 +845,24 @@
 
   
   <script type="text/javascript" src="/js/src/js.cookie.js?v="></script>
-  <script type="text/javascript" src="/js/src/scroll-cookie.js?v="></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v="></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
   

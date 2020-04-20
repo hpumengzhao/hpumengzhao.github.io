@@ -7,7 +7,7 @@
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -138,7 +138,7 @@
 
 
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -147,7 +147,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -253,6 +253,7 @@
 
         <div class="post-meta">
           <span class="post-time">
+		     
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -320,35 +321,39 @@
       
 
       
-        <h2 id="An-Easy-problems-week"><a href="#An-Easy-problems-week" class="headerlink" title="An Easy problems week"></a>An Easy problems week</h2><a id="more"></a>
+        <h2 id="an-easy-problems-week">An Easy problems week</h2>
+<a id="more"></a>
 <p>本周参加了三场比赛，Codeforces Round #634 (Div. 3)，牛客小白月赛，和本周的力扣周赛。</p>
 <ul>
 <li><p><strong>Codeforces Round #634 (Div. 3)</strong></p>
 <p>standing:</p>
-<p><img src="https://i.loli.net/2020/04/19/Nm2AryxLXzUkOEQ.png" alt="image-20200419200205067.png"></p>
-</li>
+<figure>
+<img src="https://i.loli.net/2020/04/19/Nm2AryxLXzUkOEQ.png" alt="image-20200419200205067.png" /><figcaption>image-20200419200205067.png</figcaption>
+</figure></li>
 </ul>
-<p>div3场还是稍微简单一些，但是中间被D卡了，然后先跑去写了E1&amp;E2，不过cf的机子是真的快，我E2代码的复杂度大概是$2e9$，但是$1.4s$就跑完了。回头看过D突然发现这是个简单题，题目大意就是一个$9<em>9$的数独，每个位置的数字都在$[1,9]$之内，你最多可以改变$9$个位置的数字，即变成另一个$[1,9]$内的数字，**使得每行，每列，每个3</em>3的子数独都存在相同元素**，给出一种改变方法。</p>
-<p>思路就是改变$(0,0),(1,3),(2,6),(3,1),(4,4),(5,7),(6,2),(7,5),(8,8)$这九个位置即可。</p>
+<p>div3场还是稍微简单一些，但是中间被D卡了，然后先跑去写了E1&amp;E2，不过cf的机子是真的快，我E2代码的复杂度大概是<span class="math inline">\(2e9\)</span>，但是<span class="math inline">\(1.4s\)</span>就跑完了。回头看过D突然发现这是个简单题，题目大意就是一个<span class="math inline">\(9*9\)</span>的数独，每个位置的数字都在<span class="math inline">\([1,9]\)</span>之内，你最多可以改变<span class="math inline">\(9\)</span>个位置的数字，即变成另一个<span class="math inline">\([1,9]\)</span>内的数字，**使得每行，每列，每个3*3的子数独都存在相同元素**，给出一种改变方法。</p>
+<p>思路就是改变<span class="math inline">\((0,0),(1,3),(2,6),(3,1),(4,4),(5,7),(6,2),(7,5),(8,8)\)</span>这九个位置即可。</p>
 <ul>
 <li><p><strong>牛客小白月赛24</strong></p>
 <p>standing:</p>
-<p><img src="https://i.loli.net/2020/04/19/fUcpo3qZr9ykxOC.png" alt="image-20200419201023216.png"></p>
-</li>
+<figure>
+<img src="https://i.loli.net/2020/04/19/fUcpo3qZr9ykxOC.png" alt="image-20200419201023216.png" /><figcaption>image-20200419201023216.png</figcaption>
+</figure></li>
 </ul>
 <p>貌似并没有很精妙的题目，都是板子&amp;套路题。</p>
 <ul>
 <li><p>Leetcode Weekly 185</p>
 <p>standing（貌似前200有字节内推机会，对于考研狗毫无意义）</p>
-<p><img src="https://i.loli.net/2020/04/19/5yoSx81GeU6q2fT.png" alt="image-20200419201320512.png"></p>
-</li>
+<figure>
+<img src="https://i.loli.net/2020/04/19/5yoSx81GeU6q2fT.png" alt="image-20200419201320512.png" /><figcaption>image-20200419201320512.png</figcaption>
+</figure></li>
 </ul>
 <p>这次的T3还是很有意思的。</p>
 <p><strong>T3题面</strong>：</p>
-<p>给你一个字符串 <code>croakOfFrogs</code>，它表示不同青蛙发出的蛙鸣声（字符串 “croak” ）的组合。由于同一时间可以有多只青蛙呱呱作响，所以 <code>croakOfFrogs</code> 中会混合多个 “croak” <em>。</em>请你返回模拟字符串中所有蛙鸣所需不同青蛙的最少数目。</p>
-<p><strong>注意：</strong>要想发出蛙鸣 “croak”，青蛙必须 <strong>依序</strong> 输出 <code>‘c’, ’r’, ’o’, ’a’, ’k’</code> 这 5 个字母。如果没有输出全部五个字母，那么它就不会发出声音。</p>
-<p>如果字符串 <code>croakOfFrogs</code> 不是由若干有效的 “croak” 字符混合而成，请返回 <code>-1</code> 。</p>
-<p>我的解法是类似于括号匹配的方式，设置四个变量代表当前$c,r,o,a$的数目，假设当前字母是$r$，那么$c$的个数就要减去$1$，当遇到$k$的时候就算是匹配完了一只青蛙了，此时更新最大值，最大值为$max(ans,nc+nr+no+na+1)$</p>
+<p>给你一个字符串 <code>croakOfFrogs</code>，它表示不同青蛙发出的蛙鸣声（字符串 &quot;croak&quot; ）的组合。由于同一时间可以有多只青蛙呱呱作响，所以 <code>croakOfFrogs</code> 中会混合多个 “croak” <em>。</em>请你返回模拟字符串中所有蛙鸣所需不同青蛙的最少数目。</p>
+<p><strong>注意：</strong>要想发出蛙鸣 &quot;croak&quot;，青蛙必须 <strong>依序</strong> 输出 <code>‘c’, ’r’, ’o’, ’a’, ’k’</code> 这 5 个字母。如果没有输出全部五个字母，那么它就不会发出声音。</p>
+<p>如果字符串 <code>croakOfFrogs</code> 不是由若干有效的 &quot;croak&quot; 字符混合而成，请返回 <code>-1</code> 。</p>
+<p>我的解法是类似于括号匹配的方式，设置四个变量代表当前<span class="math inline">\(c,r,o,a\)</span>的数目，假设当前字母是<span class="math inline">\(r\)</span>，那么<span class="math inline">\(c\)</span>的个数就要减去<span class="math inline">\(1\)</span>，当遇到<span class="math inline">\(k\)</span>的时候就算是匹配完了一只青蛙了，此时更新最大值，最大值为<span class="math inline">\(max(ans,nc+nr+no+na+1)\)</span></p>
 <p>实际就是每次更新还未匹配完的线程数（可能这样容易理解点）。</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minNumberOfFrogs</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> bc=<span class="number">0</span>,br=<span class="number">0</span>,bo=<span class="number">0</span>,ba=<span class="number">0</span>,bk=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">int</span> maxx=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c:s)&#123;</span><br><span class="line">            <span class="keyword">if</span>(c==<span class="string">'c'</span>) ++bc;</span><br><span class="line">            <span class="keyword">if</span>(c==<span class="string">'r'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(bc==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">                --bc;</span><br><span class="line">                ++br;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(c==<span class="string">'o'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(br==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">                --br;</span><br><span class="line">                ++bo;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(c==<span class="string">'a'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(bo==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">                --bo;</span><br><span class="line">                ++ba;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(c==<span class="string">'k'</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(ba==<span class="number">0</span>) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">                --ba;</span><br><span class="line">                maxx=max(maxx,ba+bo+br+bc+<span class="number">1</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(bc||br||bo||ba) <span class="keyword">return</span> <span class="number">-1</span>;</span><br><span class="line">        <span class="keyword">return</span> maxx;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 <p>T4是一个很简单的dp，此处不再赘述，贴个代码。</p>
@@ -595,7 +600,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#An-Easy-problems-week"><span class="nav-number">1.</span> <span class="nav-text">An Easy problems week</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#an-easy-problems-week"><span class="nav-number">1.</span> <span class="nav-text">An Easy problems week</span></a></li></ol></div>
             
 
           </div>
@@ -849,7 +854,24 @@
 
   
   <script type="text/javascript" src="/js/src/js.cookie.js?v="></script>
-  <script type="text/javascript" src="/js/src/scroll-cookie.js?v="></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v="></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
   

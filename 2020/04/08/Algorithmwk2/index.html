@@ -7,7 +7,7 @@
 
 <html class="theme-next gemini use-motion" lang="zh-CN">
 <head>
-  <meta charset="UTF-8"/>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
 <meta name="theme-color" content="#222">
@@ -134,7 +134,7 @@
 
 
 
-<meta name="generator" content="Hexo 4.2.0"></head>
+<meta name="generator" content="Hexo 4.2.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
 
@@ -143,7 +143,7 @@
     
   
 
-  <div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -249,6 +249,7 @@
 
         <div class="post-meta">
           <span class="post-time">
+		     
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -316,13 +317,13 @@
       
 
       
-        <h2 id="A-slow-week"><a href="#A-slow-week" class="headerlink" title="A slow week"></a>A slow week</h2><a id="more"></a>
+        <h2 id="a-slow-week">A slow week</h2>
+<a id="more"></a>
 <ul>
 <li><strong>牛客练习赛60 C</strong></li>
 </ul>
-<p>对于一个长度为$n$的字符串$s$,计算有多少个长度为$k$的本质不同的子序列。</p>
-<p><strong>思路</strong><br>$dp_{i,j}$为前$i$个字符组成的字符串中长度为$j$的本质不同的子序列。则有:</p>
-<script type="math/tex; mode=display">dp_{i,j}=dp_{i-1,j-1}+dp_{i-1,j}-dp[last_{s_{i}}-1][j-1]</script><p>其中 $last_{s_{i}}$ 表示 $s_{i}$ 前一次出现的位置。时间复杂度$O(n \cdot k)$</p>
+<p>对于一个长度为<span class="math inline">\(n\)</span>的字符串<span class="math inline">\(s\)</span>,计算有多少个长度为<span class="math inline">\(k\)</span>的本质不同的子序列。</p>
+<p><strong>思路</strong> <span class="math inline">\(dp_{i,j}\)</span>为前<span class="math inline">\(i\)</span>个字符组成的字符串中长度为<span class="math inline">\(j\)</span>的本质不同的子序列。则有: <span class="math display">\[dp_{i,j}=dp_{i-1,j-1}+dp_{i-1,j}-dp[last_{s_{i}}-1][j-1]\]</span> 其中 <span class="math inline">\(last_{s_{i}}\)</span> 表示 <span class="math inline">\(s_{i}\)</span> 前一次出现的位置。时间复杂度<span class="math inline">\(O(n \cdot k)\)</span></p>
 
       
     </div>
@@ -565,7 +566,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-slow-week"><span class="nav-number">1.</span> <span class="nav-text">A slow week</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#a-slow-week"><span class="nav-number">1.</span> <span class="nav-text">A slow week</span></a></li></ol></div>
             
 
           </div>
@@ -819,7 +820,24 @@
 
   
   <script type="text/javascript" src="/js/src/js.cookie.js?v="></script>
-  <script type="text/javascript" src="/js/src/scroll-cookie.js?v="></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v="></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({"tex2jax":{"inlineMath":[["$","$"],["\\(","\\)"]],"skipTags":["script","noscript","style","textarea","pre","code"],"processEscapes":true},"TeX":{"equationNumbers":{"autoNumber":"AMS"}}});
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
 
 
   
