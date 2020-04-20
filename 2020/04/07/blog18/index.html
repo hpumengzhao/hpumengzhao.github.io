@@ -338,31 +338,25 @@
       
 
       
-        <h1 id="ecnu-online-judge-搭建">ECNU Online Judge 搭建</h1>
-<a id="more"></a>
-<h2 id="一系统介绍">一、系统介绍</h2>
-<pre><code>eoj是基于python框架Django开发的一款在线程序评测系统。</code></pre>
-<h2 id="二eoj环境配置">二、EOJ环境配置</h2>
-<h3 id="安装django">1、 安装Django:</h3>
-<p>默认情况下，Ubuntu 18.04附带Python 3.6。 您可以通过键入以下内容来验证系统上是否安装了Python 3：</p>
+        <h1 id="ECNU-Online-Judge-搭建"><a href="#ECNU-Online-Judge-搭建" class="headerlink" title="ECNU Online Judge 搭建"></a>ECNU Online Judge 搭建</h1><a id="more"></a>
+<h2 id="一、系统介绍"><a href="#一、系统介绍" class="headerlink" title="一、系统介绍"></a>一、系统介绍</h2><pre><code>eoj是基于python框架Django开发的一款在线程序评测系统。
+</code></pre><h2 id="二、EOJ环境配置"><a href="#二、EOJ环境配置" class="headerlink" title="二、EOJ环境配置"></a>二、EOJ环境配置</h2><h3 id="1、-安装Django"><a href="#1、-安装Django" class="headerlink" title="1、 安装Django:"></a>1、 安装Django:</h3><p>默认情况下，Ubuntu 18.04附带Python 3.6。 您可以通过键入以下内容来验证系统上是否安装了Python 3：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 -V</span><br></pre></td></tr></table></figure>
-<p>安装Django： <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install django</span><br></pre></td></tr></table></figure></p>
-<h3 id="eoj前端配置">2、eoj前端配置</h3>
-<p>克隆eoj:</p>
+<p>安装Django：<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install django</span><br></pre></td></tr></table></figure></p>
+<h3 id="2、eoj前端配置"><a href="#2、eoj前端配置" class="headerlink" title="2、eoj前端配置"></a>2、eoj前端配置</h3><p>克隆eoj:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:<span class="comment">//github.com/ultmaster/eoj3.git</span></span><br></pre></td></tr></table></figure>
 <p>进入eoj3目录安装依赖:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip3 install -r <span class="string">"requirements.txt"</span></span><br></pre></td></tr></table></figure>
 <p>如果中途出错，执行:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install libmysqld-dev</span><br></pre></td></tr></table></figure>
 <p>执行完之后再重新获取依赖即可</p>
-<p>接下来我们需要配置一下JS环境 进入static文件夹:</p>
+<p>接下来我们需要配置一下JS环境<br>进入static文件夹:</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cd static</span><br></pre></td></tr></table></figure>
 <p>安装npm和js:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">apt install npm</span><br><span class="line">npm install</span><br></pre></td></tr></table></figure>
 <p>此时前端还差一个css文件，我们从ECNUOJ官网就可以获取到。</p>
-<p>把这个名为app.min.css的文件保存到eoj3/static/css下 这样我们的前端就算是搭建完毕了。</p>
-<h3 id="django配置">3、Django配置</h3>
-<p>我们需要导入数据库,执行</p>
+<p>把这个名为app.min.css的文件保存到eoj3/static/css下<br>这样我们的前端就算是搭建完毕了。</p>
+<h3 id="3、Django配置"><a href="#3、Django配置" class="headerlink" title="3、Django配置"></a>3、Django配置</h3><p>我们需要导入数据库,执行</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py migrate</span><br></pre></td></tr></table></figure>
 <p>创建超级管理员：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python manage.py createsuperuser</span><br></pre></td></tr></table></figure>
@@ -372,8 +366,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 manage.py runserver 0.0.0.0:80</span><br></pre></td></tr></table></figure>
 <p>输入服务器ip即可访问.但是现在还是无法判题,因为我们没有安装ejudge,</p>
 <p>ejudge可以看作是一台server,用来进行判题.</p>
-<h3 id="ejudge配置">4、ejudge配置</h3>
-<p>从github上把ejudge克隆下来 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:<span class="comment">//github.com/ultmaster/ejudge.git</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="4、ejudge配置"><a href="#4、ejudge配置" class="headerlink" title="4、ejudge配置"></a>4、ejudge配置</h3><p>从github上把ejudge克隆下来<br><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone https:<span class="comment">//github.com/ultmaster/ejudge.git</span></span><br></pre></td></tr></table></figure></p>
 <p>安装docker:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt install docker.io</span><br></pre></td></tr></table></figure>
 <p>执行：</p>
@@ -384,14 +377,13 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh init.sh</span><br></pre></td></tr></table></figure>
 <p>在ejudge下执行：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker build .</span><br></pre></td></tr></table></figure>
-<p>等待...等待...(如果失败了多试几次) 检查镜像是否创建成功:</p>
+<p>等待…等待…(如果失败了多试几次)<br>检查镜像是否创建成功:</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker images</span><br></pre></td></tr></table></figure>
 <p>运行容器：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -d -p 5000:5000 -v &#x2F;path&#x2F;to&#x2F;your&#x2F;run&#x2F;:&#x2F;ejudge&#x2F;run &lt;imageName&gt;</span><br></pre></td></tr></table></figure>
-<h3 id="后台配置">5、后台配置：</h3>
-<p>用超级管理员登陆账户，进入后台，点击server 将server命名为ejudge ip设置为:127.0.0.1 enable server. 最后回到eoj3目录下执行：</p>
+<h3 id="5、后台配置："><a href="#5、后台配置：" class="headerlink" title="5、后台配置："></a>5、后台配置：</h3><p>用超级管理员登陆账户，进入后台，点击server<br>将server命名为ejudge<br>ip设置为:127.0.0.1<br>enable server.<br>最后回到eoj3目录下执行：</p>
 <figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">python3 manage.py runserver <span class="number">0.0</span><span class="number">.0</span><span class="number">.0</span>:<span class="number">80</span> &amp; python3 manage.py qcluster</span><br></pre></td></tr></table></figure>
-<p>这样EOJ就搭建完成了。 如果普通用户显示eoj is closed,进入util目录，将site_settings.py的</p>
+<p>这样EOJ就搭建完成了。<br>如果普通用户显示eoj is closed,进入util目录，将site_settings.py的</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def force_closed():</span><br><span class="line">    return &#123;&quot;force_closed&quot;: True&#125;</span><br></pre></td></tr></table></figure>
 <p>改为</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">def force_closed():</span><br><span class="line">    return &#123;&quot;force_closed&quot;: False&#125;</span><br></pre></td></tr></table></figure>
@@ -518,7 +510,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">40</span>
+                  <span class="site-state-item-count">41</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -540,7 +532,7 @@
               
               <div class="site-state-item site-state-tags">
                 
-                  <span class="site-state-item-count">24</span>
+                  <span class="site-state-item-count">25</span>
                   <span class="site-state-item-name">tags</span>
                 
               </div>
@@ -638,7 +630,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ecnu-online-judge-搭建"><span class="nav-number">1.</span> <span class="nav-text">ECNU Online Judge 搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一系统介绍"><span class="nav-number">1.1.</span> <span class="nav-text">一、系统介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二eoj环境配置"><span class="nav-number">1.2.</span> <span class="nav-text">二、EOJ环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#安装django"><span class="nav-number">1.2.1.</span> <span class="nav-text">1、 安装Django:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#eoj前端配置"><span class="nav-number">1.2.2.</span> <span class="nav-text">2、eoj前端配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#django配置"><span class="nav-number">1.2.3.</span> <span class="nav-text">3、Django配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ejudge配置"><span class="nav-number">1.2.4.</span> <span class="nav-text">4、ejudge配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#后台配置"><span class="nav-number">1.2.5.</span> <span class="nav-text">5、后台配置：</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#ECNU-Online-Judge-搭建"><span class="nav-number">1.</span> <span class="nav-text">ECNU Online Judge 搭建</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#一、系统介绍"><span class="nav-number">1.1.</span> <span class="nav-text">一、系统介绍</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#二、EOJ环境配置"><span class="nav-number">1.2.</span> <span class="nav-text">二、EOJ环境配置</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1、-安装Django"><span class="nav-number">1.2.1.</span> <span class="nav-text">1、 安装Django:</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2、eoj前端配置"><span class="nav-number">1.2.2.</span> <span class="nav-text">2、eoj前端配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3、Django配置"><span class="nav-number">1.2.3.</span> <span class="nav-text">3、Django配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4、ejudge配置"><span class="nav-number">1.2.4.</span> <span class="nav-text">4、ejudge配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5、后台配置："><span class="nav-number">1.2.5.</span> <span class="nav-text">5、后台配置：</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
