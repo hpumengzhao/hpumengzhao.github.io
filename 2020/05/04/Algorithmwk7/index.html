@@ -64,7 +64,7 @@
 
 
 
-  <meta name="keywords" content="Probems," />
+  <meta name="keywords" content="Problems," />
 
 
 
@@ -77,17 +77,17 @@
 
 
 
-<meta name="description" content="A slow week">
+<meta name="description" content="A LIS Week">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Algorithms Weekly 2">
-<meta property="og:url" content="http://yoursite.com/2020/04/08/Algorithmwk2/index.html">
+<meta property="og:title" content="Algorithms Weekly 7">
+<meta property="og:url" content="http://yoursite.com/2020/05/04/Algorithmwk7/index.html">
 <meta property="og:site_name" content="Meng Space">
-<meta property="og:description" content="A slow week">
+<meta property="og:description" content="A LIS Week">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-08T02:34:38.385Z">
-<meta property="article:modified_time" content="2020-04-13T03:44:29.562Z">
+<meta property="article:published_time" content="2020-05-04T13:09:03.360Z">
+<meta property="article:modified_time" content="2020-05-04T13:32:59.054Z">
 <meta property="article:author" content="Codancer">
-<meta property="article:tag" content="Probems">
+<meta property="article:tag" content="Problems">
 <meta name="twitter:card" content="summary">
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/08/Algorithmwk2/"/>
+  <link rel="canonical" href="http://yoursite.com/2020/05/04/Algorithmwk7/"/>
 
 
 
 
 
-  <title>Algorithms Weekly 2 | Meng Space</title>
+  <title>Algorithms Weekly 7 | Meng Space</title>
   
 
 
@@ -227,7 +227,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/08/Algorithmwk2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/05/04/Algorithmwk7/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Codancer">
@@ -244,7 +244,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Algorithms Weekly 2</h1>
+          <h1 class="post-title" itemprop="name headline">Algorithms Weekly 7</h1>
         
 
         <div class="post-meta">
@@ -257,8 +257,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-08T10:34:38+08:00">
-                2020-04-08
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-05-04T21:09:03+08:00">
+                2020-05-04
               </time>
             
 
@@ -273,8 +273,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-04-13T11:44:29+08:00">
-                2020-04-13
+              <time title="Post modified" itemprop="dateModified" datetime="2020-05-04T21:32:59+08:00">
+                2020-05-04
               </time>
             
           </span>
@@ -307,13 +307,18 @@
       
 
       
-        <h2 id="a-slow-week">A slow week</h2>
+        <h2 id="a-lis-week">A LIS Week</h2>
 <a id="more"></a>
+<p>这周只打了ABC165，要说总结题目，就只能说一下F了。</p>
+<h3 id="f---lis-on-tree"><strong>F - LIS on Tree</strong></h3>
 <ul>
-<li><strong>牛客练习赛60 C</strong></li>
+<li><p>题意：一个以<span class="math inline">\(1\)</span>为根节点的，由<span class="math inline">\(n\)</span>个节点的树，第<span class="math inline">\(i\)</span>个点的权值为<span class="math inline">\(w_{i}\)</span>, 对于每个<span class="math inline">\(k \in [1,n]\)</span>,计算从<span class="math inline">\(1\)</span>到<span class="math inline">\(k\)</span>的最短路径构成的序列的<span class="math inline">\(LIS\)</span>的长度。<span class="math inline">\((1 \leq n \leq 10^5)\)</span></p></li>
+<li><p>题解：</p>
+<p>首先我们先来回顾一下传统<span class="math inline">\(LIS\)</span>的计算方法，最暴力的一种是<span class="math inline">\(O(n^2)\)</span>的<span class="math inline">\(dp\)</span>，在算法竞赛中这种算法基本上是被淘汰了的。最常用的一个算法是利用binary search, 令<span class="math inline">\(dp_{i}\)</span>代表长度为<span class="math inline">\(i\)</span>的<span class="math inline">\(LIS\)</span>结尾的最小的值，初始的时候设置为无穷大。接下来对于每一个<span class="math inline">\(i \in [1,n]\)</span>，二分查找第一个大于等于该元素的位置，然后将其替换掉，最终的<span class="math inline">\(LIS\)</span>的长度就是最后一个不为<span class="math inline">\(INF\)</span>的位置，而这一步我们也可以用二分查找，因此最终时间复杂度为<span class="math inline">\(O(nlog(n))\)</span>。这个算法的关键在于二分查找第一个大于等于<span class="math inline">\(w_{i}\)</span>的元素并替换掉，这个本质是一种贪心的思想，举个例子：对于数组<span class="math inline">\(\{1,2,5,4,5\}\)</span>,当<span class="math inline">\(i=3\)</span>时，<span class="math inline">\(dp=\{1,2,5,inf,inf\}\)</span>,当<span class="math inline">\(i=4\)</span>的时候我们必须要把<span class="math inline">\(dp_{3}\)</span>换成<span class="math inline">\(4\)</span>，因为后面还有一个<span class="math inline">\(5\)</span>。</p>
+<p>考虑在树上求<span class="math inline">\(LIS\)</span>，其实算法原理基本一致，但是我们唯一要考虑的就是：对于每个节点<span class="math inline">\(u\)</span>，我的<span class="math inline">\(dp\)</span>数组有效的元素，必须只能包含从<span class="math inline">\(1-u\)</span>路径的节点，其他节点不能参与进来，能做到这一点的只有<span class="math inline">\(DFS\)</span>，即每次沿着一条路走到底，由于走完后不能影响下一条路径，因此需要$dp $再回溯回去。</p></li>
+<li><p>代码:</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*</span></span><br><span class="line"><span class="comment">* @author:  codancer</span></span><br><span class="line"><span class="comment">* @createTime:  2020-05-04, 20:44:59</span></span><br><span class="line"><span class="comment">*/</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">long</span> <span class="keyword">long</span> ll;</span><br><span class="line"><span class="keyword">const</span> ll mod = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> ll inf = <span class="number">1e18</span>;</span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> pb push_back</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fi first</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> se second</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> SZ(x) ((int)(x).size())</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> rep(i,a,b) for(int i=(a);i&lt;=(b);i++)</span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">define</span> fep(i,a,b) for(int i=(a);i&gt;=(b);i--)</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; VI;</span><br><span class="line"><span class="keyword">typedef</span> <span class="built_in">vector</span>&lt;ll&gt; VII;</span><br><span class="line"><span class="keyword">typedef</span> pair&lt;<span class="keyword">int</span>,<span class="keyword">int</span>&gt; pii;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">2e5</span>+<span class="number">100</span>;</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[N];</span><br><span class="line">ll dp[N],w[N],ans[N];</span><br><span class="line"><span class="keyword">int</span> n;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">dfs</span><span class="params">(<span class="keyword">int</span> u,<span class="keyword">int</span> fa)</span></span>&#123;</span><br><span class="line">	<span class="keyword">int</span> x=lower_bound(dp,dp+n,w[u])-dp;</span><br><span class="line">	ll val=dp[x];</span><br><span class="line">	dp[x]=w[u];</span><br><span class="line">	ans[u]=lower_bound(dp,dp+n,inf)-dp;</span><br><span class="line">	<span class="keyword">for</span>(<span class="keyword">int</span> v:G[u])&#123;</span><br><span class="line">		<span class="keyword">if</span>(v==fa) <span class="keyword">continue</span>;</span><br><span class="line">		dfs(v,u);</span><br><span class="line">	&#125;</span><br><span class="line">	dp[x]=val;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">cin</span>&gt;&gt;n;</span><br><span class="line">	rep(i,<span class="number">0</span>,n)dp[i]=inf;</span><br><span class="line">	rep(i,<span class="number">0</span>,n<span class="number">-1</span>)&#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;w[i];</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">int</span> u,v;</span><br><span class="line">	rep(i,<span class="number">1</span>,n<span class="number">-1</span>)&#123;</span><br><span class="line">		<span class="built_in">cin</span>&gt;&gt;u&gt;&gt;v;</span><br><span class="line">		--u;</span><br><span class="line">		--v;</span><br><span class="line">		G[u].pb(v);</span><br><span class="line">		G[v].pb(u);</span><br><span class="line">	&#125;</span><br><span class="line">	dfs(<span class="number">0</span>,<span class="number">-1</span>);</span><br><span class="line">	rep(i,<span class="number">0</span>,n<span class="number">-1</span>) <span class="built_in">cout</span>&lt;&lt;ans[i]&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></li>
 </ul>
-<p>对于一个长度为<span class="math inline">\(n\)</span>的字符串<span class="math inline">\(s\)</span>,计算有多少个长度为<span class="math inline">\(k\)</span>的本质不同的子序列。</p>
-<p><strong>思路</strong> <span class="math inline">\(dp_{i,j}\)</span>为前<span class="math inline">\(i\)</span>个字符组成的字符串中长度为<span class="math inline">\(j\)</span>的本质不同的子序列。则有: <span class="math display">\[dp_{i,j}=dp_{i-1,j-1}+dp_{i-1,j}-dp[last_{s_{i}}-1][j-1]\]</span> 其中 <span class="math inline">\(last_{s_{i}}\)</span> 表示 <span class="math inline">\(s_{i}\)</span> 前一次出现的位置。时间复杂度<span class="math inline">\(O(n \cdot k)\)</span></p>
 
       
     </div>
@@ -331,7 +336,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Probems/" rel="tag"># Probems</a>
+            <a href="/tags/Problems/" rel="tag"># Problems</a>
           
         </div>
       
@@ -344,8 +349,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/08/Algorithmwk1/" rel="next" title="Algorithms Weekly 1">
-                <i class="fa fa-chevron-left"></i> Algorithms Weekly 1
+              <a href="/2020/04/28/Algorithmwk6/" rel="next" title="Algorithms Weekly 6">
+                <i class="fa fa-chevron-left"></i> Algorithms Weekly 6
               </a>
             
           </div>
@@ -353,10 +358,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/08/Algorithmwk3/" rel="prev" title="Algorithms Weekly 3">
-                Algorithms Weekly 3 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -556,7 +557,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#a-slow-week"><span class="nav-number">1.</span> <span class="nav-text">A slow week</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#a-lis-week"><span class="nav-number">1.</span> <span class="nav-text">A LIS Week</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#f---lis-on-tree"><span class="nav-number">1.1.</span> <span class="nav-text">F - LIS on Tree</span></a></li></ol></li></ol></div>
             
 
           </div>
