@@ -41,8 +41,19 @@
 					<button id="clean">清除</button>
 				</div>
 			</div>
-<!-- 			<canvas id="sudoku-table">
-			</canvas> -->
+			<div id="aboutit">
+				<div id="contents">
+					<h2>关于SudokuKing</h2>
+				</div>
+				<div id="contents2">
+					<a style="color: red">数独是利用拉斯维加斯算法生成的，不保证有唯一解。</a>
+					<br><br>
+					<a id="time"></a>
+				</div>
+			</div>
+		</div>
+		<div id="foot">
+			<a href="">Author: Codancer</a>
 		</div><!-- hexo-inject:begin --><!-- hexo-inject:end -->
 	</body>
 	<script type="text/javascript">
@@ -93,6 +104,7 @@
 				}
 			}
 		}
+		var solutions;
 		function dfs(board,r,c,b){
 			for(var i=0;i<9;i++){
 				for(var j=0;j<9;j++){
@@ -117,9 +129,11 @@
 					}
 				}
 			}
+			solutions+=1;
 			return true;
 		}
 		function LasVegas(n){//choose n cells and put a integer in [1,9]
+			solutions=0;
 			for(var i=0;i<9;i++){
 				for(var j=1;j<=9;j++){//init all Arrays//
 					r[i][j]=0;
@@ -184,6 +198,16 @@
 				x=Math.ceil(Math.random()*10)-1;
 				y=Math.ceil(Math.random()*10)-1;
 				if(x<0||y<0||x>=9||y>=9) continue;
+				if(x>=2){
+					var a=x-1;
+					var b=x-2;
+					if(document.getElementById("input_"+a+y).value==''&&document.getElementById("input_"+b+y).value==null) continue;
+				}
+				if(y>=2){
+					var a=y-1;
+					var b=y-2;
+					if(document.getElementById("input_"+x+a).value==''&&document.getElementById("input_"+y+b).value==null) continue;
+				}				
 				var cell=document.getElementById("input_"+x+y);
 				if(cell.value==''||cell.value==undefined||cell.value==null) continue;
 				cell.value=null;
@@ -287,5 +311,13 @@
 				}
 			}
 		}
+		function gettime(){
+			var myDate = new Date();
+			var mytime=myDate.toLocaleTimeString(); //获取当前时间
+			var times=document.getElementById("time");
+			times.innerHTML="Time: "+mytime;
+				 window.setTimeout("gettime()", 1000);
+		}
+		gettime();
 	</script>
 </html>

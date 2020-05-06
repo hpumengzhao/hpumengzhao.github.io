@@ -125,3 +125,29 @@
 #clean{
 	left: 60px;
 }
+#foot{
+	text-align: center;
+	width: 100%;
+	height: 50%;
+	background-color: black;
+}
+#foot a{
+	text-decoration: none;
+	color: white;
+}
+#aboutit{
+	position: relative;
+	top: 15%;
+	left: 10%;
+	width: 80%;
+	height: 20%;
+	border: dotted 4px #337AB7;
+}
+#contents{
+	padding: 10px;
+	text-align: center;
+}
+#contents2{
+	padding: 10px;
+	text-align: center;
+}
