@@ -101,27 +101,6 @@
   </entry>
   
   <entry>
-    <title>考研日志</title>
-    <link href="http://yoursite.com/2020/04/20/kaoyan/"/>
-    <id>http://yoursite.com/2020/04/20/kaoyan/</id>
-    <published>2020-04-20T07:38:49.355Z</published>
-    <updated>2020-05-13T09:41:37.935Z</updated>
-    
-    <content type="html"><![CDATA[<h2 id="考研日志">考研日志</h2><a id="more"></a><h3 id="数学">数学</h3><h4 id="高数">高数</h4><p>汤家凤1800进度：</p><table><thead><tr class="header"><th>内容</th><th>状态</th><th>日期</th></tr></thead><tbody><tr class="odd"><td>一、函数、极限、连续</td><td>Finished</td><td>2020-4-13</td></tr><tr class="even"><td>二、导数与微分</td><td>Finished</td><td>2020-4-20</td></tr><tr class="odd"><td>三、中值定理与一元函数微分学的应用</td><td>Finished</td><td>2020-4-22</td></tr><tr class="even"><td>四、不定积分</td><td>Finished</td><td>2020-4-28</td></tr><tr class="odd"><td>五、定积分</td><td>Finished</td><td>2020-5-10</td></tr></tbody></table><p>汤家凤基础班视频进度：</p><table><thead><tr class="header"><th>章节</th><th>状态</th></tr></thead><tbody><tr class="odd"><td>函数与极限</td><td>Watched</td></tr><tr class="even"><td>导数与微分</td><td>Watched</td></tr><tr class="odd"><td>微分中值定理和导数的应用</td><td>Watched</td></tr><tr class="even"><td>不定积分</td><td>Watched</td></tr><tr class="odd"><td>定积分</td><td>Watched</td></tr><tr class="even"><td>定积分的应用</td><td>Watched</td></tr></tbody></table><h4 id="线性代数">线性代数</h4><p>汤家凤1800进度</p><table><thead><tr class="header"><th>章节</th><th>状态</th><th>日期</th></tr></thead><tbody><tr class="odd"><td>行列式</td><td>Finished</td><td>2020-5-12</td></tr><tr class="even"><td>矩阵</td><td>Finished</td><td>2020-5-13</td></tr></tbody></table><p>基础班视频进度</p><table><thead><tr class="header"><th>章节</th><th>状态</th></tr></thead><tbody><tr class="odd"><td>行列式</td><td>Watched</td></tr><tr class="even"><td>矩阵</td><td>Watched</td></tr><tr class="odd"><td>向量</td><td>Watching</td></tr></tbody></table><h3 id="英语">英语</h3><p>百词斩打卡天数：<strong>158</strong></p><p>真题套数: <strong>0</strong></p><h3 id="专业课">专业课</h3><p>空</p><h3 id="政治">政治</h3><p>空</p>]]></content>
-    
-    <summary type="html">
-    
-      &lt;h2 id=&quot;考研日志&quot;&gt;考研日志&lt;/h2&gt;
-    
-    </summary>
-    
-    
-    
-      <category term="life" scheme="http://yoursite.com/tags/life/"/>
-    
-  </entry>
-  
-  <entry>
     <title>Algorithms Weekly 5</title>
     <link href="http://yoursite.com/2020/04/19/Algorithmwk5/"/>
     <id>http://yoursite.com/2020/04/19/Algorithmwk5/</id>
@@ -428,6 +407,27 @@
     <summary type="html">
     
       &lt;h1 id=&quot;利用二分图和dp解决的分配差值最小问题&quot;&gt;利用二分图和DP解决的分配差值最小问题&lt;/h1&gt;
+    
+    </summary>
+    
+    
+    
+      <category term="DP" scheme="http://yoursite.com/tags/DP/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>计蒜之道初赛1B</title>
+    <link href="http://yoursite.com/2020/04/07/jisuanke1B/"/>
+    <id>http://yoursite.com/2020/04/07/jisuanke1B/</id>
+    <published>2020-04-07T14:14:14.897Z</published>
+    <updated>2019-05-25T16:48:31.062Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="商汤ai园区的n个路口dp">商汤AI园区的n个路口（DP）</h1><a id="more"></a><h2 id="题面"><a href="https://nanti.jisuanke.com/t/39261" target="_blank" rel="noopener">题面</a></h2><p>题意：给你一个长度为<span class="math inline">\(n\)</span>的链，让你为每个点分配一个点权使得相邻两个点之间的<span class="math inline">\(gcd\)</span>不等于边权，求方案数。要求是点权的范围是<span class="math inline">\([1,m]\)</span>。</p><h2 id="思路">思路：</h2>令<span class="math inline">\(dp_{ij}\)</span>表示第<span class="math inline">\(i\)</span>个点选择权值为<span class="math inline">\(j\)</span>的方案数，那么状态转移方程为<center><span class="math inline">\(dp_{i,j}=\sum_{k=1}^{m}dp_{i-1,k}[gcd(j,k)\neq w_{i}]\)</span></center><p>复杂度<span class="math inline">\(O(nm^2)\)</span></p><h2 id="code">code</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">100</span>;</span><br><span class="line"><span class="keyword">int</span> w[N];</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> dp[N][N];</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line"><span class="keyword">int</span> n,m;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;n&gt;&gt;m;</span><br><span class="line"><span class="keyword">int</span> a,b,c;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n<span class="number">-1</span>;i++)&#123;</span><br><span class="line"><span class="built_in">cin</span>&gt;&gt;a&gt;&gt;b&gt;&gt;c;</span><br><span class="line">w[b]=c;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">memset</span>(dp,<span class="number">0</span>,<span class="keyword">sizeof</span>(dp));</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) dp[<span class="number">1</span>][i]=<span class="number">1</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">2</span>;i&lt;=n;i++)&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> j=<span class="number">1</span>;j&lt;=m;j++)&#123;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> k=<span class="number">1</span>;k&lt;=m;k++)&#123;</span><br><span class="line"><span class="keyword">if</span>(__gcd(j,k)!=w[i])&#123;</span><br><span class="line">dp[i][j]=(dp[i][j]%mod+dp[i<span class="number">-1</span>][k]%mod)%mod;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">long</span> <span class="keyword">long</span> ans=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=m;i++) ans=(ans%mod+dp[n][i]%mod)%mod;</span><br><span class="line"><span class="built_in">cout</span>&lt;&lt;ans&lt;&lt;<span class="built_in">endl</span>;</span><br><span class="line"><span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;商汤ai园区的n个路口dp&quot;&gt;商汤AI园区的n个路口（DP）&lt;/h1&gt;
     
     </summary>
     
