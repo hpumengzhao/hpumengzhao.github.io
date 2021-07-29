@@ -312,7 +312,8 @@
 <h2 id="题面"><a href="https://nanti.jisuanke.com/t/39261" target="_blank" rel="noopener">题面</a></h2>
 <p>题意：给你一个长度为<span class="math inline">\(n\)</span>的链，让你为每个点分配一个点权使得相邻两个点之间的<span class="math inline">\(gcd\)</span>不等于边权，求方案数。要求是点权的范围是<span class="math inline">\([1,m]\)</span>。</p>
 <h2 id="思路">思路：</h2>
-令<span class="math inline">\(dp_{ij}\)</span>表示第<span class="math inline">\(i\)</span>个点选择权值为<span class="math inline">\(j\)</span>的方案数，那么状态转移方程为
+令<span class="math inline">\(dp_{ij}\)</span>表示第<span class="math inline">\(i\)</span>个点选择权值为<span class="math inline">\(j\)</span>的方案数，那么状态转移方程为<br />
+
 <center>
 <span class="math inline">\(dp_{i,j}=\sum_{k=1}^{m}dp_{i-1,k}[gcd(j,k)\neq w_{i}]\)</span>
 </center>
@@ -441,7 +442,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>

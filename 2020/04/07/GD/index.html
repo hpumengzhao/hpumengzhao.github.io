@@ -318,7 +318,9 @@
 <h2 id="梯度下降的形象解释">梯度下降的形象解释</h2>
 <p>现在有一个山谷，你想要到达山谷的最低端，你此时在A点，那么此时就可以利用梯度下降来找到最低点。你每次以你当前的方向为基准。选择一个最陡峭的方向，朝着山下降的方向向下走，每次走一段距离，重复执行该步骤，你总能够到达山顶。</p>
 <p><img src="https://a-1257883661.cos.ap-beijing.myqcloud.com/codancer/20190517111338915.png" /></p>
-<p>## 梯度下降算法原理 原理介绍： ### 微分</p>
+<p>## 梯度下降算法原理<br />
+原理介绍：<br />
+### 微分</p>
 <p>微分其实就可以看作是函数图像在某点的斜率。有单变量微分和多变量微分</p>
 <center>
 <span class="math inline">\(\frac{d(x^2)}{x}=2x\)</span>
@@ -349,16 +351,19 @@
 <center>
 <span class="math inline">\(J(\Theta)=\Theta^2\)</span>
 </center>
-对函数求微分：
+对函数求微分：<br />
+
 <center>
 <span class="math inline">\(J&#39;(\Theta)=2\Theta\)</span>
 </center>
 <p>设定<span class="math inline">\(\Theta_0=1\)</span>，学习率<span class="math inline">\(\alpha=0.4\)</span></p>
-根据梯度下降的公式
+根据梯度下降的公式<br />
+
 <center>
 <span class="math inline">\(\Theta_1=\Theta_0-\alpha*J&#39;(\Theta)\)</span>
 </center>
-我们不断迭代：
+我们不断迭代：<br />
+
 <center>
 <span class="math inline">\(\Theta_0=1\)</span>
 </center>
@@ -424,32 +429,44 @@
 </tr>
 </tbody>
 </table>
-使用梯度下降求解线性回归（求<span class="math inline">\(\Theta_0,\Theta_1\)</span>）
+使用梯度下降求解线性回归（求<span class="math inline">\(\Theta_0,\Theta_1\)</span>）<br />
+
 <center>
 <span class="math inline">\(h_\Theta(x)=\Theta_0+\Theta_1x\)</span>
 </center>
-我们的目的是使得我们的估计值和实际值相差最小，因此我们定义一个代价函数，这里我们使用均方误差代价函数：
+我们的目的是使得我们的估计值和实际值相差最小，因此我们定义一个代价函数，这里我们使用均方误差代价函数：<br />
+
 <center>
 <span class="math inline">\(J(\Theta)=\frac{1}{2m}\sum_{i=1}^m(h_\Theta(x_i)-y_i)^2\)</span>
 </center>
-即：
+即：<br />
+
 <center>
 <span class="math inline">\(J(\Theta)=\frac{1}{2m}\sum_{i=1}^m(\Theta_0+\Theta_1x_i-y_i)^2\)</span>
 </center>
-而其中<span class="math inline">\(h_\Theta(x)=\Theta_0+\Theta_1x\)</span> 让函数分别对<span class="math inline">\(\Theta_0,\Theta_1\)</span>求偏导。
+而其中<span class="math inline">\(h_\Theta(x)=\Theta_0+\Theta_1x\)</span><br />
+让函数分别对<span class="math inline">\(\Theta_0,\Theta_1\)</span>求偏导。<br />
+
 <center>
 <span class="math inline">\(\Delta J(\Theta)= &lt;\frac{\partial J}{\partial \Theta_0}, \frac{\partial J}{\partial \Theta_1}&gt;\)</span>
 </center>
-其中：
+其中：<br />
+
 <center>
 <span class="math inline">\(\frac{\partial J}{\partial \Theta_0}=\frac{1}{m}\sum_{i=1}^m(h_\Theta(x_i)-y_i)\)</span>
 </center>
 <center>
 <span class="math inline">\(\frac{\partial J}{\partial \Theta_1}=\frac{1}{m}\sum_{i=1}^m(h_\Theta(x_i)-y_i)x_i\)</span>
 </center>
-<p>接下来就是代码时间了 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line">m=<span class="number">7</span> <span class="comment">#数据集大小</span></span><br><span class="line">Theta0=<span class="number">300</span></span><br><span class="line">Theta1=<span class="number">100</span></span><br><span class="line"><span class="comment">#初始坐标</span></span><br><span class="line"></span><br><span class="line">alpha=<span class="number">0.000000001</span><span class="comment">#学习率</span></span><br><span class="line">area=[<span class="number">150</span>,<span class="number">200</span>,<span class="number">250</span>,<span class="number">300</span>,<span class="number">350</span>,<span class="number">400</span>,<span class="number">600</span>];<span class="comment">#数据集</span></span><br><span class="line">price=[<span class="number">6450</span>,<span class="number">7450</span>,<span class="number">8450</span>,<span class="number">9450</span>,<span class="number">11450</span>,<span class="number">15450</span>,<span class="number">18450</span>];</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradientx</span><span class="params">(Theta0,Theta1)</span>:</span><span class="comment">#对Theta0的偏导</span></span><br><span class="line">    ans=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">7</span>):</span><br><span class="line">        ans=ans+Theta0+Theta1*area[i]-price[i]</span><br><span class="line">    ans=ans/m</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradienty</span><span class="params">(Theta0,Theta1)</span>:</span><span class="comment">#对Theta1的偏导</span></span><br><span class="line">    ans=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">7</span>):</span><br><span class="line">        ans=ans+(Theta0+Theta1*area[i]-price[i])*area[i]</span><br><span class="line">    ans=ans/m</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nowTheta0 = Theta0-alpha*gradientx(Theta0, Theta1)<span class="comment">#下一个点的坐标</span></span><br><span class="line">nowTheta1 = Theta1-alpha*gradienty(Theta0, Theta1)</span><br><span class="line"><span class="comment">#print(nowTheta0,nowTheta1)</span></span><br><span class="line"><span class="keyword">while</span> math.fabs(nowTheta1-Theta1)&gt;<span class="number">0.000000001</span>:<span class="comment">#梯度下降</span></span><br><span class="line">    nowa = nowTheta0-alpha*gradientx(nowTheta0,nowTheta1)</span><br><span class="line">    nowb = nowTheta1-alpha*gradienty(nowTheta0, nowTheta1)</span><br><span class="line">    nowTheta0=nowa</span><br><span class="line">    nowTheta1=nowb</span><br><span class="line">    nowa = Theta0-alpha*gradientx(Theta0, Theta1)</span><br><span class="line">    nowb = Theta1-alpha*gradienty(Theta0, Theta1)</span><br><span class="line">    Theta0=nowa</span><br><span class="line">    Theta1=nowb</span><br><span class="line">print(nowTheta0,nowTheta1 )</span><br><span class="line"><span class="comment">#299.85496413867725 32.638872688242515</span></span><br></pre></td></tr></table></figure> 绘图 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot</span><br><span class="line">area=[<span class="number">150</span>,<span class="number">200</span>,<span class="number">250</span>,<span class="number">300</span>,<span class="number">350</span>,<span class="number">400</span>,<span class="number">600</span>]<span class="comment">#数据集</span></span><br><span class="line">price=[<span class="number">6450</span>,<span class="number">7450</span>,<span class="number">8450</span>,<span class="number">9450</span>,<span class="number">11450</span>,<span class="number">15450</span>,<span class="number">18450</span>]</span><br><span class="line">pyplot.scatter(area,price)</span><br><span class="line">x=np.arange(<span class="number">100</span>,<span class="number">700</span>,<span class="number">100</span>)</span><br><span class="line">y=<span class="number">32.37648991481203</span>*x+<span class="number">299.85496413867725</span></span><br><span class="line">pyplot.plot(x,y)</span><br><span class="line">pyplot.xlabel(<span class="string">'area'</span>)</span><br><span class="line">pyplot.ylabel(<span class="string">'price'</span>)</span><br><span class="line">pyplot.show()</span><br></pre></td></tr></table></figure> 结果： <img src="https://a-1257883661.cos.ap-beijing.myqcloud.com/codancer/20190518010738491.png" /></p>
+<p>接下来就是代码时间了<br />
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line">m=<span class="number">7</span> <span class="comment">#数据集大小</span></span><br><span class="line">Theta0=<span class="number">300</span></span><br><span class="line">Theta1=<span class="number">100</span></span><br><span class="line"><span class="comment">#初始坐标</span></span><br><span class="line"></span><br><span class="line">alpha=<span class="number">0.000000001</span><span class="comment">#学习率</span></span><br><span class="line">area=[<span class="number">150</span>,<span class="number">200</span>,<span class="number">250</span>,<span class="number">300</span>,<span class="number">350</span>,<span class="number">400</span>,<span class="number">600</span>];<span class="comment">#数据集</span></span><br><span class="line">price=[<span class="number">6450</span>,<span class="number">7450</span>,<span class="number">8450</span>,<span class="number">9450</span>,<span class="number">11450</span>,<span class="number">15450</span>,<span class="number">18450</span>];</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradientx</span><span class="params">(Theta0,Theta1)</span>:</span><span class="comment">#对Theta0的偏导</span></span><br><span class="line">    ans=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">7</span>):</span><br><span class="line">        ans=ans+Theta0+Theta1*area[i]-price[i]</span><br><span class="line">    ans=ans/m</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradienty</span><span class="params">(Theta0,Theta1)</span>:</span><span class="comment">#对Theta1的偏导</span></span><br><span class="line">    ans=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">7</span>):</span><br><span class="line">        ans=ans+(Theta0+Theta1*area[i]-price[i])*area[i]</span><br><span class="line">    ans=ans/m</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nowTheta0 = Theta0-alpha*gradientx(Theta0, Theta1)<span class="comment">#下一个点的坐标</span></span><br><span class="line">nowTheta1 = Theta1-alpha*gradienty(Theta0, Theta1)</span><br><span class="line"><span class="comment">#print(nowTheta0,nowTheta1)</span></span><br><span class="line"><span class="keyword">while</span> math.fabs(nowTheta1-Theta1)&gt;<span class="number">0.000000001</span>:<span class="comment">#梯度下降</span></span><br><span class="line">    nowa = nowTheta0-alpha*gradientx(nowTheta0,nowTheta1)</span><br><span class="line">    nowb = nowTheta1-alpha*gradienty(nowTheta0, nowTheta1)</span><br><span class="line">    nowTheta0=nowa</span><br><span class="line">    nowTheta1=nowb</span><br><span class="line">    nowa = Theta0-alpha*gradientx(Theta0, Theta1)</span><br><span class="line">    nowb = Theta1-alpha*gradienty(Theta0, Theta1)</span><br><span class="line">    Theta0=nowa</span><br><span class="line">    Theta1=nowb</span><br><span class="line">print(nowTheta0,nowTheta1 )</span><br><span class="line"><span class="comment">#299.85496413867725 32.638872688242515</span></span><br></pre></td></tr></table></figure><br />
+绘图<br />
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot</span><br><span class="line">area=[<span class="number">150</span>,<span class="number">200</span>,<span class="number">250</span>,<span class="number">300</span>,<span class="number">350</span>,<span class="number">400</span>,<span class="number">600</span>]<span class="comment">#数据集</span></span><br><span class="line">price=[<span class="number">6450</span>,<span class="number">7450</span>,<span class="number">8450</span>,<span class="number">9450</span>,<span class="number">11450</span>,<span class="number">15450</span>,<span class="number">18450</span>]</span><br><span class="line">pyplot.scatter(area,price)</span><br><span class="line">x=np.arange(<span class="number">100</span>,<span class="number">700</span>,<span class="number">100</span>)</span><br><span class="line">y=<span class="number">32.37648991481203</span>*x+<span class="number">299.85496413867725</span></span><br><span class="line">pyplot.plot(x,y)</span><br><span class="line">pyplot.xlabel(<span class="string">'area'</span>)</span><br><span class="line">pyplot.ylabel(<span class="string">'price'</span>)</span><br><span class="line">pyplot.show()</span><br></pre></td></tr></table></figure><br />
+结果：<br />
+<img src="https://a-1257883661.cos.ap-beijing.myqcloud.com/codancer/20190518010738491.png" /></p>
 <p>我们可以看到梯度下降求解出的线性回归很好的与结果吻合了。</p>
-<p>拟合过程（每次的<span class="math inline">\(\Theta_0\)</span>和<span class="math inline">\(\Theta_1\)</span>）: <img src="https://a-1257883661.cos.ap-beijing.myqcloud.com/codancer/myplot.png" alt=".png" /></p>
+<p>拟合过程（每次的<span class="math inline">\(\Theta_0\)</span>和<span class="math inline">\(\Theta_1\)</span>）:<br />
+<img src="https://a-1257883661.cos.ap-beijing.myqcloud.com/codancer/myplot.png" alt=".png" /></p>
 
       
     </div>
@@ -572,7 +589,7 @@
               
                 <a href="/archives/">
               
-                  <span class="site-state-item-count">45</span>
+                  <span class="site-state-item-count">46</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
