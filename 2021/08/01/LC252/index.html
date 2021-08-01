@@ -64,7 +64,7 @@
 
 
 
-  <meta name="keywords" content="2-SAT," />
+  <meta name="keywords" content="力扣," />
 
 
 
@@ -77,17 +77,17 @@
 
 
 
-<meta name="description" content="HDU 3622 Bomb Game(2-SAT)">
+<meta name="description" content="力扣周赛252题解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Bomb Game(2-SAT)">
-<meta property="og:url" content="http://yoursite.com/2020/04/07/HDU3622/index.html">
+<meta property="og:title" content="力扣周赛252题解">
+<meta property="og:url" content="http://yoursite.com/2021/08/01/LC252/index.html">
 <meta property="og:site_name" content="Meng Space">
-<meta property="og:description" content="HDU 3622 Bomb Game(2-SAT)">
+<meta property="og:description" content="力扣周赛252题解">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-07T14:14:14.879Z">
-<meta property="article:modified_time" content="2019-10-30T07:29:20.097Z">
+<meta property="article:published_time" content="2021-08-01T04:27:56.810Z">
+<meta property="article:modified_time" content="2021-08-01T05:03:10.164Z">
 <meta property="article:author" content="Codancer">
-<meta property="article:tag" content="2-SAT">
+<meta property="article:tag" content="力扣">
 <meta name="twitter:card" content="summary">
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/07/HDU3622/"/>
+  <link rel="canonical" href="http://yoursite.com/2021/08/01/LC252/"/>
 
 
 
 
 
-  <title>Bomb Game(2-SAT) | Meng Space</title>
+  <title>力扣周赛252题解 | Meng Space</title>
   
 
 
@@ -227,7 +227,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/07/HDU3622/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/08/01/LC252/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Codancer">
@@ -244,7 +244,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Bomb Game(2-SAT)</h1>
+          <h1 class="post-title" itemprop="name headline">力扣周赛252题解</h1>
         
 
         <div class="post-meta">
@@ -257,8 +257,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-07T22:14:14+08:00">
-                2020-04-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-08-01T12:27:56+08:00">
+                2021-08-01
               </time>
             
 
@@ -273,8 +273,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-10-30T15:29:20+08:00">
-                2019-10-30
+              <time title="Post modified" itemprop="dateModified" datetime="2021-08-01T13:03:10+08:00">
+                2021-08-01
               </time>
             
           </span>
@@ -307,14 +307,29 @@
       
 
       
-        <h1 id="hdu-3622-bomb-game2-sat">HDU 3622 Bomb Game(2-SAT)</h1>
+        <h1 id="力扣周赛252题解">力扣周赛252题解</h1>
 <a id="more"></a>
-<h2 id="题意">题意：</h2>
-<p>一个游戏有<span class="math inline">\(n\)</span>轮，每轮提供给你两个坐标，你选择其中一个放置炸弹，到最后会放置<span class="math inline">\(n\)</span>个炸弹，要保证任意两个炸弹的爆炸区域不会相交，每个炸弹的爆炸半径由你来决定，你的目的是使最小的半径最大。</p>
-<h2 id="题解">题解：</h2>
-<p>考虑二分半径，对于半径<span class="math inline">\(r\)</span>，<span class="math inline">\(O(n^2)\)</span>的建立约束关系，利用<span class="math inline">\(2-SAT\)</span>判断可行性。时间复杂度<span class="math inline">\(O(n^2log(n))\)</span>。</p>
-<h2 id="代码">代码：</h2>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> <span class="built_in">std</span>;</span><br><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> N = <span class="number">500</span>;</span><br><span class="line"><span class="keyword">int</span> n,m,scc,idx,color[N],low[N],dfn[N];</span><br><span class="line"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; G[N];</span><br><span class="line"><span class="keyword">bool</span> is_instack[N];<span class="built_in">stack</span>&lt;<span class="keyword">int</span>&gt; sta;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(<span class="keyword">int</span> n)</span></span>&#123;</span><br><span class="line">    scc=idx=<span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">2</span>*n;i++)&#123;</span><br><span class="line">        low[i]=dfn[i]=is_instack[i]=color[i]=<span class="number">0</span>;</span><br><span class="line">        G[i].clear();</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">while</span>(!sta.empty()) sta.pop();</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Tarjan</span><span class="params">(<span class="keyword">int</span> u)</span></span>&#123;</span><br><span class="line">    low[u]=dfn[u]=++idx;</span><br><span class="line">    sta.push(u);is_instack[u]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> v:G[u])&#123;</span><br><span class="line">        <span class="keyword">if</span>(!dfn[v])&#123;</span><br><span class="line">            Tarjan(v);</span><br><span class="line">            low[u]=min(low[u],low[v]);</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(is_instack[v])&#123;</span><br><span class="line">            low[u]=min(low[u],dfn[v]);</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(low[u]==dfn[u])&#123;</span><br><span class="line">        ++scc;</span><br><span class="line">        <span class="keyword">while</span>(<span class="number">1</span>)&#123;</span><br><span class="line">            <span class="keyword">int</span> temp=sta.top();</span><br><span class="line">            color[temp]=scc;</span><br><span class="line">            is_instack[temp]=<span class="number">0</span>;</span><br><span class="line">            sta.pop();</span><br><span class="line">            <span class="keyword">if</span>(temp==u) <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">struct</span> <span class="title">Point</span>&#123;</span></span><br><span class="line">    <span class="keyword">double</span> x,y;</span><br><span class="line">&#125;p[N][<span class="number">2</span>];</span><br><span class="line"><span class="function"><span class="keyword">double</span> <span class="title">dis</span><span class="params">(Point a,Point b)</span></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="built_in">sqrt</span>((a.x-b.x)*(a.x-b.x)+(a.y-b.y)*(a.y-b.y));</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">bool</span> <span class="title">check</span><span class="params">(<span class="keyword">double</span> r)</span></span>&#123;</span><br><span class="line">    init(n);</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j=i+<span class="number">1</span>;j&lt;=n;j++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="number">2.0</span>*r&gt;dis(p[i][<span class="number">0</span>],p[j][<span class="number">0</span>]))&#123;</span><br><span class="line">                <span class="comment">//cout&lt;&lt;dis(p[i][0],p[j][0])&lt;&lt;endl;</span></span><br><span class="line">                G[i].push_back(j+n);</span><br><span class="line">                G[j].push_back(i+n);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="number">2.0</span>*r&gt;dis(p[i][<span class="number">1</span>],p[j][<span class="number">1</span>]))&#123;</span><br><span class="line">                G[i+n].push_back(j);</span><br><span class="line">                G[j+n].push_back(i);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="number">2.0</span>*r&gt;dis(p[i][<span class="number">0</span>],p[j][<span class="number">1</span>]))&#123;</span><br><span class="line">                G[i].push_back(j);</span><br><span class="line">                G[j+n].push_back(i+n);</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">if</span>(<span class="number">2.0</span>*r&gt;dis(p[i][<span class="number">1</span>],p[j][<span class="number">0</span>]))&#123;</span><br><span class="line">                G[i+n].push_back(j+n);</span><br><span class="line">                G[j].push_back(i);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">2</span>*n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(!dfn[i]) Tarjan(i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        <span class="keyword">if</span>(color[i]==color[i+n])&#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">1</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">    <span class="keyword">while</span>(<span class="built_in">scanf</span>(<span class="string">"%d"</span>,&amp;n)!=EOF)&#123;</span><br><span class="line">        init(n);</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="built_in">scanf</span>(<span class="string">"%lf %lf %lf %lf"</span>,&amp;p[i][<span class="number">0</span>].x,&amp;p[i][<span class="number">0</span>].y,&amp;p[i][<span class="number">1</span>].x,&amp;p[i][<span class="number">1</span>].y);   </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">// cout&lt;&lt;check(1.41)&lt;&lt;endl;</span></span><br><span class="line">        <span class="keyword">double</span> l=<span class="number">0</span>;<span class="keyword">double</span> r=<span class="number">1e18</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i&lt;=<span class="number">100</span>;i++)&#123;</span><br><span class="line">            <span class="keyword">double</span> mid=(l+r)*<span class="number">0.5</span>;</span><br><span class="line">            <span class="keyword">if</span>(check(mid)) l=mid;</span><br><span class="line">            <span class="keyword">else</span> r=mid;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%.2lf\n"</span>,l);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="t1.-三除数">T1. 三除数</h2>
+<p>直接枚举因子个数，时间复杂度为<span class="math inline">\(O(\sqrt{n})\)</span></p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isThree</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i*i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(n%i==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i*i==n)&#123;</span><br><span class="line">                    ++ans;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    ans+=<span class="number">2</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans==<span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="t2.-你可以工作的最大周数">T2. 你可以工作的最大周数</h2>
+<p>如果阶段任务最多的可以做完，则剩余的也一定可以做完。</p>
+<p>假设除了最多的阶段任务，剩下的阶段任务有<span class="math inline">\(res\)</span>个。</p>
+<p>答案为<span class="math inline">\(min(2*res+1,n)\)</span>，<span class="math inline">\(n\)</span>为总个数。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">numberOfWeeks</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; milestones)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> s=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> maxx=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> v:milestones)&#123;</span><br><span class="line">            s+=v;</span><br><span class="line">            maxx=max(maxx,v*<span class="number">1L</span>L);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> res=s-maxx;</span><br><span class="line">        <span class="keyword">return</span> min(s,<span class="number">2</span>*res+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="t3.-收集足够苹果的最小花园周长">T3. 收集足够苹果的最小花园周长</h2>
+<p>假设右上角顶点坐标为<span class="math inline">\((n,n)\)</span>，则第一象限的苹果个数为：</p>
+<p><span class="math inline">\(n*n*(n+1)\)</span>，则总的苹果个数为<span class="math inline">\(4*n*n*(n+1)+2*(n+1)*n\)</span>。</p>
+<p>二分/暴力即可。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">cal</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> first=x*x*(x+<span class="number">1</span>)*<span class="number">4</span>+<span class="number">2</span>*(x+<span class="number">1</span>)*x;</span><br><span class="line">        <span class="keyword">return</span> first;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">minimumPerimeter</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> ned)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> l=<span class="number">1</span>,r=<span class="number">5e5</span>;</span><br><span class="line">        <span class="keyword">while</span>(l&lt;=r)&#123;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(cal(mid)&gt;=ned)&#123;</span><br><span class="line">                r=mid<span class="number">-1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                l=mid+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">8</span>*(r+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="t4.-统计特殊子序列的数目">T4. 统计特殊子序列的数目</h2>
+<p>令<span class="math inline">\(dp[i][j]\)</span>表示<span class="math inline">\(a_{1},...,a_{i}\)</span>中以<span class="math inline">\(j\)</span>结尾的特殊子序列个数。</p>
+<p>则有：</p>
+<p><span class="math inline">\(dp[i][0]=2*dp[i-1][0]+1\)</span></p>
+<p><span class="math inline">\(dp[i][1]=2*dp[i-1][1]+dp[i-1][0]\)</span></p>
+<p><span class="math inline">\(dp[i][2]=2*dp[i-1][2]+dp[i-1][1]\)</span></p>
+<p>实际上可以做到空间<span class="math inline">\(O(1)\)</span>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">countSpecialSubsequences</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> A,B,C;</span><br><span class="line">        A=B=C=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> v:nums)&#123;</span><br><span class="line">            <span class="keyword">if</span>(v==<span class="number">0</span>) A=A*<span class="number">2</span>+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(v==<span class="number">1</span>) B=<span class="number">2</span>*B+A;</span><br><span class="line">            <span class="keyword">if</span>(v==<span class="number">2</span>) C=<span class="number">2</span>*C+B;</span><br><span class="line">            A%=mod;</span><br><span class="line">            B%=mod;</span><br><span class="line">            C%=mod;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> C;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -332,7 +347,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/2-SAT/" rel="tag"># 2-SAT</a>
+            <a href="/tags/%E5%8A%9B%E6%89%A3/" rel="tag"># 力扣</a>
           
         </div>
       
@@ -345,8 +360,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/07/GD/" rel="next" title="梯度下降法">
-                <i class="fa fa-chevron-left"></i> 梯度下降法
+              <a href="/2021/07/25/%E5%8A%9B%E6%89%A3%E5%91%A8%E8%B5%9B251%E9%A2%98%E8%A7%A3/" rel="next" title="力扣周赛251题解">
+                <i class="fa fa-chevron-left"></i> 力扣周赛251题解
               </a>
             
           </div>
@@ -354,10 +369,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/07/HDU41008/" rel="prev" title="K-th Closest Distance">
-                K-th Closest Distance <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -557,7 +568,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#hdu-3622-bomb-game2-sat"><span class="nav-number">1.</span> <span class="nav-text">HDU 3622 Bomb Game(2-SAT)</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题意"><span class="nav-number">1.1.</span> <span class="nav-text">题意：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.2.</span> <span class="nav-text">题解：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#力扣周赛252题解"><span class="nav-number">1.</span> <span class="nav-text">力扣周赛252题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#t1.-三除数"><span class="nav-number">1.1.</span> <span class="nav-text">T1. 三除数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#t2.-你可以工作的最大周数"><span class="nav-number">1.2.</span> <span class="nav-text">T2. 你可以工作的最大周数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#t3.-收集足够苹果的最小花园周长"><span class="nav-number">1.3.</span> <span class="nav-text">T3. 收集足够苹果的最小花园周长</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#t4.-统计特殊子序列的数目"><span class="nav-number">1.4.</span> <span class="nav-text">T4. 统计特殊子序列的数目</span></a></li></ol></li></ol></div>
             
 
           </div>
