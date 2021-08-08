@@ -64,7 +64,7 @@
 
 
 
-  <meta name="keywords" content="Machine Learning," />
+  <meta name="keywords" content="力扣," />
 
 
 
@@ -77,18 +77,20 @@
 
 
 
-<meta name="description" content="矩阵分解推荐算法（LMF）">
+<meta name="description" content="力扣周赛253题解">
 <meta property="og:type" content="article">
-<meta property="og:title" content="矩阵分解推荐算法（LMF）">
-<meta property="og:url" content="http://yoursite.com/2020/04/07/MF/index.html">
+<meta property="og:title" content="力扣周赛253题解">
+<meta property="og:url" content="http://yoursite.com/2021/08/08/LC253/index.html">
 <meta property="og:site_name" content="Meng Space">
-<meta property="og:description" content="矩阵分解推荐算法（LMF）">
+<meta property="og:description" content="力扣周赛253题解">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-04-07T14:14:14.922Z">
-<meta property="article:modified_time" content="2019-05-21T13:17:17.525Z">
+<meta property="og:image" content="https://i.loli.net/2021/08/08/ME7byN2AL8eCjY5.jpg">
+<meta property="article:published_time" content="2021-08-08T03:38:18.087Z">
+<meta property="article:modified_time" content="2021-08-08T04:00:10.688Z">
 <meta property="article:author" content="Codancer">
-<meta property="article:tag" content="Machine Learning">
+<meta property="article:tag" content="力扣">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/08/08/ME7byN2AL8eCjY5.jpg">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2020/04/07/MF/"/>
+  <link rel="canonical" href="http://yoursite.com/2021/08/08/LC253/"/>
 
 
 
 
 
-  <title>矩阵分解推荐算法（LMF） | Meng Space</title>
+  <title>力扣周赛253题解 | Meng Space</title>
   
 
 
@@ -227,7 +229,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2020/04/07/MF/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/08/08/LC253/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Codancer">
@@ -244,7 +246,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">矩阵分解推荐算法（LMF）</h1>
+          <h1 class="post-title" itemprop="name headline">力扣周赛253题解</h1>
         
 
         <div class="post-meta">
@@ -257,8 +259,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2020-04-07T22:14:14+08:00">
-                2020-04-07
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-08-08T11:38:18+08:00">
+                2021-08-08
               </time>
             
 
@@ -273,8 +275,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2019-05-21T21:17:17+08:00">
-                2019-05-21
+              <time title="Post modified" itemprop="dateModified" datetime="2021-08-08T12:00:10+08:00">
+                2021-08-08
               </time>
             
           </span>
@@ -307,34 +309,25 @@
       
 
       
-        <h1 id="矩阵分解推荐算法lmf">矩阵分解推荐算法（LMF）</h1>
+        <h1 id="力扣周赛253题解">力扣周赛253题解</h1>
 <a id="more"></a>
-<p>首先我们现在有一个矩阵<span class="math inline">\(R_{mn}\)</span>，其中<span class="math inline">\(R_{ij}\)</span>代表第<span class="math inline">\(i\)</span>个用户对第<span class="math inline">\(j\)</span>个商品的喜爱程度。</p>
-<span class="math inline">\(LMF\)</span>算法认为每个商品上面都有一些隐因子，而顾客的喜爱程度是由这些隐因子来决定的。因此便可以将<span class="math inline">\(R_{mn}\)</span>分解成<span class="math inline">\(P_{mF} \times Q_{Fn}\)</span>的形式。<br />
-矩阵<span class="math inline">\(P_{mF}\)</span>代表了这<span class="math inline">\(m\)</span>个用户对<span class="math inline">\(F\)</span>个隐因子的喜爱程度，<span class="math inline">\(Q_{Fn}\)</span>代表这<span class="math inline">\(F\)</span>个隐因子在这<span class="math inline">\(n\)</span>个商品上的分布概率。<br />
-
-<center>
-<span class="math inline">\(R&#39;_{ij}=\sum_{f=1}^F {P_{if}Q_{fj}}\)</span>
-</center>
-我们最终的目的是使得<span class="math inline">\(R_{ij}\)</span>和<span class="math inline">\(R&#39;_ {ij}\)</span>尽可能的相近。因此，损失函数为:<br />
-
-<center>
-<span class="math inline">\(f(P,Q)=\sum{(R_{ij}-R&#39;_{ij})^2}\)</span>
-</center>
-<p>为了防止过拟合，需要加上一个正则项来防止<span class="math inline">\(P_{if},Q_{fj}\)</span>过小或过大。</p>
-<center>
-<span class="math inline">\(f(P,Q)=\sum{(R_{ij}-R&#39;_{ij})^2}+\lambda(\sum{(P_{if}^2}+\sum{Q_{fj}^2})\)</span>
-</center>
-接下来就是对这个函数用梯度下降进行拟合，递推式为：<br />
-
-<center>
-<span class="math inline">\(P_{k+1}=P_{k}-\alpha\frac{\partial f(P,Q)}{\partial P_k}\)</span>
-</center>
-<center>
-<span class="math inline">\(Q_{k+1}=Q_{k}-\alpha\frac{\partial f(P,Q)}{\partial Q_k}\)</span>
-</center>
-<p>这样我们采用梯度下降算法即可获得<span class="math inline">\(R&#39;\)</span>矩阵<br />
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"><span class="keyword">import</span> numpy</span><br><span class="line"><span class="comment">##将R_nm分解成P_nk*Q_km</span></span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">MF</span><span class="params">(R,P,Q,K,times=<span class="number">100000</span>,alp=<span class="number">0.0001</span>,lb=<span class="number">0.01</span>)</span>:</span></span><br><span class="line">  <span class="comment">#  Q=Q.T</span></span><br><span class="line">    <span class="keyword">for</span> steps <span class="keyword">in</span> range(times):<span class="comment"># 迭代次数</span></span><br><span class="line">        <span class="keyword">for</span> u <span class="keyword">in</span> range(len(R)):</span><br><span class="line">            <span class="keyword">for</span> i <span class="keyword">in</span> range(len(R[u])):</span><br><span class="line">                <span class="keyword">if</span> R[u][i]&gt;<span class="number">0</span>:</span><br><span class="line">                    delta=R[u][i]-numpy.dot(P[u,:],Q[:,i])</span><br><span class="line">                <span class="keyword">for</span> f <span class="keyword">in</span> range(K):</span><br><span class="line">                    P[u][f]=P[u][f]+<span class="number">2</span>*alp*(delta*Q[f][i]-lb*P[u][f])<span class="comment">#递推运算</span></span><br><span class="line">                    Q[f][i]=Q[f][i]+<span class="number">2</span>*alp*(delta*P[u][f]-lb*Q[f][i])</span><br><span class="line">    <span class="keyword">return</span> P,Q</span><br><span class="line"><span class="keyword">if</span> __name__ == <span class="string">"__main__"</span>:</span><br><span class="line">    R=[</span><br><span class="line">        [<span class="number">5</span>,<span class="number">3</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">        [<span class="number">4</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>],</span><br><span class="line">        [<span class="number">1</span>,<span class="number">1</span>,<span class="number">0</span>,<span class="number">5</span>],</span><br><span class="line">        [<span class="number">1</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">4</span>],</span><br><span class="line">        [<span class="number">0</span>,<span class="number">1</span>,<span class="number">5</span>,<span class="number">4</span>]</span><br><span class="line">    ]</span><br><span class="line">    K=<span class="number">2</span></span><br><span class="line">    n=len(R)</span><br><span class="line">    m=len(R[<span class="number">0</span>])</span><br><span class="line">    <span class="comment">##随机生成P,Q矩阵</span></span><br><span class="line">    P=numpy.random.rand(n,K)</span><br><span class="line">    Q=numpy.random.rand(K,m)</span><br><span class="line">    <span class="comment">##矩阵分解</span></span><br><span class="line">    ansp,ansq=MF(R,P,Q,K)</span><br><span class="line">    ansR=numpy.dot(ansp,ansq)</span><br><span class="line">    print(ansR)</span><br></pre></td></tr></table></figure></p>
+<p>吐槽：大家都挺能卷的，打不过，打不过...</p>
+<p><img src="https://i.loli.net/2021/08/08/ME7byN2AL8eCjY5.jpg" alt="QQ截图20210808114910.jpg" /></p>
+<h2 id="t1.-检查字符串是否为数组前缀">T1. 检查字符串是否为数组前缀</h2>
+<p>暴力即可：</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isPrefixString</span><span class="params">(<span class="built_in">string</span> s, <span class="built_in">vector</span>&lt;<span class="built_in">string</span>&gt;&amp; words)</span> </span>&#123;</span><br><span class="line">        <span class="built_in">string</span> now=<span class="string">""</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">auto</span> v:words)&#123;</span><br><span class="line">            <span class="keyword">if</span>(now==s)&#123;</span><br><span class="line">                <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">            &#125;</span><br><span class="line">            now+=v;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(now==s) <span class="keyword">return</span> <span class="literal">true</span>;</span><br><span class="line">        <span class="keyword">return</span> <span class="literal">false</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="t2.移除石子使总数最小">T2.移除石子使总数最小</h2>
+<p>贪心，每次选择石子数目最多的石子堆执行操作，用大根堆维护，时间复杂度为<span class="math inline">\(O(klog(n))\)</span>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minStoneSum</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; piles, <span class="keyword">int</span> k)</span> </span>&#123;</span><br><span class="line">        priority_queue&lt;<span class="keyword">int</span>&gt; q;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> v:piles)&#123;</span><br><span class="line">            q.push(v);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> test=<span class="number">1</span>;test&lt;=k;test++)&#123;</span><br><span class="line">            <span class="keyword">int</span> u=q.top();q.pop();</span><br><span class="line">            u-=u/<span class="number">2</span>;</span><br><span class="line">            q.push(u);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">while</span>(!q.empty())&#123;</span><br><span class="line">            ans+=q.top();q.pop();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="t3.使字符串平衡的最小交换次数">T3.使字符串平衡的最小交换次数</h2>
+<p>计算该字符串的balance，由于'['和']'的数目相同，因此剩下的失配的也一定相同。</p>
+<p>剩下的适配的子序列可以写成如下形式：</p>
+<p>balance个]后面balance个[]变成[，显然答案为<span class="math inline">\(\lceil\frac{balance}{2}\rceil\)</span>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">minSwaps</span><span class="params">(<span class="built_in">string</span> s)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> balance=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">char</span> c:s)&#123;</span><br><span class="line">            <span class="keyword">if</span>(c==<span class="string">'['</span>) balance++;</span><br><span class="line">            <span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="keyword">if</span>(balance) --balance;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> (balance+<span class="number">1</span>)/<span class="number">2</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
+<h2 id="t4.-找出到每个位置为止最长的有效障碍赛跑路线">T4. 找出到每个位置为止最长的有效障碍赛跑路线</h2>
+<p>题意就是对于每个<span class="math inline">\(i\)</span>，求以<span class="math inline">\(a_{i}\)</span>结尾的最长非递减上升子序列的长度。</p>
+<p>只需要把经典的非递减上升子序列的求法中二分INF改成二分<span class="math inline">\(a_{i}+1\)</span>即可。时间复杂度为<span class="math inline">\(O(nlog(n))\)</span>。</p>
+<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> INF = <span class="number">1e9</span>+<span class="number">10</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">longestObstacleCourseAtEachPosition</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; a)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n=(<span class="keyword">int</span>)a.size();</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">dp</span><span class="params">(n,INF)</span></span>;</span><br><span class="line">        <span class="function"><span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt; <span class="title">ans</span><span class="params">(n)</span></span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">0</span>;i&lt;n;i++)&#123;</span><br><span class="line">            <span class="keyword">int</span> x=upper_bound(dp.begin(),dp.end(),a[i])-dp.begin();</span><br><span class="line">            dp[x]=a[i];</span><br><span class="line">            ans[i]=lower_bound(dp.begin(),dp.end(),a[i]+<span class="number">1</span>)-dp.begin();</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -352,7 +345,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+            <a href="/tags/%E5%8A%9B%E6%89%A3/" rel="tag"># 力扣</a>
           
         </div>
       
@@ -365,8 +358,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2020/04/07/Maxflow/" rel="next" title="网络流24题">
-                <i class="fa fa-chevron-left"></i> 网络流24题
+              <a href="/2021/08/01/LC252/" rel="next" title="力扣周赛252题解">
+                <i class="fa fa-chevron-left"></i> 力扣周赛252题解
               </a>
             
           </div>
@@ -374,10 +367,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2020/04/07/nowcoder3D/" rel="prev" title="2019牛客暑期多校D.Big Integer">
-                2019牛客暑期多校D.Big Integer <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -577,7 +566,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#矩阵分解推荐算法lmf"><span class="nav-number">1.</span> <span class="nav-text">矩阵分解推荐算法（LMF）</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#力扣周赛253题解"><span class="nav-number">1.</span> <span class="nav-text">力扣周赛253题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#t1.-检查字符串是否为数组前缀"><span class="nav-number">1.1.</span> <span class="nav-text">T1. 检查字符串是否为数组前缀</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#t2.移除石子使总数最小"><span class="nav-number">1.2.</span> <span class="nav-text">T2.移除石子使总数最小</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#t3.使字符串平衡的最小交换次数"><span class="nav-number">1.3.</span> <span class="nav-text">T3.使字符串平衡的最小交换次数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#t4.-找出到每个位置为止最长的有效障碍赛跑路线"><span class="nav-number">1.4.</span> <span class="nav-text">T4. 找出到每个位置为止最长的有效障碍赛跑路线</span></a></li></ol></li></ol></div>
             
 
           </div>
