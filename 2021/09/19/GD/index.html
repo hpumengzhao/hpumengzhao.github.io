@@ -1,0 +1,919 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="zh-CN">
+<head>
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Machine Learning," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="Meng Space" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="梯度下降法求解线性回归">
+<meta property="og:type" content="article">
+<meta property="og:title" content="梯度下降法">
+<meta property="og:url" content="http://yoursite.com/2021/09/19/GD/index.html">
+<meta property="og:site_name" content="Meng Space">
+<meta property="og:description" content="梯度下降法求解线性回归">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://a-1257883661.cos.ap-beijing.myqcloud.com/codancer/20190517111338915.png">
+<meta property="og:image" content="https://a-1257883661.cos.ap-beijing.myqcloud.com/codancer/20190518010738491.png">
+<meta property="og:image" content="https://a-1257883661.cos.ap-beijing.myqcloud.com/codancer/myplot.png">
+<meta property="article:published_time" content="2021-09-19T05:51:12.579Z">
+<meta property="article:modified_time" content="2019-05-20T07:23:44.000Z">
+<meta property="article:author" content="Codancer">
+<meta property="article:tag" content="Machine Learning">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://a-1257883661.cos.ap-beijing.myqcloud.com/codancer/20190517111338915.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: 'undefined',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2021/09/19/GD/"/>
+
+
+
+
+
+  <title>梯度下降法 | Meng Space</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 4.2.0"><!-- hexo-inject:begin --><!-- hexo-inject:end --></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-CN">
+
+  
+  
+    
+  
+
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Meng Space</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle"></p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/19/GD/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Codancer">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Meng Space">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">梯度下降法</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+		     
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-09-19T13:51:12+08:00">
+                2021-09-19
+              </time>
+            
+
+            
+              <span class="post-meta-divider">|</span>
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-check-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Post modified&#58;</span>
+              
+              <time title="Post modified" itemprop="dateModified" datetime="2019-05-20T15:23:44+08:00">
+                2019-05-20
+              </time>
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="梯度下降法求解线性回归"><a href="#梯度下降法求解线性回归" class="headerlink" title="梯度下降法求解线性回归"></a>梯度下降法求解线性回归</h1><a id="more"></a>
+<h2 id="梯度下降法"><a href="#梯度下降法" class="headerlink" title="梯度下降法"></a>梯度下降法</h2><p>梯度下降法（英语：Gradient descent）是一个一阶最优化算法，通常也称为最速下降法。 要使用梯度下降法找到一个函数的局部极小值，必须向函数上当前点对应梯度（或者是近似梯度）的反方向的规定步长距离点进行迭代搜索。如果相反地向梯度正方向迭代进行搜索，则会接近函数的局部极大值点；这个过程则被称为梯度上升法。</p>
+<h2 id="梯度下降的形象解释"><a href="#梯度下降的形象解释" class="headerlink" title="梯度下降的形象解释"></a>梯度下降的形象解释</h2><p>现在有一个山谷，你想要到达山谷的最低端，你此时在A点，那么此时就可以利用梯度下降来找到最低点。你每次以你当前的方向为基准。选择一个最陡峭的方向，朝着山下降的方向向下走，每次走一段距离，重复执行该步骤，你总能够到达山顶。</p>
+<p><img src="https://a-1257883661.cos.ap-beijing.myqcloud.com/codancer/20190517111338915.png" alt=""></p>
+<h2 id="梯度下降算法原理"><a href="#梯度下降算法原理" class="headerlink" title="梯度下降算法原理"></a>梯度下降算法原理</h2><p>原理介绍：</p>
+<h3 id="微分"><a href="#微分" class="headerlink" title="微分"></a>微分</h3><p> 微分其实就可以看作是函数图像在某点的斜率。有单变量微分和多变量微分</p>
+<center>$\frac{d(x^2)}{x}=2x$ </center>
+<center>$\frac{\partial}{\partial x} (x^2y)=2xy$ </center>
+<center>$\frac{\partial}{\partial y}(x^2y)=x^2$ </center>
+
+<h3 id="梯度"><a href="#梯度" class="headerlink" title="梯度"></a>梯度</h3><p>梯度的本意是一个向量（矢量），表示某一函数在该点处的方向导数沿着该方向取得最大值，即函数在该点处沿着该方向（此梯度的方向）变化最快，变化率最大（为该梯度的模）。</p>
+<p>梯度是一个向量。对于某个点的梯度其实就是对每个变量求偏导构成的向量。</p>
+<center>$J(\Theta)=1+2\Theta_1-3\Theta_2+4\Theta_3$ </center>
+<center>$\Delta J(\Theta)= <\frac{\partial J}{\partial\Theta_1},\frac{\partial J}{\partial\Theta_2},\frac{\partial J}{\partial\Theta_3}> = <2,-3,4>$ </center>
+
+<h3 id="梯度下降算法的数学原理"><a href="#梯度下降算法的数学原理" class="headerlink" title="梯度下降算法的数学原理"></a>梯度下降算法的数学原理</h3><center>$\Theta_1$=$\Theta_0$ -$\alpha \Delta J(\Theta)$ </center>
+公式解释:$\Theta_0$ 表示当前所在的位置,$\Theta_1$表示下一个位置，$\alpha$表示步长，$J$函数就是当前的梯度。减号表示步长的反向，即下坡。
+
+在机器学习中$\alpha$表示学习率或者步长，我们需要通过$\alpha$来控制每一步所走的距离，既不能太快，也不能太慢。
+
+## 梯度下降应用实例
+
+现在我们有一个单变量的函数：
+
+<center>$J(\Theta)=\Theta^2$ </center>
+
+<p>对函数求微分：</p>
+<center>$J'(\Theta)=2\Theta$ </center>
+
+<p>设定$\Theta_0=1$，学习率$\alpha=0.4$</p>
+<p>根据梯度下降的公式</p>
+<center>$\Theta_1=\Theta_0-\alpha*J'(\Theta)$ </center>
+我们不断迭代：
+<center>$\Theta_0=1$ </center>
+<center>$\Theta_1=0.2$ </center>
+<center>$\Theta_2=0.04$ </center>
+<center>$\Theta_3=0.008$ </center>
+<center>$\Theta_4=0.0016$ </center>
+
+<p>经过$4$次迭代，最终结果也接近了函数的最小值。</p>
+<p>多变量函数的求解过程和单变量的求解如出一辙。</p>
+<h2 id="梯度下降求解线性回归"><a href="#梯度下降求解线性回归" class="headerlink" title="梯度下降求解线性回归"></a>梯度下降求解线性回归</h2><p>房屋价格与面积（数据在下面表格中）</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>面积</th>
+<th>价格</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>150</td>
+<td>6450</td>
+</tr>
+<tr>
+<td>2</td>
+<td>200</td>
+<td>7450</td>
+</tr>
+<tr>
+<td>3</td>
+<td>250</td>
+<td>8450</td>
+</tr>
+<tr>
+<td>4</td>
+<td>300</td>
+<td>9450</td>
+</tr>
+<tr>
+<td>5</td>
+<td>350</td>
+<td>11450</td>
+</tr>
+<tr>
+<td>6</td>
+<td>400</td>
+<td>15450</td>
+</tr>
+<tr>
+<td>7</td>
+<td>600</td>
+<td>18450</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>使用梯度下降求解线性回归（求$\Theta_0,\Theta_1$）</p>
+<center>$h_\Theta(x)=\Theta_0+\Theta_1x$ </center>
+
+<p>我们的目的是使得我们的估计值和实际值相差最小，因此我们定义一个代价函数，这里我们使用均方误差代价函数：</p>
+<center>$J(\Theta)=\frac{1}{2m}\sum_{i=1}^m(h_\Theta(x_i)-y_i)^2$ </center>
+即：
+<center>$J(\Theta)=\frac{1}{2m}\sum_{i=1}^m(\Theta_0+\Theta_1x_i-y_i)^2$ </center>
+
+<p>而其中$h_\Theta(x)=\Theta_0+\Theta_1x$<br>让函数分别对$\Theta_0,\Theta_1$求偏导。</p>
+<center>$\Delta J(\Theta)= <\frac{\partial J}{\partial \Theta_0}, \frac{\partial J}{\partial \Theta_1}>$ </center> 
+其中：
+<center>$\frac{\partial J}{\partial \Theta_0}=\frac{1}{m}\sum_{i=1}^m(h_\Theta(x_i)-y_i)$ </center>
+
+<center>$\frac{\partial J}{\partial \Theta_1}=\frac{1}{m}\sum_{i=1}^m(h_\Theta(x_i)-y_i)x_i$ </center>
+
+<p>接下来就是代码时间了<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> math</span><br><span class="line">m=<span class="number">7</span> <span class="comment">#数据集大小</span></span><br><span class="line">Theta0=<span class="number">300</span></span><br><span class="line">Theta1=<span class="number">100</span></span><br><span class="line"><span class="comment">#初始坐标</span></span><br><span class="line"></span><br><span class="line">alpha=<span class="number">0.000000001</span><span class="comment">#学习率</span></span><br><span class="line">area=[<span class="number">150</span>,<span class="number">200</span>,<span class="number">250</span>,<span class="number">300</span>,<span class="number">350</span>,<span class="number">400</span>,<span class="number">600</span>];<span class="comment">#数据集</span></span><br><span class="line">price=[<span class="number">6450</span>,<span class="number">7450</span>,<span class="number">8450</span>,<span class="number">9450</span>,<span class="number">11450</span>,<span class="number">15450</span>,<span class="number">18450</span>];</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradientx</span><span class="params">(Theta0,Theta1)</span>:</span><span class="comment">#对Theta0的偏导</span></span><br><span class="line">    ans=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">7</span>):</span><br><span class="line">        ans=ans+Theta0+Theta1*area[i]-price[i]</span><br><span class="line">    ans=ans/m</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"><span class="function"><span class="keyword">def</span> <span class="title">gradienty</span><span class="params">(Theta0,Theta1)</span>:</span><span class="comment">#对Theta1的偏导</span></span><br><span class="line">    ans=<span class="number">0</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> range(<span class="number">0</span>,<span class="number">7</span>):</span><br><span class="line">        ans=ans+(Theta0+Theta1*area[i]-price[i])*area[i]</span><br><span class="line">    ans=ans/m</span><br><span class="line">    <span class="keyword">return</span> ans</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">nowTheta0 = Theta0-alpha*gradientx(Theta0, Theta1)<span class="comment">#下一个点的坐标</span></span><br><span class="line">nowTheta1 = Theta1-alpha*gradienty(Theta0, Theta1)</span><br><span class="line"><span class="comment">#print(nowTheta0,nowTheta1)</span></span><br><span class="line"><span class="keyword">while</span> math.fabs(nowTheta1-Theta1)&gt;<span class="number">0.000000001</span>:<span class="comment">#梯度下降</span></span><br><span class="line">    nowa = nowTheta0-alpha*gradientx(nowTheta0,nowTheta1)</span><br><span class="line">    nowb = nowTheta1-alpha*gradienty(nowTheta0, nowTheta1)</span><br><span class="line">    nowTheta0=nowa</span><br><span class="line">    nowTheta1=nowb</span><br><span class="line">    nowa = Theta0-alpha*gradientx(Theta0, Theta1)</span><br><span class="line">    nowb = Theta1-alpha*gradienty(Theta0, Theta1)</span><br><span class="line">    Theta0=nowa</span><br><span class="line">    Theta1=nowb</span><br><span class="line">print(nowTheta0,nowTheta1 )</span><br><span class="line"><span class="comment">#299.85496413867725 32.638872688242515</span></span><br></pre></td></tr></table></figure><br>绘图<br><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="keyword">from</span> matplotlib <span class="keyword">import</span> pyplot</span><br><span class="line">area=[<span class="number">150</span>,<span class="number">200</span>,<span class="number">250</span>,<span class="number">300</span>,<span class="number">350</span>,<span class="number">400</span>,<span class="number">600</span>]<span class="comment">#数据集</span></span><br><span class="line">price=[<span class="number">6450</span>,<span class="number">7450</span>,<span class="number">8450</span>,<span class="number">9450</span>,<span class="number">11450</span>,<span class="number">15450</span>,<span class="number">18450</span>]</span><br><span class="line">pyplot.scatter(area,price)</span><br><span class="line">x=np.arange(<span class="number">100</span>,<span class="number">700</span>,<span class="number">100</span>)</span><br><span class="line">y=<span class="number">32.37648991481203</span>*x+<span class="number">299.85496413867725</span></span><br><span class="line">pyplot.plot(x,y)</span><br><span class="line">pyplot.xlabel(<span class="string">'area'</span>)</span><br><span class="line">pyplot.ylabel(<span class="string">'price'</span>)</span><br><span class="line">pyplot.show()</span><br></pre></td></tr></table></figure><br>结果：<br><img src="https://a-1257883661.cos.ap-beijing.myqcloud.com/codancer/20190518010738491.png" alt=""></p>
+<p>我们可以看到梯度下降求解出的线性回归很好的与结果吻合了。</p>
+<p>拟合过程（每次的$\Theta_0$和$\Theta_1$）:<br><img src="https://a-1257883661.cos.ap-beijing.myqcloud.com/codancer/myplot.png" alt="\myplot.png"></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Machine-Learning/" rel="tag"># Machine Learning</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/09/19/HDU3622/" rel="next" title="Bomb Game(2-SAT)">
+                <i class="fa fa-chevron-left"></i> Bomb Game(2-SAT)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/09/19/EDU66E/" rel="prev" title="E. Special Segments of Permutation">
+                E. Special Segments of Permutation <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+    <div class="comments" id="comments">
+    </div>
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Codancer</p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/">
+              
+                  <span class="site-state-item-count">50</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                
+                  <span class="site-state-item-count">2</span>
+                  <span class="site-state-item-name">categories</span>
+                
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                
+                  <span class="site-state-item-count">26</span>
+                  <span class="site-state-item-name">tags</span>
+                
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/hpumengzhao" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="codancer2000@gmail.com" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-globe"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+            <div class="links-of-blogroll motion-element links-of-blogroll-inline">
+              <div class="links-of-blogroll-title">
+                <i class="fa  fa-fw fa-link"></i>
+                Links
+              </div>
+              <ul class="links-of-blogroll-list">
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.todest.cn/" title="老郭" target="_blank">老郭</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="http://47.101.66.37" title="Dicer" target="_blank">Dicer</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://blog.wzy1999.wang/" title="煜神" target="_blank">煜神</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://cndrew.cn/" title="Uncle_drew" target="_blank">Uncle_drew</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://boiltask.com/" title="天巨" target="_blank">天巨</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://boctorio.com/" title="毕姥爷" target="_blank">毕姥爷</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://jinqimu.xyz/" title="JQM" target="_blank">JQM</a>
+                  </li>
+                
+                  <li class="links-of-blogroll-item">
+                    <a href="https://pipakacha.com/" title="瑞瑞" target="_blank">瑞瑞</a>
+                  </li>
+                
+              </ul>
+            </div>
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#梯度下降法求解线性回归"><span class="nav-number">1.</span> <span class="nav-text">梯度下降法求解线性回归</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度下降法"><span class="nav-number">1.1.</span> <span class="nav-text">梯度下降法</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度下降的形象解释"><span class="nav-number">1.2.</span> <span class="nav-text">梯度下降的形象解释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度下降算法原理"><span class="nav-number">1.3.</span> <span class="nav-text">梯度下降算法原理</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#微分"><span class="nav-number">1.3.1.</span> <span class="nav-text">微分</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度"><span class="nav-number">1.3.2.</span> <span class="nav-text">梯度</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#梯度下降算法的数学原理"><span class="nav-number">1.3.3.</span> <span class="nav-text">梯度下降算法的数学原理</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#梯度下降求解线性回归"><span class="nav-number">1.4.</span> <span class="nav-text">梯度下降求解线性回归</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-[object Object]"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Codancer</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v="></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v="></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v="></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
+<script type="text/javascript" src="/js/src/post-details.js?v="></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v="></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+  <script type="text/javascript" src="/js/src/js.cookie.js?v="></script>
+  <script type="text/javascript" src="/js/src/scroll-cookie.js?v="></script><!-- hexo-inject:begin --><!-- Begin: Injected MathJax -->
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config("");
+</script>
+
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+      all[i].SourceElement().parentNode.className += ' has-jax';
+    }
+  });
+</script>
+
+<script type="text/javascript" src="">
+</script>
+<!-- End: Injected MathJax -->
+<!-- hexo-inject:end -->
+
+
+  
+
+</body>
+</html>
