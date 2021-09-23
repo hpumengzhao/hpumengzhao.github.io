@@ -77,18 +77,20 @@
 
 
 
-<meta name="description" content="Chapter2-1：矩阵的谱半径及应用">
+<meta name="description" content="Chapter3-1: 矩阵的标准型与特征值计算">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高等工程数学笔记-2">
-<meta property="og:url" content="http://yoursite.com/2021/09/23/AM2/index.html">
+<meta property="og:title" content="高等工程数学笔记-4">
+<meta property="og:url" content="http://yoursite.com/2021/09/23/AM4/index.html">
 <meta property="og:site_name" content="Meng Space">
-<meta property="og:description" content="Chapter2-1：矩阵的谱半径及应用">
+<meta property="og:description" content="Chapter3-1: 矩阵的标准型与特征值计算">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-09-23T04:58:41.052Z">
-<meta property="article:modified_time" content="2021-09-23T04:53:15.273Z">
+<meta property="og:image" content="https://i.loli.net/2021/09/23/tekY6gIGUfwm8pF.png">
+<meta property="article:published_time" content="2021-09-23T05:12:42.602Z">
+<meta property="article:modified_time" content="2021-09-23T06:19:55.367Z">
 <meta property="article:author" content="Codancer">
 <meta property="article:tag" content="高等工程数学笔记">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://i.loli.net/2021/09/23/tekY6gIGUfwm8pF.png">
 
 
 
@@ -118,13 +120,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2021/09/23/AM2/"/>
+  <link rel="canonical" href="http://yoursite.com/2021/09/23/AM4/"/>
 
 
 
 
 
-  <title>高等工程数学笔记-2 | Meng Space</title>
+  <title>高等工程数学笔记-4 | Meng Space</title>
   
 
 
@@ -243,7 +245,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/23/AM2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/23/AM4/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Codancer">
@@ -260,7 +262,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">高等工程数学笔记-2</h1>
+          <h1 class="post-title" itemprop="name headline">高等工程数学笔记-4</h1>
         
 
         <div class="post-meta">
@@ -273,7 +275,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-09-23T12:58:41+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-09-23T13:12:42+08:00">
                 2021-09-23
               </time>
             
@@ -289,7 +291,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2021-09-23T12:53:15+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2021-09-23T14:19:55+08:00">
                 2021-09-23
               </time>
             
@@ -323,54 +325,38 @@
       
 
       
-        <h1 id="Chapter2-1：矩阵的谱半径及应用"><a href="#Chapter2-1：矩阵的谱半径及应用" class="headerlink" title="Chapter2-1：矩阵的谱半径及应用"></a>Chapter2-1：矩阵的谱半径及应用</h1><a id="more"></a>
-<h2 id="谱半径"><a href="#谱半径" class="headerlink" title="谱半径"></a>谱半径</h2><p>设$A \in C^{n \times n}$，$\lambda_{1},\lambda_{2},…,\lambda_{n}$为$A$的$n$个特征值，则矩阵$A$的谱半径为：</p>
+        <h1 id="Chapter3-1-矩阵的标准型与特征值计算"><a href="#Chapter3-1-矩阵的标准型与特征值计算" class="headerlink" title="Chapter3-1: 矩阵的标准型与特征值计算"></a>Chapter3-1: 矩阵的标准型与特征值计算</h1><a id="more"></a>
+<h2 id="Jordan标准型"><a href="#Jordan标准型" class="headerlink" title="Jordan标准型"></a>Jordan标准型</h2><p>形如：</p>
 <script type="math/tex; mode=display">
-\rho(A)=\max\limits_{j}|\lambda_{j}|</script><p>注：谱半径只是矩阵上的一个函数，但并不是矩阵范数。</p>
-<p>定理：$\rho(A) \leq ||A||$</p>
-<p>证明：</p>
-<p>设$\lambda$是矩阵$A$的特征值，则有：</p>
+J_{i} = \left[ \begin{matrix} \lambda_{i} & 1 \\ & \lambda_{i} & 1 \\ & & ...  \\ & & &\lambda_{i}\\ \end{matrix} \right]_{r_{i} \times r_{i}}</script><p>的矩阵被称为$r_{i}$阶Jordan块。由若干个Jordan块构成的分块对角矩阵成为Jordan标准型：</p>
 <script type="math/tex; mode=display">
-||\lambda x||=|\lambda|\cdot||x||=||Ax|| \leq ||A|| \cdot ||x||</script><p>因此有</p>
+J = \left[ \begin{matrix} J_{1} \\ & J_{2} \\ & & J_{3} \\ &&&... \\&&&& J_{s}  \end{matrix} \right]</script><h2 id="Jordan定理"><a href="#Jordan定理" class="headerlink" title="Jordan定理"></a>Jordan定理</h2><p>设$A \in C^{n \times n}$，则$A$与一个Jordan标准型相似，即存在$P \in C_{n} ^{n \times n}$使得$P^{-1}AP=J$。且这个Jordan标准型除了其中的Jordan块的排列顺序外被$A$唯一决定。则称其为$A$的Jordan标准型，记为$J_{A}$。</p>
+<h2 id="Jordan标准型及相似变换矩阵的求解"><a href="#Jordan标准型及相似变换矩阵的求解" class="headerlink" title="Jordan标准型及相似变换矩阵的求解"></a>Jordan标准型及相似变换矩阵的求解</h2><p>设$a_{ij}(\lambda)(i=1,2,3…m;j=1,2,3…,n)$，为复数域上的多项式，则以$a_{ij}(\lambda)$为元素的 $m \times n$阶矩阵</p>
 <script type="math/tex; mode=display">
-|\lambda|\leq ||A||</script><p>故：</p>
-<script type="math/tex; mode=display">
-\rho(A) \leq ||A||</script><p>定理：设$A \in C^{n \times n}$，对任意的 $\varepsilon&gt;0$，存在矩阵范数$||.||_{m}$使得：</p>
-<script type="math/tex; mode=display">
-||A||_{m} \leq \varepsilon+\rho(A)</script><p>例题：</p>
-<ul>
-<li><p>对于$A \in C^{n \times n}$，证明：$||A||_{2} \leq max\{||A||_{1},||A||_{\infty}\}$</p>
-<p>证明：</p>
-<p>$||A_{2}|| = \sqrt{\rho(A^HA)}\leq \sqrt{||A^HA||_{1}} \leq \sqrt{||A^H||_{1}\cdot ||A||_{1}} \leq \sqrt{||A||_{\infty}||A||_{1}} \leq max\{||A||_{1},||A||_{\infty}\}$</p>
-</li>
-<li><p>当$A$是正规矩阵时，$\rho(A)=||A||_{2}$</p>
-<p>证明：</p>
-<p>当$A$是正规矩阵时，则$A$可以被酉矩阵$U$对角化，也即：</p>
-<p>$U^HAU=P$，其中$P$为对角阵。</p>
-<p>则$A=UPU^H$，故$||A||_{2}= \sqrt{\rho(A^HA)} = \sqrt{\rho(U^HP^HPU)} = \sqrt{\rho(P^HP)} = \rho(A)$。</p>
-</li>
+A(\lambda) = \left[ \begin{matrix}a_{11}(\lambda) & a_{12}(\lambda) & ... & a_{1n}(\lambda) \\ ...  \\ a_{m1}(\lambda) & a_{m2}(\lambda) & ... & a_{mn}(\lambda)\end{matrix} \right]</script><p>为$\lambda$矩阵或者多项式矩阵。</p>
+<p>如果$\lambda$矩阵$A(\lambda)$存在一个$r(r \geq 1)$阶子式为非零多项式，而所有的$r+1$（如果存在）阶子式全为零多项式，则称$A(\lambda)$的秩为$r$，记作:</p>
+<p>$\rank(A(\lambda))=r$或者$r_{A(\lambda)}=r$。零矩阵的秩为0。</p>
+<p>如果$n$阶矩阵$A(\lambda)$的秩为$n$，则$A(\lambda)$满秩或非奇异，否则称$A(\lambda)$降秩或者奇异的。</p>
+<h3 id="初等行变化-列变换"><a href="#初等行变化-列变换" class="headerlink" title="初等行变化/列变换"></a>初等行变化/列变换</h3><ul>
+<li>交换两行(列)</li>
+<li>用$k(k \neq 0)$数乘某行/列的所有元素</li>
+<li>某行(列)的$\varphi(\lambda)$倍加到零一行(列)</li>
 </ul>
-<h2 id="序列矩阵在级数中的应用"><a href="#序列矩阵在级数中的应用" class="headerlink" title="序列矩阵在级数中的应用"></a>序列矩阵在级数中的应用</h2><h3 id="收敛矩阵"><a href="#收敛矩阵" class="headerlink" title="收敛矩阵"></a>收敛矩阵</h3><p>对于矩阵$A \in C^{n \times n}$，如果$\lim\limits_{k \rightarrow \infty}A^{k}=0$，则$A$为收敛矩阵。</p>
-<p>收敛矩阵的充要条件是$\rho(A) &lt;1 $。</p>
-<h3 id="矩阵级数"><a href="#矩阵级数" class="headerlink" title="矩阵级数"></a>矩阵级数</h3><p>设$\{A^{k}\}_{k=1}^{\infty}$是$C^{n \times n}$上的矩阵序列，则无穷和式：</p>
+<p>如果$\lambda$矩阵$A(\lambda)$经过有限次初等变换变成$\lambda$矩阵$B(\lambda)$，则称$A(\lambda)$与$B(\lambda)$矩阵等价，记作$A \simeq B$。</p>
+<p>定理：</p>
+<p>任意非零的$\lambda$矩阵$A(\lambda)=(a_{ij}(\lambda))_{m \times n}$等价于如下形式的矩阵：</p>
 <script type="math/tex; mode=display">
-\sum\limits_{k=1}^{\infty}A^{(k)}</script><p>称为矩阵级数。</p>
-<p>设$A^(k)=(a_{i,j}^k) \in C^{n \times n },(k=1,2,…,)$如果$n^2$个数项级数</p>
+A(\lambda) \simeq S(\lambda)=\left( \begin{matrix} d_{1}(\lambda) \\ & d_{2}(\lambda) \\ & & ...\\ &&& d_{r}(\lambda) \\ & & &  & ... \\ & & & & & 0 \\ & & & & & & 0 \end{matrix} \right)</script><p>其中$r$为$A(\lambda)$的秩，$d_{i}(\lambda)$是首项系数为1的多项式，且$d_{i}(\lambda)|d_{i+1}(\lambda)(i=1,…,r-1)$。</p>
+<p>$S(\lambda)$被称为$A(\lambda)$的<strong>Smith标准型</strong>，$d_{i}(\lambda)$成为$A(\lambda)$的不变因子。</p>
+<p>例题：</p>
+<p>求$\lambda$矩阵</p>
 <script type="math/tex; mode=display">
-\sum\limits_{k=1}^{\infty}a_{i,j}^{(k)},i,j=1,2,...,n</script><p>均绝对收敛，则矩阵级数</p>
+A(\lambda)=\left( \begin{matrix}1-\lambda & 2\lambda-1 & \lambda \\ \lambda & \lambda^2 & -\lambda \\1+\lambda^2 & \lambda^2+\lambda-1 & -\lambda^2 \end{matrix} \right )</script><p>的Smith标准型和不变因子：</p>
+<p><img src="https://i.loli.net/2021/09/23/tekY6gIGUfwm8pF.png" alt="image.png" style="zoom: 50%;" /></p>
+<p>因此所求的Smith标准型为：</p>
 <script type="math/tex; mode=display">
-\sum\limits_{k=1}^{\infty}A^{(k)}</script><p>绝对收敛。</p>
-<h3 id="矩阵幂级数"><a href="#矩阵幂级数" class="headerlink" title="矩阵幂级数"></a>矩阵幂级数</h3><p>设$A \in C^{n \times n},a_{k} \in C(k=0,1,….)$，则称：</p>
-<script type="math/tex; mode=display">
-\sum\limits_{k=0}^{\infty}a_{k}A^{k}</script><p>为矩阵$A$的幂级数。</p>
-<h4 id="矩阵幂级数散敛性的判断："><a href="#矩阵幂级数散敛性的判断：" class="headerlink" title="矩阵幂级数散敛性的判断："></a>矩阵幂级数散敛性的判断：</h4><p>设复变量幂级数$\sum\limits_{k=1}^{\infty}a_{k}z^{k}$的收敛半径为$R$，$A \in C^ {n \times n}$则：</p>
-<ul>
-<li>$\rho(A)&lt;R$的时候：矩阵幂级数$\sum\limits_{k=0}^{\infty}a_{k}A^{k}$绝对收敛</li>
-<li>$\rho(A)&gt;R$的时候：矩阵幂级数$\sum\limits_{k=0}^{\infty}a_{k}A^{k}$发散</li>
-</ul>
-<p>收敛半径的计算：</p>
-<script type="math/tex; mode=display">
-R=\frac{1}{\lim\limits_{k \rightarrow\infty}|\frac{a_{k+1}}{a_{k}}|}</script>
+S(\lambda) = \left( \begin{matrix} 1 & 0 & 0 \\ 0 & \lambda & 0 \\ 0 & 0 & \lambda^3+\lambda \end{matrix} \right)</script><p>不变因子为：$d_{1}(\lambda)=1,d_{2}(\lambda)=\lambda,d_{3}(\lambda)=\lambda^3+\lambda$。</p>
+
       
     </div>
     
@@ -400,8 +386,8 @@ R=\frac{1}{\lim\limits_{k \rightarrow\infty}|\frac{a_{k+1}}{a_{k}}|}</script>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/09/23/AM1/" rel="next" title="高等工程数学笔记-1">
-                <i class="fa fa-chevron-left"></i> 高等工程数学笔记-1
+              <a href="/2021/09/23/AM3/" rel="next" title="高等工程数学笔记-3">
+                <i class="fa fa-chevron-left"></i> 高等工程数学笔记-3
               </a>
             
           </div>
@@ -409,10 +395,6 @@ R=\frac{1}{\lim\limits_{k \rightarrow\infty}|\frac{a_{k+1}}{a_{k}}|}</script>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2021/09/23/AM3/" rel="prev" title="高等工程数学笔记-3">
-                高等工程数学笔记-3 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -612,7 +594,7 @@ R=\frac{1}{\lim\limits_{k \rightarrow\infty}|\frac{a_{k+1}}{a_{k}}|}</script>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter2-1：矩阵的谱半径及应用"><span class="nav-number">1.</span> <span class="nav-text">Chapter2-1：矩阵的谱半径及应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#谱半径"><span class="nav-number">1.1.</span> <span class="nav-text">谱半径</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#序列矩阵在级数中的应用"><span class="nav-number">1.2.</span> <span class="nav-text">序列矩阵在级数中的应用</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#收敛矩阵"><span class="nav-number">1.2.1.</span> <span class="nav-text">收敛矩阵</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵级数"><span class="nav-number">1.2.2.</span> <span class="nav-text">矩阵级数</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#矩阵幂级数"><span class="nav-number">1.2.3.</span> <span class="nav-text">矩阵幂级数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#矩阵幂级数散敛性的判断："><span class="nav-number">1.2.3.1.</span> <span class="nav-text">矩阵幂级数散敛性的判断：</span></a></li></ol></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter3-1-矩阵的标准型与特征值计算"><span class="nav-number">1.</span> <span class="nav-text">Chapter3-1: 矩阵的标准型与特征值计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Jordan标准型"><span class="nav-number">1.1.</span> <span class="nav-text">Jordan标准型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jordan定理"><span class="nav-number">1.2.</span> <span class="nav-text">Jordan定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jordan标准型及相似变换矩阵的求解"><span class="nav-number">1.3.</span> <span class="nav-text">Jordan标准型及相似变换矩阵的求解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初等行变化-列变换"><span class="nav-number">1.3.1.</span> <span class="nav-text">初等行变化&#x2F;列变换</span></a></li></ol></li></ol></li></ol></div>
             
 
           </div>
