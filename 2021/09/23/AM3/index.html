@@ -85,7 +85,7 @@
 <meta property="og:description" content="Chapter2-2:  矩阵的条件数及应用">
 <meta property="og:locale" content="zh_CN">
 <meta property="article:published_time" content="2021-09-23T04:58:57.403Z">
-<meta property="article:modified_time" content="2021-09-23T04:53:20.818Z">
+<meta property="article:modified_time" content="2021-09-23T05:09:45.376Z">
 <meta property="article:author" content="Codancer">
 <meta property="article:tag" content="高等工程数学笔记">
 <meta name="twitter:card" content="summary">
@@ -289,7 +289,7 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2021-09-23T12:53:20+08:00">
+              <time title="Post modified" itemprop="dateModified" datetime="2021-09-23T13:09:45+08:00">
                 2021-09-23
               </time>
             
@@ -330,12 +330,12 @@ cond(A)=||A|| \cdot ||A^{-1}||</script><p>若$cond(A)$较小（接近1），则$
 <p>常用的条件数：</p>
 <script type="math/tex; mode=display">
 cond_{\infty}(A) = ||A||_{\infty} ||A^{-1}||_{\infty}</script><script type="math/tex; mode=display">
-cond_{2}(A)=||A||_{2}||A^{-1}||_{2} = \sqrt{\frac{\micro_{1}}{\micro_{n}}}</script><p>其中$\micro_{1},\micro_{n}$分别为矩阵$A^HA$的最大和最小的特征值。</p>
+cond_{2}(A)=||A||_{2}||A^{-1}||_{2} = \sqrt{\frac{\lambda_{1}}{\lambda_{n}}}</script><p>其中$\lambda_{1},\lambda_{n}$分别为矩阵$A^HA$的最大和最小的特征值。</p>
 <p>特别的，如果$A$是正规矩阵，则有：</p>
 <script type="math/tex; mode=display">
 cond_{2}(A)=||A||_{2}||A^{-1}||_{2}=\frac{\max\{\lambda\}}{\min\{\lambda\}}</script><p>其中$\lambda$是$A$的特征值。</p>
 <p>例题：</p>
-<p>设$A =\left[  \begin{matrix}1 &amp; -2 &amp; 2\-2 &amp; -2 &amp; 4  \\ 2 &amp; 4 &amp; -2 \end{matrix} \right]$，选取$C^{3 \times 3}$上的范数$||.||_{\alpha}$使得：</p>
+<p>设$A =\left[  \begin{matrix}1 &amp; -2 &amp; 2 \\ -2 &amp; -2 &amp; 4  \\ 2 &amp; 4 &amp; -2 \end{matrix} \right]$，选取$C^{3 \times 3}$上的范数$||.||_{\alpha}$使得：</p>
 <script type="math/tex; mode=display">
 k_{\alpha}(A) = ||A||_{\alpha}||A^{-1}||_{\alpha}</script><p>最小。</p>
 <p>解析：</p>
