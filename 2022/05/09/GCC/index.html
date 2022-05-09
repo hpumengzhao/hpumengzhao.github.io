@@ -64,7 +64,7 @@
 
 
 
-  <meta name="keywords" content="高等工程数学笔记," />
+  <meta name="keywords" content="C++," />
 
 
 
@@ -77,17 +77,17 @@
 
 
 
-<meta name="description" content="Chapter2-2:  矩阵的条件数及应用">
+<meta name="description" content="GCC学习笔记">
 <meta property="og:type" content="article">
-<meta property="og:title" content="高等工程数学笔记-3">
-<meta property="og:url" content="http://yoursite.com/2021/09/23/AM3/index.html">
+<meta property="og:title" content="GCC学习笔记">
+<meta property="og:url" content="http://yoursite.com/2022/05/09/GCC/index.html">
 <meta property="og:site_name" content="Meng Space">
-<meta property="og:description" content="Chapter2-2:  矩阵的条件数及应用">
+<meta property="og:description" content="GCC学习笔记">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-09-23T04:58:57.403Z">
-<meta property="article:modified_time" content="2021-09-27T10:49:29.808Z">
+<meta property="article:published_time" content="2022-05-09T02:15:42.868Z">
+<meta property="article:modified_time" content="2022-05-09T07:21:25.734Z">
 <meta property="article:author" content="Codancer">
-<meta property="article:tag" content="高等工程数学笔记">
+<meta property="article:tag" content="C++">
 <meta name="twitter:card" content="summary">
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2021/09/23/AM3/"/>
+  <link rel="canonical" href="http://yoursite.com/2022/05/09/GCC/"/>
 
 
 
 
 
-  <title>高等工程数学笔记-3 | Meng Space</title>
+  <title>GCC学习笔记 | Meng Space</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/23/AM3/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/05/09/GCC/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Codancer">
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">高等工程数学笔记-3</h1>
+          <h1 class="post-title" itemprop="name headline">GCC学习笔记</h1>
         
 
         <div class="post-meta">
@@ -273,8 +273,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-09-23T12:58:57+08:00">
-                2021-09-23
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-05-09T10:15:42+08:00">
+                2022-05-09
               </time>
             
 
@@ -289,8 +289,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2021-09-27T18:49:29+08:00">
-                2021-09-27
+              <time title="Post modified" itemprop="dateModified" datetime="2022-05-09T15:21:25+08:00">
+                2022-05-09
               </time>
             
           </span>
@@ -323,40 +323,119 @@
       
 
       
-        <h1 id="Chapter2-2-矩阵的条件数及应用"><a href="#Chapter2-2-矩阵的条件数及应用" class="headerlink" title="Chapter2-2:  矩阵的条件数及应用"></a>Chapter2-2:  矩阵的条件数及应用</h1><a id="more"></a>
-<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>设$A \in C^{n \times n}_{n}$，$||.||$是$C^{n \times n}$上的一个矩阵范数，则矩阵$A$的的条件数定义为：</p>
-<script type="math/tex; mode=display">
-cond(A)=||A|| \cdot ||A^{-1}||</script><p>若$cond(A)$较小（接近1），则$A$关于求解矩阵逆或求解线性方程组为良好的或好条件的，如果$cond(A)$比较大，则称$A$关于求解矩阵逆或求解线性方程组为病态的或坏条件的。</p>
-<p>常用的条件数：</p>
-<script type="math/tex; mode=display">
-cond_{\infty}(A) = ||A||_{\infty} ||A^{-1}||_{\infty}</script><script type="math/tex; mode=display">
-cond_{2}(A)=||A||_{2}||A^{-1}||_{2} = \sqrt{\frac{\lambda_{1}}{\lambda_{n}}}</script><p>其中$\lambda_{1},\lambda_{n}$分别为矩阵$A^HA$的最大和最小的特征值。</p>
-<p>特别的，如果$A$是正规矩阵，则有：</p>
-<script type="math/tex; mode=display">
-cond_{2}(A)=||A||_{2}||A^{-1}||_{2}=\frac{\max\{\lambda\}}{\min\{\lambda\}}</script><p>其中$\lambda$是$A$的特征值。</p>
-<p>例题：</p>
-<p>设$A =\left[  \begin{matrix}1 &amp; -2 &amp; 2 \\ -2 &amp; -2 &amp; 4  \\ 2 &amp; 4 &amp; -2 \end{matrix} \right]$，选取$C^{3 \times 3}$上的范数$||.||_{\alpha}$使得：</p>
-<script type="math/tex; mode=display">
-k_{\alpha}(A) = ||A||_{\alpha}||A^{-1}||_{\alpha}</script><p>最小。</p>
-<p>解析：</p>
-<p>$A$ 是对称矩阵，因此有$\rho(A) =||A||_{2} \leq ||A||$</p>
-<p>因此选择2范数能使$k_{\alpha}(A)$最小。</p>
-<h2 id="误差分析"><a href="#误差分析" class="headerlink" title="误差分析"></a>误差分析</h2><p>设$A \in C_{n}^{n \times n}, \delta A \in C^{n \times n}$，若对于$C^{n \times n}$上的某一范数矩阵$||.||$有$||A^{-1} \delta A|| &lt;1$，则有：</p>
+        <h1 id="GCC学习笔记"><a href="#GCC学习笔记" class="headerlink" title="GCC学习笔记"></a>GCC学习笔记</h1><a id="more"></a>
+<h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>GCC是GNU Compiler Collection的缩写，它是一套编程语言编译器的集合，在最初的时候只能编译C语言，之后扩展便可以处理C++， Fortran，Objective-C， JAVA和GO等语言。</p>
+<p>本文主要介绍GCC编译C项目的过程。</p>
+<h2 id="编译过程"><a href="#编译过程" class="headerlink" title="编译过程"></a>编译过程</h2><p>对于一个源代码程序.c，要想其被计算机执行，需要大概如下几步：</p>
 <ul>
-<li>$A+\delta A$可逆</li>
-<li><p>$||(A+\delta A)^{-1}|| \leq \frac{||A^{-1}||}{1-||A^{-1} \delta A||}$</p>
-</li>
-<li><p>$\frac{||A^{-1}-(A+\delta A)^{-1}||}{||A^{-1}||} \leq \frac{||A^-1 \delta A||}{1-||A^{-1} \delta A||}$</p>
-</li>
+<li>预处理过程：替换头文件、宏定义等，其本质是一个文本替换过程，得到的文件以.i结尾。</li>
+<li>编译：将文件编译为汇编代码，文件以.s结尾。</li>
+<li>汇编：使用汇编器将汇编代码转为二进制文件.o。</li>
+<li>链接：由于.o文件调用了一些动态库或者静态库，需要将这些库代码和.o文件打包（动态库不需要把代码打包）才能得到最终的可运行的二进制文件。</li>
 </ul>
-<p>推论：</p>
-<p>设$A \in C_{n}^{n \times n}, \delta A \in C^{n \times n}$,若对$C^{n \times n}$上某矩阵范数$||.||$有：$||A^{-1}||||\delta A|| &lt; 1$，则（相对误差）：</p>
-<script type="math/tex; mode=display">
-\frac{||A^{-1}-(A+\delta A)^{-1}||}{||A^{-1}||} \leq \frac{cond(A)\frac{||\delta A||}{||A||}}{1-cond(A)\frac{||\delta A||}{||A||}}</script><p>定理*：</p>
-<p>设$A \in C_{n}^{n \times n}, \delta A \in C^{n \times n},b, \delta b \in C^n$，如果对于$C^{n \times n}$上的某范数$||.||$有$||A^{-1}||||\delta A|| &lt; 1$,则有：</p>
-<p>$Ax=b$的解和$(A+ \delta A) \hat{x} = (b+\delta b)$的解满足：</p>
-<script type="math/tex; mode=display">
-\frac{||x-\hat{x}||_{\alpha}}{||x||_{\alpha}} \leq \frac{cond(A)}{1-cond(A)\frac{||\delta A||}{||A||}}(\frac{||\delta A||}{||A||}+\frac{||\delta b||_{\alpha}}{||b||_{\alpha}})</script><p>其中$||.||_{\alpha}$是$C^{n}$上与矩阵范数$||.||$相容的向量范数。</p>
+<h2 id="GCC编译参数"><a href="#GCC编译参数" class="headerlink" title="GCC编译参数"></a>GCC编译参数</h2><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>编译选项</th>
+<th>说明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>-E</td>
+<td>预处理源文件，如(gcc -E main.c -o main.i)</td>
+</tr>
+<tr>
+<td>-S</td>
+<td>编译源文件，生成汇编代码，但是不进行汇编(gcc -S main.c -o main.s)</td>
+</tr>
+<tr>
+<td>-c</td>
+<td>编译、汇编源文件，但不链接</td>
+</tr>
+<tr>
+<td>-o [file1] [file2]/ [file2] -o [file1]</td>
+<td>将file2编译成可执行文件file1</td>
+</tr>
+<tr>
+<td>-I dir</td>
+<td>指定include文件的目录</td>
+</tr>
+<tr>
+<td>-g</td>
+<td>生成调试信息</td>
+</tr>
+<tr>
+<td>-D</td>
+<td>编译程序时指定一个宏， 如-D DEBUG</td>
+</tr>
+<tr>
+<td>-w</td>
+<td>不生成任何警告信息</td>
+</tr>
+<tr>
+<td>-Wall</td>
+<td>生成所有的警告信息</td>
+</tr>
+<tr>
+<td>-O0,-O1,O2,O3</td>
+<td>编译优化，O0无优化，O1缺省值，O3优化级别最高。</td>
+</tr>
+<tr>
+<td>-l</td>
+<td>程序编译的时候指定使用的库，如-lm是链接math库</td>
+</tr>
+<tr>
+<td>-fpic/-fPIC</td>
+<td>生成和位置无关的代码,用来制作动态库</td>
+</tr>
+<tr>
+<td>-shared</td>
+<td>生成共享目标文件，用来生成动态库</td>
+</tr>
+<tr>
+<td>-std</td>
+<td>指定编译版本，如-std=c99,-std=c++11…</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h2 id="静态库"><a href="#静态库" class="headerlink" title="静态库"></a>静态库</h2><p>对于若干.c程序，我们首先使用编译它们生成各自的.o文件，然后使用ar工具，执行ar rcs libxxx.a(xxx是库名) *.o将他们打包为静态库。再linux下静态库是以.a文件结尾。</p>
+<h3 id="demo"><a href="#demo" class="headerlink" title="demo"></a>demo</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">.</span><br><span class="line">├── include</span><br><span class="line">│   └── head.h</span><br><span class="line">├── lib</span><br><span class="line">├── main.c</span><br><span class="line">└── src</span><br><span class="line">    ├── add.c</span><br><span class="line">    ├── div.c</span><br><span class="line">    ├── mod.c</span><br><span class="line">    ├── mul.c</span><br><span class="line">    └── sub.c</span><br></pre></td></tr></table></figure>
+<p>现在我们有这样一个简单的项目，head.h声明了五个函数，这五个函数分别由src中的代码实现，在main中我们调用了这几个函数。</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">include</span><span class="meta-string">&lt;stdio.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="meta-keyword">include</span> <span class="meta-string">"head.h"</span></span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">()</span></span>&#123;</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, add(<span class="number">1</span>, <span class="number">2</span>));</span><br><span class="line">	<span class="built_in">printf</span>(<span class="string">"%d\n"</span>, sub(<span class="number">1</span>, <span class="number">2</span>));</span><br><span class="line">    ...</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>如果我们直接编译</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc main.c -o main -I .&#x2F;include&#x2F;</span><br></pre></td></tr></table></figure>
+<p>则会提示：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&#x2F;usr&#x2F;bin&#x2F;ld: &#x2F;tmp&#x2F;ccRyDshG.o: in function &#96;main&#39;:</span><br><span class="line">main.c:(.text+0x13): undefined reference to &#96;add&#39;</span><br><span class="line">&#x2F;usr&#x2F;bin&#x2F;ld: main.c:(.text+0x35): undefined reference to &#96;sub&#39;</span><br><span class="line">collect2: error: ld returned 1 exit status</span><br></pre></td></tr></table></figure>
+<p>其实就是因为我们虽然使用了head头文件，但是生成的二进制文件找不到对应的函数实现的二进制文件。因此我们需要把这些函数实现打包成静态库。</p>
+<p>进入src目录执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -c *.c -I ..&#x2F;include&#x2F;</span><br></pre></td></tr></table></figure>
+<p>这样我们就对每个c文件生成了对应的二进制文件。</p>
+<p>继续执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ar rcs libcalc.a *.o</span><br></pre></td></tr></table></figure>
+<p>我们就可以把*.o文件打包为libcalc.a静态库文件，库名字为calc，将该文件拷贝到lib目录下。</p>
+<p>返回上级目录执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc main.c -o main -I .&#x2F;include&#x2F; -lcalc -L .&#x2F;lib&#x2F;</span><br></pre></td></tr></table></figure>
+<p>运行main即可得到正确结果。</p>
+<h2 id="动态库"><a href="#动态库" class="headerlink" title="动态库"></a>动态库</h2><p>显然，静态库存在一些缺点，首先是浪费空间，对于每个可执行文件都需要将库打包，不可共用，其次是如果更新了静态库，则还需要重新链接。</p>
+<p>动态库则是为解决这两个问题而产生的。动态链接是在程序运行时，如果需要某个库，再将其链接到可执行程序上。Linux中，动态库的文件后缀为.so。</p>
+<p>接下来展示如何制作动态库并链接。</p>
+<p>同静态库样例，还是一样的程序，只不过在src下，我们执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -c *.c -fpic -I ..&#x2F;include&#x2F;</span><br></pre></td></tr></table></figure>
+<p>用来生成和位置无关的代码（指运行和放置地址无关的代码）</p>
+<p>然后执行</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc -shared *.o -o libcalcd.so</span><br></pre></td></tr></table></figure>
+<p>将*.o打包成calcd动态库。</p>
+<p>最后编译main.c</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">gcc main.c -o main -I .&#x2F;include&#x2F; -l calcd -L .&#x2F;lib&#x2F;</span><br></pre></td></tr></table></figure>
+<p>如果直接运行会报错，这是因为我们需要把动态库的路径保存到环境变量。</p>
+<p>在etc的bashrc文件最后一行导入（LD_LIBRARY_PATH是linux下的一个环境变量）：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export LD_LIBRARY_PATH&#x3D;$LD_LIBRARY_PATH: libpath</span><br></pre></td></tr></table></figure>
+<p>使用ldd命令查看动态库依赖情况：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">linux-vdso.so.1 (0x00007fffc48d5000)</span><br><span class="line">libcalcd.so &#x3D;&gt; &#x2F;mnt&#x2F;d&#x2F;cpplearning&#x2F;2.0&#x2F;gcc&#x2F;dynamic_lib&#x2F;lib&#x2F;libcalcd.so (0x00007f554b830000)</span><br><span class="line">libc.so.6 &#x3D;&gt; &#x2F;lib&#x2F;x86_64-linux-gnu&#x2F;libc.so.6 (0x00007f554b630000)</span><br><span class="line">&#x2F;lib64&#x2F;ld-linux-x86-64.so.2 (0x00007f554b84b000)</span><br></pre></td></tr></table></figure>
+<p>运行main即可得到正确输出。</p>
 
       
     </div>
@@ -374,7 +453,7 @@ k_{\alpha}(A) = ||A||_{\alpha}||A^{-1}||_{\alpha}</script><p>最小。</p>
       
         <div class="post-tags">
           
-            <a href="/tags/%E9%AB%98%E7%AD%89%E5%B7%A5%E7%A8%8B%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0/" rel="tag"># 高等工程数学笔记</a>
+            <a href="/tags/C/" rel="tag"># C++</a>
           
         </div>
       
@@ -387,8 +466,8 @@ k_{\alpha}(A) = ||A||_{\alpha}||A^{-1}||_{\alpha}</script><p>最小。</p>
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/09/23/AM2/" rel="next" title="高等工程数学笔记-2">
-                <i class="fa fa-chevron-left"></i> 高等工程数学笔记-2
+              <a href="/2022/05/06/cpp-2/" rel="next" title="C++笔记-深拷贝与浅拷贝">
+                <i class="fa fa-chevron-left"></i> C++笔记-深拷贝与浅拷贝
               </a>
             
           </div>
@@ -396,10 +475,6 @@ k_{\alpha}(A) = ||A||_{\alpha}||A^{-1}||_{\alpha}</script><p>最小。</p>
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2021/09/23/AM4/" rel="prev" title="高等工程数学笔记-4">
-                高等工程数学笔记-4 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -599,7 +674,7 @@ k_{\alpha}(A) = ||A||_{\alpha}||A^{-1}||_{\alpha}</script><p>最小。</p>
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter2-2-矩阵的条件数及应用"><span class="nav-number">1.</span> <span class="nav-text">Chapter2-2:  矩阵的条件数及应用</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#定义"><span class="nav-number">1.1.</span> <span class="nav-text">定义</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#误差分析"><span class="nav-number">1.2.</span> <span class="nav-text">误差分析</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#GCC学习笔记"><span class="nav-number">1.</span> <span class="nav-text">GCC学习笔记</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#简介"><span class="nav-number">1.1.</span> <span class="nav-text">简介</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#编译过程"><span class="nav-number">1.2.</span> <span class="nav-text">编译过程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#GCC编译参数"><span class="nav-number">1.3.</span> <span class="nav-text">GCC编译参数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#静态库"><span class="nav-number">1.4.</span> <span class="nav-text">静态库</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#demo"><span class="nav-number">1.4.1.</span> <span class="nav-text">demo</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#动态库"><span class="nav-number">1.5.</span> <span class="nav-text">动态库</span></a></li></ol></li></ol></div>
             
 
           </div>
