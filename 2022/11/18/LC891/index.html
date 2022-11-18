@@ -64,7 +64,7 @@
 
 
 
-  <meta name="keywords" content="Probems," />
+  <meta name="keywords" content="力扣," />
 
 
 
@@ -77,17 +77,17 @@
 
 
 
-<meta name="description" content="A slow week">
+<meta name="description" content="891. 子序列宽度之和题面一个序列的 宽度 定义为该序列中最大元素和最小元素的差值。 给你一个整数数组 nums ，返回 nums 的所有非空 子序列 的 宽度之和 。由于答案可能非常大，请返回对 10^9 + 7 取余 后的结果。 子序列 定义为从一个数组里删除一些（或者不删除）元素，但不改变剩下元素的顺序得到的数组。例如，[3,6,2,7] 就是数组 [0,3,1,6,2,2,7] 的一个子">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Algorithms Weekly 2">
-<meta property="og:url" content="http://yoursite.com/2021/09/19/Algorithmwk2/index.html">
+<meta property="og:title" content="LC891">
+<meta property="og:url" content="http://yoursite.com/2022/11/18/LC891/index.html">
 <meta property="og:site_name" content="Meng Space">
-<meta property="og:description" content="A slow week">
+<meta property="og:description" content="891. 子序列宽度之和题面一个序列的 宽度 定义为该序列中最大元素和最小元素的差值。 给你一个整数数组 nums ，返回 nums 的所有非空 子序列 的 宽度之和 。由于答案可能非常大，请返回对 10^9 + 7 取余 后的结果。 子序列 定义为从一个数组里删除一些（或者不删除）元素，但不改变剩下元素的顺序得到的数组。例如，[3,6,2,7] 就是数组 [0,3,1,6,2,2,7] 的一个子">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2021-09-19T05:51:12.529Z">
-<meta property="article:modified_time" content="2020-04-13T03:44:30.000Z">
+<meta property="article:published_time" content="2022-11-18T02:11:14.061Z">
+<meta property="article:modified_time" content="2022-11-18T02:21:23.669Z">
 <meta property="article:author" content="Codancer">
-<meta property="article:tag" content="Probems">
+<meta property="article:tag" content="力扣">
 <meta name="twitter:card" content="summary">
 
 
@@ -118,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2021/09/19/Algorithmwk2/"/>
+  <link rel="canonical" href="http://yoursite.com/2022/11/18/LC891/"/>
 
 
 
 
 
-  <title>Algorithms Weekly 2 | Meng Space</title>
+  <title>LC891 | Meng Space</title>
   
 
 
@@ -243,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/19/Algorithmwk2/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/11/18/LC891/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Codancer">
@@ -260,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Algorithms Weekly 2</h1>
+          <h1 class="post-title" itemprop="name headline">LC891</h1>
         
 
         <div class="post-meta">
@@ -273,8 +273,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-09-19T13:51:12+08:00">
-                2021-09-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-11-18T10:11:14+08:00">
+                2022-11-18
               </time>
             
 
@@ -289,8 +289,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2020-04-13T11:44:30+08:00">
-                2020-04-13
+              <time title="Post modified" itemprop="dateModified" datetime="2022-11-18T10:21:23+08:00">
+                2022-11-18
               </time>
             
           </span>
@@ -323,13 +323,25 @@
       
 
       
-        <h2 id="A-slow-week"><a href="#A-slow-week" class="headerlink" title="A slow week"></a>A slow week</h2><a id="more"></a>
-<ul>
-<li><strong>牛客练习赛60 C</strong></li>
+        <h1 id="891-子序列宽度之和"><a href="#891-子序列宽度之和" class="headerlink" title="891. 子序列宽度之和"></a>891. 子序列宽度之和</h1><h2 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h2><p>一个序列的 <strong>宽度</strong> 定义为该序列中最大元素和最小元素的差值。</p>
+<p>给你一个整数数组 <code>nums</code> ，返回 <code>nums</code> 的所有非空 <strong>子序列</strong> 的 <strong>宽度之和</strong> 。由于答案可能非常大，请返回对 <code>10^9 + 7</code> <strong>取余</strong> 后的结果。</p>
+<p><strong>子序列</strong> 定义为从一个数组里删除一些（或者不删除）元素，但不改变剩下元素的顺序得到的数组。例如，<code>[3,6,2,7]</code> 就是数组 <code>[0,3,1,6,2,2,7]</code> 的一个子序列。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ul>
+<li><p>由于是子序列，因此和顺序无关，排序</p>
+</li>
+<li><p>假设$nums[i]$是最大值，那么最小值只能是$nums[j] (j &lt; i)$</p>
+</li>
+<li><p>枚举最大值，则最大值产生的贡献为：</p>
+<script type="math/tex; mode=display">
+\sum_{i = 0}^{n - 1}\sum_{j = 0}^{i - 1}(nums[i]-nums[j]) * (2 ^ {i- j - 1})</script></li>
+<li><p>拆分可得：</p>
+<script type="math/tex; mode=display">
+\sum_{i = 0} ^ {n}2 ^ {i} (nums[i] * \sum_{j = 0}^{i - 1}(2^{-j-1}) - \sum_{j = 0}^{i - 1}(nums[j] * 2 ^{-j-1}))</script><p>使用两个前缀和维护即可</p>
+</li>
+<li><p>时间复杂度$O(nlog(n))$</p>
+</li>
 </ul>
-<p>对于一个长度为$n$的字符串$s$,计算有多少个长度为$k$的本质不同的子序列。</p>
-<p><strong>思路</strong><br>$dp_{i,j}$为前$i$个字符组成的字符串中长度为$j$的本质不同的子序列。则有:</p>
-<script type="math/tex; mode=display">dp_{i,j}=dp_{i-1,j-1}+dp_{i-1,j}-dp[last_{s_{i}}-1][j-1]</script><p>其中 $last_{s_{i}}$ 表示 $s_{i}$ 前一次出现的位置。时间复杂度$O(n \cdot k)$</p>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">qpow</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> a, <span class="keyword">long</span> <span class="keyword">long</span> b)</span></span>&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">while</span>(b)&#123;</span><br><span class="line">            <span class="keyword">if</span>(b &amp; <span class="number">1</span>) ans = ans * a % mod;</span><br><span class="line">            a = a * a % mod;</span><br><span class="line">            b &gt;&gt;= <span class="number">1</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans % mod;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">sumSubseqWidths</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> n =  (<span class="keyword">int</span>)nums.size();</span><br><span class="line">        sort(nums.begin(), nums.end());</span><br><span class="line">        vector&lt;long long&gt; pre1(n), pre2(n);</span><br><span class="line">        pre1[<span class="number">0</span>] = qpow(qpow(<span class="number">2</span>, <span class="number">1</span>), mod - <span class="number">2</span>);</span><br><span class="line">        pre2[<span class="number">0</span>] = nums[<span class="number">0</span>] * pre1[<span class="number">0</span>];</span><br><span class="line"></span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> j = <span class="number">1</span>; j &lt; n; j++)&#123;</span><br><span class="line">            pre1[j] = pre1[j - <span class="number">1</span>] + qpow(qpow(<span class="number">2</span>, j + <span class="number">1</span>), mod - <span class="number">2</span>);</span><br><span class="line">            pre1[j] %= mod;</span><br><span class="line">            pre2[j] = pre2[j - <span class="number">1</span>] + nums[j] * qpow(qpow(<span class="number">2</span>, j + <span class="number">1</span>), mod - <span class="number">2</span>) % mod;</span><br><span class="line">            pre2[j] %= mod;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> ans = <span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i = <span class="number">1</span>; i &lt; n; i++)&#123;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> t1 = qpow(<span class="number">2</span>, i);</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> t2 = nums[i] * pre1[i - <span class="number">1</span>];</span><br><span class="line">            t2 %= mod;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> t3 = pre2[i - <span class="number">1</span>];</span><br><span class="line">            t3 %= mod;</span><br><span class="line">            ans += (t1 * (t2 - t3 + mod) % mod) % mod;</span><br><span class="line">            ans %= mod;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -347,7 +359,7 @@
       
         <div class="post-tags">
           
-            <a href="/tags/Probems/" rel="tag"># Probems</a>
+            <a href="/tags/%E5%8A%9B%E6%89%A3/" rel="tag"># 力扣</a>
           
         </div>
       
@@ -360,8 +372,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/09/19/Algorithmwk3/" rel="next" title="Algorithms Weekly 3">
-                <i class="fa fa-chevron-left"></i> Algorithms Weekly 3
+              <a href="/2022/11/14/LC805/" rel="next" title="LC805. 数组的均值分割">
+                <i class="fa fa-chevron-left"></i> LC805. 数组的均值分割
               </a>
             
           </div>
@@ -369,10 +381,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2021/09/19/AlgorithmWK4/" rel="prev" title="Algorithms Weekly 4">
-                Algorithms Weekly 4 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -572,7 +580,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#A-slow-week"><span class="nav-number">1.</span> <span class="nav-text">A slow week</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#891-子序列宽度之和"><span class="nav-number">1.</span> <span class="nav-text">891. 子序列宽度之和</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题面"><span class="nav-number">1.1.</span> <span class="nav-text">题面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
             
 
           </div>
