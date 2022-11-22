@@ -77,20 +77,18 @@
 
 
 
-<meta name="description" content="力扣周赛252题解">
+<meta name="description" content="LC 878. 第 N 个神奇数字">
 <meta property="og:type" content="article">
-<meta property="og:title" content="力扣周赛252题解">
-<meta property="og:url" content="http://yoursite.com/2021/09/19/LC252/index.html">
+<meta property="og:title" content="LC878. 第N个神奇数字">
+<meta property="og:url" content="http://yoursite.com/2022/11/22/LC878/index.html">
 <meta property="og:site_name" content="Meng Space">
-<meta property="og:description" content="力扣周赛252题解">
+<meta property="og:description" content="LC 878. 第 N 个神奇数字">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="c:/Users/23120/AppData/Roaming/Typora/typora-user-images/image-20221106162215445.png">
-<meta property="article:published_time" content="2021-09-19T05:51:12.625Z">
-<meta property="article:modified_time" content="2022-11-06T08:22:18.509Z">
+<meta property="article:published_time" content="2022-11-22T02:30:02.629Z">
+<meta property="article:modified_time" content="2022-11-22T02:43:36.275Z">
 <meta property="article:author" content="Codancer">
 <meta property="article:tag" content="力扣">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="c:/Users/23120/AppData/Roaming/Typora/typora-user-images/image-20221106162215445.png">
 
 
 
@@ -120,13 +118,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2021/09/19/LC252/"/>
+  <link rel="canonical" href="http://yoursite.com/2022/11/22/LC878/"/>
 
 
 
 
 
-  <title>力扣周赛252题解 | Meng Space</title>
+  <title>LC878. 第N个神奇数字 | Meng Space</title>
   
 
 
@@ -245,7 +243,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/19/LC252/">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2022/11/22/LC878/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Codancer">
@@ -262,7 +260,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">力扣周赛252题解</h1>
+          <h1 class="post-title" itemprop="name headline">LC878. 第N个神奇数字</h1>
         
 
         <div class="post-meta">
@@ -275,8 +273,8 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-09-19T13:51:12+08:00">
-                2021-09-19
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2022-11-22T10:30:02+08:00">
+                2022-11-22
               </time>
             
 
@@ -291,8 +289,8 @@
               
                 <span class="post-meta-item-text">Post modified&#58;</span>
               
-              <time title="Post modified" itemprop="dateModified" datetime="2022-11-06T16:22:18+08:00">
-                2022-11-06
+              <time title="Post modified" itemprop="dateModified" datetime="2022-11-22T10:43:36+08:00">
+                2022-11-22
               </time>
             
           </span>
@@ -325,25 +323,18 @@
       
 
       
-        <h1 id="力扣周赛252题解"><a href="#力扣周赛252题解" class="headerlink" title="力扣周赛252题解"></a>力扣周赛252题解</h1><a id="more"></a>
-<h2 id="T1-三除数"><a href="#T1-三除数" class="headerlink" title="T1. 三除数"></a>T1. 三除数</h2><p>直接枚举因子个数，时间复杂度为$O(\sqrt{n})$</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">bool</span> <span class="title">isThree</span><span class="params">(<span class="keyword">int</span> n)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">int</span> ans=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> i=<span class="number">1</span>;i*i&lt;=n;i++)&#123;</span><br><span class="line">            <span class="keyword">if</span>(n%i==<span class="number">0</span>)&#123;</span><br><span class="line">                <span class="keyword">if</span>(i*i==n)&#123;</span><br><span class="line">                    ++ans;</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    ans+=<span class="number">2</span>;</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> ans==<span class="number">3</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="T2-你可以工作的最大周数"><a href="#T2-你可以工作的最大周数" class="headerlink" title="T2. 你可以工作的最大周数"></a>T2. 你可以工作的最大周数</h2><p>如果阶段任务最多的可以做完，则剩余的也一定可以做完。</p>
-<p>假设除了最多的阶段任务，剩下的阶段任务有$res$个。</p>
-<p>答案为$min(2*res+1,n)$，$n$为总个数。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">numberOfWeeks</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; milestones)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> s=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> maxx=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> v:milestones)&#123;</span><br><span class="line">            s+=v;</span><br><span class="line">            maxx=max(maxx,v*<span class="number">1L</span>L);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> res=s-maxx;</span><br><span class="line">        <span class="keyword">return</span> min(s,<span class="number">2</span>*res+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="T3-收集足够苹果的最小花园周长"><a href="#T3-收集足够苹果的最小花园周长" class="headerlink" title="T3. 收集足够苹果的最小花园周长"></a>T3. 收集足够苹果的最小花园周长</h2><p>假设右上角顶点坐标为$(n,n)$，则第一象限的苹果个数为：</p>
-<p>$n<em>n</em>(n+1)$，则总的苹果个数为$4<em>n</em>n<em>(n+1)+2</em>(n+1)*n$。</p>
-<p>二分/暴力即可。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">cal</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> x)</span></span>&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> first=x*x*(x+<span class="number">1</span>)*<span class="number">4</span>+<span class="number">2</span>*(x+<span class="number">1</span>)*x;</span><br><span class="line">        <span class="keyword">return</span> first;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="function"><span class="keyword">long</span> <span class="keyword">long</span> <span class="title">minimumPerimeter</span><span class="params">(<span class="keyword">long</span> <span class="keyword">long</span> ned)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> l=<span class="number">1</span>,r=<span class="number">5e5</span>;</span><br><span class="line">        <span class="keyword">while</span>(l&lt;=r)&#123;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> mid=(l+r)/<span class="number">2</span>;</span><br><span class="line">            <span class="keyword">if</span>(cal(mid)&gt;=ned)&#123;</span><br><span class="line">                r=mid<span class="number">-1</span>;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                l=mid+<span class="number">1</span>;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> <span class="number">8</span>*(r+<span class="number">1</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="T4-统计特殊子序列的数目"><a href="#T4-统计特殊子序列的数目" class="headerlink" title="T4. 统计特殊子序列的数目"></a>T4. 统计特殊子序列的数目</h2><p>令$dp[i][j]$表示$a_{1},…,a_{i}$中以$j$结尾的特殊子序列个数。</p>
-<p>则有：</p>
-<p>$dp[i][0]=2*dp[i-1][0]+1$</p>
-<p>$dp[i][1]=2*dp[i-1][1]+dp[i-1][0]$</p>
-<p>$dp[i][2]=2*dp[i-1][2]+dp[i-1][1]$</p>
-<p>实际上可以做到空间$O(1)$。</p>
-<figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1e9</span>+<span class="number">7</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">countSpecialSubsequences</span><span class="params">(<span class="built_in">vector</span>&lt;<span class="keyword">int</span>&gt;&amp; nums)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> A,B,C;</span><br><span class="line">        A=B=C=<span class="number">0</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> v:nums)&#123;</span><br><span class="line">            <span class="keyword">if</span>(v==<span class="number">0</span>) A=A*<span class="number">2</span>+<span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(v==<span class="number">1</span>) B=<span class="number">2</span>*B+A;</span><br><span class="line">            <span class="keyword">if</span>(v==<span class="number">2</span>) C=<span class="number">2</span>*C+B;</span><br><span class="line">            A%=mod;</span><br><span class="line">            B%=mod;</span><br><span class="line">            C%=mod;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> C;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
-<h2 id="彩蛋"><a href="#彩蛋" class="headerlink" title="彩蛋"></a>彩蛋</h2><p><img src="C:\Users\23120\AppData\Roaming\Typora\typora-user-images\image-20221106162215445.png" alt="image-20221106162215445"></p>
+        <h1 id="LC-878-第-N-个神奇数字"><a href="#LC-878-第-N-个神奇数字" class="headerlink" title="LC 878. 第 N 个神奇数字"></a>LC 878. 第 N 个神奇数字</h1><a id="more"></a>
+<h2 id="题面"><a href="#题面" class="headerlink" title="题面"></a>题面</h2><p>一个正整数如果能被 <code>a</code> 或 <code>b</code> 整除，那么它是神奇的。</p>
+<p>给定三个整数 <code>n</code> , <code>a</code> , <code>b</code> ，返回第 <code>n</code> 个神奇的数字。因为答案可能很大，所以返回答案 <strong>对</strong> <code>10^9 + 7</code> <strong>取模</strong> 后的值。</p>
+<h2 id="题解"><a href="#题解" class="headerlink" title="题解"></a>题解</h2><ul>
+<li>假设最终答案为$x$，如果$x \% a = 0$，则说明有$k= \frac{x}{a}$个可以被$a$整除的数字，有$m = \frac{x}{b}$个可以被$b$整除的数字</li>
+<li>$k + m = n$?</li>
+<li>有重复数字需要去除，令$p = lcm(a, b)$，则有$min(\frac{a \times k}{p}, \frac{b \times m}{p})$个重复计算的数字</li>
+<li>因此一定有$k + m - min(\frac{a \times k}{p}, \frac{b \times m}{p}) = n$</li>
+<li>若令$f(x) = k + m - min(\frac{a \times k}{p}, \frac{b \times m}{p})$， $f(x)$单调</li>
+<li>二分答案（若$x \% b =0$, 同理）</li>
+</ul>
+<h2 id="代码"><a href="#代码" class="headerlink" title="代码"></a>代码</h2><figure class="highlight cpp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> <span class="keyword">int</span> mod = <span class="number">1e9</span> + <span class="number">7</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Solution</span> &#123;</span></span><br><span class="line"><span class="keyword">public</span>:</span><br><span class="line">    <span class="function"><span class="keyword">int</span> <span class="title">nthMagicalNumber</span><span class="params">(<span class="keyword">int</span> n, <span class="keyword">int</span> a, <span class="keyword">int</span> b)</span> </span>&#123;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> lcm = a / __gcd(a, b) * b;</span><br><span class="line">        <span class="keyword">auto</span> check_a = [=](<span class="keyword">long</span> <span class="keyword">long</span> k) -&gt; <span class="keyword">long</span> <span class="keyword">long</span>&#123;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> a_max = a * k;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> m = a_max / b;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> b_max = b * m;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> res = k + m - min(a_max / lcm, b_max / lcm);</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="keyword">auto</span> check_b = [=](<span class="keyword">long</span> <span class="keyword">long</span> m) -&gt; <span class="keyword">long</span> <span class="keyword">long</span>&#123;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> b_max = b * m;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> k = b_max / a;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> a_max = a * k;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> res = k + m - min(a_max / lcm, b_max / lcm);</span><br><span class="line">            <span class="keyword">return</span> res;</span><br><span class="line">        &#125;;</span><br><span class="line"></span><br><span class="line">        <span class="comment">//假设答案是被a整除</span></span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> l = <span class="number">1</span>;</span><br><span class="line">        <span class="keyword">long</span> <span class="keyword">long</span> r = <span class="number">1e10</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> steps = <span class="number">1</span>; steps &lt;= <span class="number">60</span>; steps++)&#123;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(check_a(mid) &gt;= n)&#123;</span><br><span class="line">                r = mid;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                l = mid;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(check_a(r) == n)&#123;</span><br><span class="line">            r %= mod;</span><br><span class="line">            <span class="keyword">return</span> (a * r) % mod;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//假设答案是被b整除</span></span><br><span class="line">        l = <span class="number">1</span>;</span><br><span class="line">        r = <span class="number">1e10</span>;</span><br><span class="line">        <span class="keyword">for</span>(<span class="keyword">int</span> steps = <span class="number">1</span>; steps &lt;= <span class="number">60</span>; steps++)&#123;</span><br><span class="line">            <span class="keyword">long</span> <span class="keyword">long</span> mid = (l + r) &gt;&gt; <span class="number">1</span>;</span><br><span class="line">            <span class="keyword">if</span>(check_b(mid) &gt;= n)&#123;</span><br><span class="line">                r = mid;</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                l = mid;</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        assert(check_b(r) == n);</span><br><span class="line">        r %= mod;</span><br><span class="line">        <span class="keyword">return</span> (b * r) % mod;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;;</span><br></pre></td></tr></table></figure>
 
       
     </div>
@@ -374,8 +365,8 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2021/09/19/Math/" rel="next" title="数论知识点总结">
-                <i class="fa fa-chevron-left"></i> 数论知识点总结
+              <a href="/2022/11/20/LCW320/" rel="next" title="力扣周赛320">
+                <i class="fa fa-chevron-left"></i> 力扣周赛320
               </a>
             
           </div>
@@ -383,10 +374,6 @@
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2021/09/19/LC253/" rel="prev" title="力扣周赛253题解">
-                力扣周赛253题解 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -586,7 +573,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#力扣周赛252题解"><span class="nav-number">1.</span> <span class="nav-text">力扣周赛252题解</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#T1-三除数"><span class="nav-number">1.1.</span> <span class="nav-text">T1. 三除数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T2-你可以工作的最大周数"><span class="nav-number">1.2.</span> <span class="nav-text">T2. 你可以工作的最大周数</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T3-收集足够苹果的最小花园周长"><span class="nav-number">1.3.</span> <span class="nav-text">T3. 收集足够苹果的最小花园周长</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#T4-统计特殊子序列的数目"><span class="nav-number">1.4.</span> <span class="nav-text">T4. 统计特殊子序列的数目</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#彩蛋"><span class="nav-number">1.5.</span> <span class="nav-text">彩蛋</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#LC-878-第-N-个神奇数字"><span class="nav-number">1.</span> <span class="nav-text">LC 878. 第 N 个神奇数字</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#题面"><span class="nav-number">1.1.</span> <span class="nav-text">题面</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#题解"><span class="nav-number">1.2.</span> <span class="nav-text">题解</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#代码"><span class="nav-number">1.3.</span> <span class="nav-text">代码</span></a></li></ol></li></ol></div>
             
 
           </div>
