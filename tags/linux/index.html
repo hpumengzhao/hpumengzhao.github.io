@@ -64,8 +64,6 @@
 
 
 
-  <meta name="keywords" content="高等工程数学笔记," />
-
 
 
 
@@ -77,20 +75,13 @@
 
 
 
-<meta name="description" content="Chapter3-1: 矩阵的标准型与特征值计算">
-<meta property="og:type" content="article">
-<meta property="og:title" content="高等工程数学笔记-4">
-<meta property="og:url" content="http://yoursite.com/2021/09/23/AM4/index.html">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Meng Space">
+<meta property="og:url" content="http://yoursite.com/tags/linux/index.html">
 <meta property="og:site_name" content="Meng Space">
-<meta property="og:description" content="Chapter3-1: 矩阵的标准型与特征值计算">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://i.loli.net/2021/09/23/tekY6gIGUfwm8pF.png">
-<meta property="article:published_time" content="2021-09-23T05:12:42.602Z">
-<meta property="article:modified_time" content="2021-09-23T06:19:55.367Z">
 <meta property="article:author" content="Codancer">
-<meta property="article:tag" content="高等工程数学笔记">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="https://i.loli.net/2021/09/23/tekY6gIGUfwm8pF.png">
 
 
 
@@ -120,13 +111,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/2021/09/23/AM4/"/>
+  <link rel="canonical" href="http://yoursite.com/tags/linux/"/>
 
 
 
 
 
-  <title>高等工程数学笔记-4 | Meng Space</title>
+  <title>Tag: linux | Meng Space</title>
   
 
 
@@ -145,7 +136,7 @@
     
   
 
-  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left page-post-detail">
+  <!-- hexo-inject:begin --><!-- hexo-inject:end --><div class="container sidebar-position-left ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -231,194 +222,54 @@
           <div id="content" class="content">
             
 
-  <div id="posts" class="posts-expand">
-    
+  
+  
+  
+  <div class="post-block tag">
 
-  
+    <div id="posts" class="posts-collapse">
+      <div class="collection-title">
+        <h1>linux<small>Tag</small>
+        </h1>
+      </div>
 
-  
-  
-  
+      
+        
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2021/09/23/AM4/">
+    <header class="post-header">
 
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Codancer">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/avatar.gif">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Meng Space">
-    </span>
-
-    
-      <header class="post-header">
-
+      <h2 class="post-title">
         
+            <a class="post-title-link" href="/2022/11/30/Process/" itemprop="url">
+              
+                <span itemprop="name">Linux多进程</span>
+              
+            </a>
         
-          <h1 class="post-title" itemprop="name headline">高等工程数学笔记-4</h1>
-        
+      </h2>
 
-        <div class="post-meta">
-          <span class="post-time">
-		     
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-09-23T13:12:42+08:00">
-                2021-09-23
-              </time>
-            
+      <div class="post-meta">
+        <time class="post-time" itemprop="dateCreated"
+              datetime="2022-11-30T14:08:53+08:00"
+              content="2022-11-30" >
+          11-30
+        </time>
+      </div>
 
-            
-              <span class="post-meta-divider">|</span>
-            
-
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-check-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Post modified&#58;</span>
-              
-              <time title="Post modified" itemprop="dateModified" datetime="2021-09-23T14:19:55+08:00">
-                2021-09-23
-              </time>
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        <h1 id="Chapter3-1-矩阵的标准型与特征值计算"><a href="#Chapter3-1-矩阵的标准型与特征值计算" class="headerlink" title="Chapter3-1: 矩阵的标准型与特征值计算"></a>Chapter3-1: 矩阵的标准型与特征值计算</h1><a id="more"></a>
-<h2 id="Jordan标准型"><a href="#Jordan标准型" class="headerlink" title="Jordan标准型"></a>Jordan标准型</h2><p>形如：</p>
-<script type="math/tex; mode=display">
-J_{i} = \left[ \begin{matrix} \lambda_{i} & 1 \\ & \lambda_{i} & 1 \\ & & ...  \\ & & &\lambda_{i}\\ \end{matrix} \right]_{r_{i} \times r_{i}}</script><p>的矩阵被称为$r_{i}$阶Jordan块。由若干个Jordan块构成的分块对角矩阵成为Jordan标准型：</p>
-<script type="math/tex; mode=display">
-J = \left[ \begin{matrix} J_{1} \\ & J_{2} \\ & & J_{3} \\ &&&... \\&&&& J_{s}  \end{matrix} \right]</script><h2 id="Jordan定理"><a href="#Jordan定理" class="headerlink" title="Jordan定理"></a>Jordan定理</h2><p>设$A \in C^{n \times n}$，则$A$与一个Jordan标准型相似，即存在$P \in C_{n} ^{n \times n}$使得$P^{-1}AP=J$。且这个Jordan标准型除了其中的Jordan块的排列顺序外被$A$唯一决定。则称其为$A$的Jordan标准型，记为$J_{A}$。</p>
-<h2 id="Jordan标准型及相似变换矩阵的求解"><a href="#Jordan标准型及相似变换矩阵的求解" class="headerlink" title="Jordan标准型及相似变换矩阵的求解"></a>Jordan标准型及相似变换矩阵的求解</h2><p>设$a_{ij}(\lambda)(i=1,2,3…m;j=1,2,3…,n)$，为复数域上的多项式，则以$a_{ij}(\lambda)$为元素的 $m \times n$阶矩阵</p>
-<script type="math/tex; mode=display">
-A(\lambda) = \left[ \begin{matrix}a_{11}(\lambda) & a_{12}(\lambda) & ... & a_{1n}(\lambda) \\ ...  \\ a_{m1}(\lambda) & a_{m2}(\lambda) & ... & a_{mn}(\lambda)\end{matrix} \right]</script><p>为$\lambda$矩阵或者多项式矩阵。</p>
-<p>如果$\lambda$矩阵$A(\lambda)$存在一个$r(r \geq 1)$阶子式为非零多项式，而所有的$r+1$（如果存在）阶子式全为零多项式，则称$A(\lambda)$的秩为$r$，记作:</p>
-<p>$\rank(A(\lambda))=r$或者$r_{A(\lambda)}=r$。零矩阵的秩为0。</p>
-<p>如果$n$阶矩阵$A(\lambda)$的秩为$n$，则$A(\lambda)$满秩或非奇异，否则称$A(\lambda)$降秩或者奇异的。</p>
-<h3 id="初等行变化-列变换"><a href="#初等行变化-列变换" class="headerlink" title="初等行变化/列变换"></a>初等行变化/列变换</h3><ul>
-<li>交换两行(列)</li>
-<li>用$k(k \neq 0)$数乘某行/列的所有元素</li>
-<li>某行(列)的$\varphi(\lambda)$倍加到零一行(列)</li>
-</ul>
-<p>如果$\lambda$矩阵$A(\lambda)$经过有限次初等变换变成$\lambda$矩阵$B(\lambda)$，则称$A(\lambda)$与$B(\lambda)$矩阵等价，记作$A \simeq B$。</p>
-<p>定理：</p>
-<p>任意非零的$\lambda$矩阵$A(\lambda)=(a_{ij}(\lambda))_{m \times n}$等价于如下形式的矩阵：</p>
-<script type="math/tex; mode=display">
-A(\lambda) \simeq S(\lambda)=\left( \begin{matrix} d_{1}(\lambda) \\ & d_{2}(\lambda) \\ & & ...\\ &&& d_{r}(\lambda) \\ & & &  & ... \\ & & & & & 0 \\ & & & & & & 0 \end{matrix} \right)</script><p>其中$r$为$A(\lambda)$的秩，$d_{i}(\lambda)$是首项系数为1的多项式，且$d_{i}(\lambda)|d_{i+1}(\lambda)(i=1,…,r-1)$。</p>
-<p>$S(\lambda)$被称为$A(\lambda)$的<strong>Smith标准型</strong>，$d_{i}(\lambda)$成为$A(\lambda)$的不变因子。</p>
-<p>例题：</p>
-<p>求$\lambda$矩阵</p>
-<script type="math/tex; mode=display">
-A(\lambda)=\left( \begin{matrix}1-\lambda & 2\lambda-1 & \lambda \\ \lambda & \lambda^2 & -\lambda \\1+\lambda^2 & \lambda^2+\lambda-1 & -\lambda^2 \end{matrix} \right )</script><p>的Smith标准型和不变因子：</p>
-<p><img src="https://i.loli.net/2021/09/23/tekY6gIGUfwm8pF.png" alt="image.png" style="zoom: 50%;" /></p>
-<p>因此所求的Smith标准型为：</p>
-<script type="math/tex; mode=display">
-S(\lambda) = \left( \begin{matrix} 1 & 0 & 0 \\ 0 & \lambda & 0 \\ 0 & 0 & \lambda^3+\lambda \end{matrix} \right)</script><p>不变因子为：$d_{1}(\lambda)=1,d_{2}(\lambda)=\lambda,d_{3}(\lambda)=\lambda^3+\lambda$。</p>
-
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/%E9%AB%98%E7%AD%89%E5%B7%A5%E7%A8%8B%E6%95%B0%E5%AD%A6%E7%AC%94%E8%AE%B0/" rel="tag"># 高等工程数学笔记</a>
-          
-        </div>
-      
-
-      
-      
-      
-
-      
-        <div class="post-nav">
-          <div class="post-nav-next post-nav-item">
-            
-              <a href="/2021/09/23/AM3/" rel="next" title="高等工程数学笔记-3">
-                <i class="fa fa-chevron-left"></i> 高等工程数学笔记-3
-              </a>
-            
-          </div>
-
-          <span class="post-nav-divider"></span>
-
-          <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2022/04/24/cpp-1/" rel="prev" title="C++笔记-Variadic Templates">
-                C++笔记-Variadic Templates <i class="fa fa-chevron-right"></i>
-              </a>
-            
-          </div>
-        </div>
-      
-
-      
-      
-    </footer>
-  </div>
-  
-  
-  
+    </header>
   </article>
 
 
-
-    <div class="post-spread">
       
     </div>
+
   </div>
+  
+  
+  
+
+  
 
 
           </div>
@@ -426,13 +277,6 @@ S(\lambda) = \left( \begin{matrix} 1 & 0 & 0 \\ 0 & \lambda & 0 \\ 0 & 0 & \lamb
 
 
           
-
-  
-    <div class="comments" id="comments">
-    </div>
-  
-
-
 
         </div>
         
@@ -453,17 +297,8 @@ S(\lambda) = \left( \begin{matrix} 1 & 0 & 0 \\ 0 & \lambda & 0 \\ 0 & 0 & \lamb
       
 
       
-        <ul class="sidebar-nav motion-element">
-          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
-            Table of Contents
-          </li>
-          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
-            Overview
-          </li>
-        </ul>
-      
 
-      <section class="site-overview-wrap sidebar-panel">
+      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -588,22 +423,6 @@ S(\lambda) = \left( \begin{matrix} 1 & 0 & 0 \\ 0 & \lambda & 0 \\ 0 & 0 & \lamb
         </div>
       </section>
 
-      
-      <!--noindex-->
-        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
-          <div class="post-toc">
-
-            
-              
-            
-
-            
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Chapter3-1-矩阵的标准型与特征值计算"><span class="nav-number">1.</span> <span class="nav-text">Chapter3-1: 矩阵的标准型与特征值计算</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Jordan标准型"><span class="nav-number">1.1.</span> <span class="nav-text">Jordan标准型</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jordan定理"><span class="nav-number">1.2.</span> <span class="nav-text">Jordan定理</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Jordan标准型及相似变换矩阵的求解"><span class="nav-number">1.3.</span> <span class="nav-text">Jordan标准型及相似变换矩阵的求解</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#初等行变化-列变换"><span class="nav-number">1.3.1.</span> <span class="nav-text">初等行变化&#x2F;列变换</span></a></li></ol></li></ol></li></ol></div>
-            
-
-          </div>
-        </section>
-      <!--/noindex-->
       
 
       
@@ -744,10 +563,6 @@ S(\lambda) = \left( \begin{matrix} 1 & 0 & 0 \\ 0 & \lambda & 0 \\ 0 & 0 & \lamb
 
 
   
-  <script type="text/javascript" src="/js/src/scrollspy.js?v="></script>
-<script type="text/javascript" src="/js/src/post-details.js?v="></script>
-
-
 
   
 
